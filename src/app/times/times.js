@@ -3,7 +3,7 @@ const teams = [
   {
     name: 'Atlético-MG', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Atletico_mineiro_galo.png/800px-Atletico_mineiro_galo.png', fundacao: '1908', titles: [
       {
-        internacionais: [
+        continentais: [
           { name: 'Copa Libertadores da América', count: 1 },
           { name: 'Recopa Sul-Americana', count: 1 },
           { name: 'Copa CONMEBOL', count: 2 },
@@ -68,7 +68,7 @@ const teams = [
   {
     name: 'Botafogo', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Botafogo_de_Futebol_e_Regatas_logo.svg/180px-Botafogo_de_Futebol_e_Regatas_logo.svg.png', fundacao: '1894', titles: [
       {
-        internacionais: [
+        continentais: [
           { name: 'Copa Libertadores da América', count: 1 },
           { name: 'Copa CONMEBOL', count: 1 },
         ],
@@ -121,7 +121,7 @@ const teams = [
     fundacao: '1914',
     titles: [
       {
-        interregionais: [
+        'inter-regionais': [
           { name: 'Torneio Norte-Nordeste', count: 1 }
         ],
         regionais: [
@@ -157,7 +157,7 @@ const teams = [
         mundiais: [
           { name: 'Copa do Mundo de Clubes da FIFA', count: 2 },
         ],
-        internacionais: [
+        continentais: [
           { name: 'Copa Libertadores da América', count: 1 },
           { name: 'Recopa Sul-Americana', count: 1 },
         ],
@@ -211,7 +211,7 @@ const teams = [
   {
     name: 'Cruzeiro', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Cruzeiro_Esporte_Clube_%28logo%29.svg/180px-Cruzeiro_Esporte_Clube_%28logo%29.svg.png', fundacao: '1921', titles: [
       {
-        internacionais: [
+        continentais: [
           { name: 'Copa Libertadores da América', count: 2 },
           { name: 'Recopa Sul-Americana', count: 1 },
           { name: 'Supercopa Libertadores', count: 2 },
@@ -249,7 +249,7 @@ const teams = [
         mundiais: [
           { name: 'Copa Intercontinental', count: 1 },
         ],
-        internacionais: [
+        continentais: [
           { name: 'Copa Libertadores da América', count: 3 },
           { name: 'Copa Mercosul', count: 1 },
           { name: 'Recopa Sul-Americana', count: 1 },
@@ -278,7 +278,7 @@ const teams = [
   {
     name: 'Fluminense', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/FFC_crest.svg/195px-FFC_crest.svg.png', fundacao: '1902', titles: [
       {
-        internacionais: [
+        continentais: [
           { name: 'Copa Libertadores da América', count: 1 },
           { name: 'Recopa Sul-Americana', count: 1 },
         ],
@@ -314,7 +314,7 @@ const teams = [
   {
     name: 'Fortaleza', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Fortaleza_EC_2018.png/180px-Fortaleza_EC_2018.png', fundacao: '1918', titles: [
       {
-        interregionais: [
+        'inter-regionais': [
           { name: 'Torneio Norte–Nordeste', count: 1 },
         ],
         regionais: [
@@ -348,7 +348,7 @@ const teams = [
         mundiais: [
           { name: 'Copa Intercontinental', count: 1 },
         ],
-        internacionais: [
+        continentais: [
           { name: 'Copa Libertadores da América', count: 3 },
           { name: 'Recopa Sul-Americana', count: 2 },
         ],
@@ -389,7 +389,7 @@ const teams = [
         intercontinentais: [
           { name: 'Copa Suruga Bank', count: 1 },
         ],
-        internacionais: [
+        continentais: [
           { name: 'Copa Libertadores da América', count: 2 },
           { name: 'Copa Sul-Americana', count: 1 },
           { name: 'Recopa Sul-Americana', count: 2 },
@@ -457,7 +457,7 @@ const teams = [
   {
     name: 'Palmeiras', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Palmeiras_logo.svg/180px-Palmeiras_logo.svg.png', fundacao: '1914', titles: [
       {
-        internacionais: [
+        continentais: [
           { name: 'Copa Libertadores da América', count: 3 },
           { name: 'Copa Mercosul', count: 1 },
           { name: 'Recopa Sul-Americana', count: 1 },
@@ -499,7 +499,7 @@ const teams = [
           { name: 'Copa do Mundo de Clubes da FIFA', count: 1 },
           { name: 'Copa Intercontinental', count: 2 },
         ],
-        internacionais: [
+        continentais: [
           { name: 'Copa Libertadores da América', count: 3 },
           { name: 'Copa Sul-Americana', count: 1 },
           { name: 'Recopa Sul-Americana', count: 2 },
@@ -576,7 +576,7 @@ const teams = [
         mundiais: [
           { name: 'Copa Intercontinental', count: 2 },
         ],
-        internacionais: [
+        continentais: [
           { name: "Copa Libertadores da América", count: 3, },
           { name: "Copa CONMEBOL", count: 1 },
           { name: "Recopa Sul-Americana", count: 1 }
@@ -631,7 +631,7 @@ const teams = [
         ]
       },
       {
-        interregionais: [
+        "inter-regionais": [
           { name: "Torneio Norte-Nordeste", count: 1 }
         ]
       },
@@ -667,7 +667,7 @@ const teams = [
   {
     name: 'Vasco', shield: 'https://upload.wikimedia.org/wikipedia/pt/thumb/a/ac/CRVascodaGama.png/180px-CRVascodaGama.png', fundacao: '1898', titles: [
       {
-        internacionais: [
+        continentais: [
           { name: 'Copa Libertadores da América', count: 1 },
           { name: 'Copa Mercosul', count: 1 },
         ],

@@ -42,6 +42,11 @@ const TeamTitles: React.FC = () => {
     })();
   }, []);
 
+  function capitalizeFirstLetter(str: string) {
+    return str[0].toUpperCase() + str.slice(1);
+  }
+  
+
   const handleCaptureAndSave = async () => {
     if (!hasMediaLibraryPermission) {
       Alert.alert('Permissão necessária', 'É necessário permitir o acesso à galeria para salvar a imagem.');
@@ -90,19 +95,22 @@ const TeamTitles: React.FC = () => {
             <Image source={{ uri: team?.shield }} style={styles.shield} />
             {titles.map((category: Category, index: number) => (
               <View key={index} style={{ width: '100%' }}>
-                {Object.entries(category).map(([categoryName, titleList]) => (
-                  <View key={categoryName}>
-                    <Text style={styles.categoryTitle}>
-                      {categoryName.charAt(0).toUpperCase() + categoryName.slice(1)}
-                    </Text>
-                    {titleList.map((title: Title, i: number) => (
-                      <View key={i} style={styles.titleItem}>
-                        <Text style={styles.titleCompetition}>{title.name}</Text>
-                        <Text style={styles.titleYear}>{`${title.count}`}</Text>
-                      </View>
-                    ))}
-                  </View>
-                ))}
+                {Object.entries(category).map(([categoryName, titleList]) => {
+                  const total = titleList.reduce((acc, item) => acc + item.count, 0);
+                  return (
+                    <View key={categoryName}>
+                      <Text style={styles.categoryTitle}>
+                        {`${capitalizeFirstLetter(categoryName)} (${total})`}
+                      </Text>
+                      {titleList.map((title: Title, i: number) => (
+                        <View key={i} style={styles.titleItem}>
+                          <Text style={styles.titleCompetition}>{title.name}</Text>
+                          <Text style={styles.titleYear}>{`${title.count}`}</Text>
+                        </View>
+                      ))}
+                    </View>
+                  );
+                })}
               </View>
             ))}
           </View>
