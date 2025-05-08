@@ -312,7 +312,7 @@ const teams = [
     ]
   },
   {
-    name: 'Fortaleza', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Fortaleza_EC_2018.png/180px-Fortaleza_EC_2018.png', fundacao: '1918', ttitles: [
+    name: 'Fortaleza', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Fortaleza_EC_2018.png/180px-Fortaleza_EC_2018.png', fundacao: '1918', titles: [
       {
         interregionais: [
           { name: 'Torneio Norte–Nordeste', count: 1 },
@@ -577,7 +577,7 @@ const teams = [
           { name: 'Copa Intercontinental', count: 2 },
         ],
         internacionais: [
-          { name: "Copa Libertadores da América", count: 3,},
+          { name: "Copa Libertadores da América", count: 3, },
           { name: "Copa CONMEBOL", count: 1 },
           { name: "Recopa Sul-Americana", count: 1 }
         ]
@@ -627,22 +627,22 @@ const teams = [
       {
         nacionais: [
           { name: "Campeonato Brasileiro Série A", count: 1 },
-          { name: "Copa do Brasil", count: 1},
+          { name: "Copa do Brasil", count: 1 },
         ]
       },
       {
         interregionais: [
-          { name: "Torneio Norte-Nordeste", count: 1}
+          { name: "Torneio Norte-Nordeste", count: 1 }
         ]
       },
       {
         regionais: [
-          { name: "Copa do Nordeste", count: 3}
+          { name: "Copa do Nordeste", count: 3 }
         ]
       },
       {
         estaduais: [
-          { name: "Campeonato Pernambucano", "count": 44}
+          { name: "Campeonato Pernambucano", "count": 44 }
         ]
       }
     ],
