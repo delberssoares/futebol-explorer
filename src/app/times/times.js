@@ -597,7 +597,7 @@ const teams = [
       },
       {
         estaduais: [
-          { name: "Campeonato Paulista", count: 22 },
+          { name: "Campeonato Estadual", count: 22 },
         ]
       }
     ],
@@ -642,7 +642,7 @@ const teams = [
       },
       {
         estaduais: [
-          { name: "Campeonato Pernambucano", "count": 44 }
+          { name: "Campeonato Estadual", "count": 44 }
         ]
       }
     ],
