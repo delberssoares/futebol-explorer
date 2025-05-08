@@ -24,7 +24,7 @@ const CompareTeamsScreen: React.FC = () => {
   const teamsString = Array.isArray(params.teams) ? params.teams[0] : params.teams;
   const teams: Team[] = teamsString ? JSON.parse(teamsString) : [];
 
-  const categoryOrder = ['mundiais', 'internacionais', 'nacionais','interregionais', 'regionais', 'estaduais'];
+  const categoryOrder = ['mundiais', 'internacionais', 'nacionais', 'interregionais', 'regionais', 'estaduais'];
   const [isCapturing, setIsCapturing] = useState(false);
 
 
@@ -66,13 +66,13 @@ const CompareTeamsScreen: React.FC = () => {
       Alert.alert('Permissão necessária', 'É necessário permitir o acesso à galeria para salvar a imagem.');
       return;
     }
-  
+
     try {
       setIsCapturing(true);
       await new Promise(resolve => setTimeout(resolve, 100));
-  
+
       const viewShot = viewShotRef.current;
-  
+
       if (viewShot && typeof viewShot.capture === 'function') {
         const uri = await viewShot.capture();
         if (uri) {
@@ -89,7 +89,7 @@ const CompareTeamsScreen: React.FC = () => {
       setIsCapturing(false);
     }
   };
-  
+
 
 
   return (
@@ -128,8 +128,7 @@ const CompareTeamsScreen: React.FC = () => {
 
                         <View style={styles.valueContainer}>
                           {teams.map((team, teamIndex) => {
-                            const titleObj = team.titles
-                              .flatMap(category => Object.values(category).flat())
+                            const titleObj = team.titles?.flatMap(category => Object.values(category).flat())
                               .find(t => t.name === title.name);
                             return (
                               <React.Fragment key={teamIndex}>
