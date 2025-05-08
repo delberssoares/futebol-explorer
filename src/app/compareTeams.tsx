@@ -4,6 +4,7 @@ import { useLocalSearchParams } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
 import { Alert, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import ViewShot from 'react-native-view-shot';
+import capitalizeFirstLetter from '../functions/formatText';
 
 type TitleCategory = {
   mundiais: { name: string; count: number }[];
@@ -119,7 +120,7 @@ const CompareTeamsScreen: React.FC = () => {
               <View key={categoryIndex} style={styles.categoryContainer}>
                 {allTitlesByCategory[category].length > 0 && (
                   <>
-                    <Text style={styles.categoryTitle}>{category.charAt(0).toUpperCase() + category.slice(1)}</Text>
+                    <Text style={styles.categoryTitle}>{capitalizeFirstLetter(category)}</Text>
                     {allTitlesByCategory[category].map((title, titleIndex) => (
                       <View key={titleIndex} style={styles.row}>
                         <View style={styles.titleContainer}>

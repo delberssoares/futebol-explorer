@@ -12,6 +12,7 @@ import {
   View,
 } from 'react-native';
 import ViewShot from 'react-native-view-shot';
+import capitalizeFirstLetter from '../functions/formatText';
 
 type Title = {
   name: string;
@@ -42,9 +43,7 @@ const TeamTitles: React.FC = () => {
     })();
   }, []);
 
-  function capitalizeFirstLetter(str: string) {
-    return str[0].toUpperCase() + str.slice(1);
-  }
+ 
   
 
   const handleCaptureAndSave = async () => {
