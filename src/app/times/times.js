@@ -32,6 +32,9 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/atletico' },
       { rede: 'Instagram', link: 'https://www.instagram.com/atletico' },
       { rede: 'Twitter', link: 'https://x.com/Atletico' }
+    ],
+    cores: [
+      { main: '#FFFFFF', secondary: '#000000' }
     ]
   },
   {
@@ -63,6 +66,8 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/ecbahia' },
       { rede: 'Instagram', link: 'https://www.instagram.com/ecbahia/' },
       { rede: 'Twitter', link: 'https://x.com/ecbahia' }
+    ], cores: [
+      { main: 'white', secondary: 'blue', third: 'red' }
     ]
   },
   {
@@ -98,6 +103,9 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/Botafogo' },
       { rede: 'Instagram', link: 'https://www.instagram.com/botafogo/' },
       { rede: 'Twitter', link: 'https://x.com/Botafogo' }
+    ],
+    cores: [
+      { main: '#FFFFFF', secondary: '#000000' }
     ]
   },
   {
@@ -112,6 +120,9 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/RedBullBragantino' },
       { rede: 'Instagram', link: 'https://www.instagram.com/redbullbragantino' },
       { rede: 'Twitter', link: 'https://x.com/RedBullBraga' }
+    ],
+    cores: [
+      { main: '#FFFFFF', secondary: '#000000' }
     ]
 
   },
@@ -148,6 +159,9 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/cearasc' },
       { rede: 'Instagram', link: 'https://www.instagram.com/cearasc/' },
       { rede: 'Twitter', link: 'https://x.com/CearaSC' }
+    ],
+    cores: [
+      { main: '#FFFFFF', secondary: '#000000' }
     ]
   },
 
@@ -189,24 +203,12 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/corinthians' },
       { rede: 'Instagram', link: 'https://www.instagram.com/corinthians/' },
       { rede: 'Twitter', link: 'https://x.com/Corinthians' }
-    ]
-  },
-  {
-    name: 'Criciúma', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/EscudoCriciumaEC.svg/180px-EscudoCriciumaEC.svg.png', fundacao: '1947', titles: [
-      {
-        nacionais: [
-          { name: 'Copa do Brasil', count: 1 },
-        ],
-        estaduais: [
-          { name: 'Campeonato Estadual', count: 12 },
-        ]
-      },
     ],
-    redes: [
-      { rede: 'Facebook', link: 'https://www.facebook.com/criciumaec' },
-      { rede: 'Instagram', link: 'https://www.instagram.com/criciumaoficial/' },
-      { rede: 'Twitter', link: 'https://x.com/CriciumaEC' }
+    cores: [
+      { main: '#FFFFFF', secondary: '#000000' }
     ]
+
+
   },
   {
     name: 'Cruzeiro', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Cruzeiro_Esporte_Clube_%28logo%29.svg/180px-Cruzeiro_Esporte_Clube_%28logo%29.svg.png', fundacao: '1921', titles: [
@@ -241,6 +243,8 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/cruzeirooficial/' },
       { rede: 'Instagram', link: 'https://www.instagram.com/cruzeiro/' },
       { rede: 'Twitter', link: 'https://x.com/Cruzeiro' }
+    ], cores: [
+      { main: '#FFFFFF', secondary: 'blue' }
     ]
   },
   {
@@ -273,6 +277,8 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/FlamengoOficial' },
       { rede: 'Instagram', link: 'https://www.instagram.com/flamengo/' },
       { rede: 'Twitter', link: 'https://x.com/Flamengo' }
+    ], cores: [
+      { main: '#000000', secondary: 'red' }
     ]
   },
   {
@@ -309,7 +315,15 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/FluminenseFC' },
       { rede: 'Instagram', link: 'https://www.instagram.com/fluminensefc/' },
       { rede: 'Twitter', link: 'https://x.com/FluminenseFC' }
+    ],
+    cores: [
+      {
+        main: '#870A28',      // Grená
+        secondary: '#FFFFFF', // Verde
+        third: '#00613C'      // Branco
+      }
     ]
+
   },
   {
     name: 'Fortaleza', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Fortaleza_EC_2018.png/180px-Fortaleza_EC_2018.png', fundacao: '1918', titles: [
@@ -340,7 +354,10 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/FortalezaEC' },
       { rede: 'Instagram', link: 'https://www.instagram.com/fortalezaec/' },
       { rede: 'Twitter', link: 'https://x.com/FortalezaEC' }
+    ], cores: [
+      { main: '#0033A0', secondary: '#FFFFFF', third: '#ED1C24' } // Fortaleza EC
     ]
+
   },
   {
     name: 'Grêmio', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Gremio_logo.svg/180px-Gremio_logo.svg.png', fundacao: '1903', titles: [
@@ -377,6 +394,9 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/Gremio' },
       { rede: 'Instagram', link: 'https://www.instagram.com/gremio/' },
       { rede: 'Twitter', link: 'https://x.com/Gremio' }
+    ],
+    cores: [
+      { main: '#0D80BF', secondary: '#000000', third: '#FFFFFF' }
     ]
 
   },
@@ -418,7 +438,10 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/scinternacional' },
       { rede: 'Instagram', link: 'https://www.instagram.com/scinternacional/' },
       { rede: 'Twitter', link: 'https://x.com/SCInternacional' }
+    ], cores: [
+      { main: '#D50032', secondary: '#FFFFFF' }
     ]
+
   },
   {
     name: 'Juventude', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/EC_Juventude.svg/210px-EC_Juventude.svg.png', fundacao: '1913', titles: [
@@ -435,7 +458,10 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/juventude' },
       { rede: 'Instagram', link: 'https://www.instagram.com/ecjuventude/' },
       { rede: 'Twitter', link: 'https://x.com/ECJuventude' }
+    ], cores: [
+      { main: '#009639', secondary: '#FFFFFF' }
     ]
+
   },
   {
     name: 'Mirassol', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Mirassol_FC_logo.png/918px-Mirassol_FC_logo.png',
@@ -452,7 +478,11 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/mirassolfc' },
       { rede: 'Instagram', link: 'https://www.instagram.com/mirassolfc/' },
       { rede: 'Twitter', link: 'https://x.com/mirassolfc' }
+    ],
+    cores: [
+      { main: '#F7C31C', secondary: '#001A57', third: '#F5A300' }
     ]
+
   },
   {
     name: 'Palmeiras', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Palmeiras_logo.svg/180px-Palmeiras_logo.svg.png', fundacao: '1914', titles: [
@@ -490,7 +520,11 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/Palmeiras' },
       { rede: 'Instagram', link: 'https://www.instagram.com/palmeiras' },
       { rede: 'Twitter', link: 'https://x.com/Palmeiras' }
+    ], cores: [
+      { main: '#006747', secondary: '#FFFFFF' }
     ]
+
+
   },
   {
     name: 'São Paulo', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/S%C3%A3o_Paulo_Futebol_Clube.png/180px-S%C3%A3o_Paulo_Futebol_Clube.png', fundacao: '1930', titles: [
@@ -565,6 +599,8 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/saopaulofc' },
       { rede: 'Instagram', link: 'https://www.instagram.com/saopaulofc/' },
       { rede: 'Twitter', link: 'https://x.com/SaoPauloFC' }
+    ], cores: [
+      { main: '#FFFFFF', secondary: '#000000', third: '#FF0000' }
     ]
   },
   {
@@ -617,6 +653,9 @@ const teams = [
       { rede: "Facebook", link: "https://www.facebook.com/santosfc" },
       { rede: "Instagram", link: "https://www.instagram.com/santosfc/" },
       { rede: "Twitter", link: "https://x.com/SantosFC" }
+    ],
+    cores: [
+      { main: '#FFFFFF', secondary: '#000000' }
     ]
   },
   {
@@ -662,7 +701,11 @@ const teams = [
       { rede: "Facebook", link: "https://www.facebook.com/sportrecife" },
       { rede: "Instagram", link: "https://www.instagram.com/sportrecife/" },
       { rede: "Twitter", link: "https://x.com/sportrecife" }
+    ],
+    cores: [
+      { main: '#E21B25', secondary: 'black' }
     ]
+
   },
   {
     name: 'Vasco', shield: 'https://upload.wikimedia.org/wikipedia/pt/thumb/a/ac/CRVascodaGama.png/180px-CRVascodaGama.png', fundacao: '1898', titles: [
@@ -697,6 +740,9 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/vascodagama' },
       { rede: 'Instagram', link: 'https://www.instagram.com/vascodagama/' },
       { rede: 'Twitter', link: 'https://x.com/VascodaGama' }
+    ],
+    cores: [
+      { main: '#FFFFFF', secondary: '#000000' }
     ]
 
   },
@@ -725,6 +771,9 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/ecvitoria' },
       { rede: 'Instagram', link: 'https://www.instagram.com/ecvitoria/' },
       { rede: 'Twitter', link: 'https://x.com/ECVitoria' }
+    ],
+    cores: [
+      { secondary: 'red', main: '#000000' }
     ]
   }
 ];
