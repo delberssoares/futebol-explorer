@@ -4,6 +4,7 @@ import { useLocalSearchParams } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
 import {
   Alert,
+  Dimensions,
   Image,
   ScrollView,
   StyleSheet,
@@ -13,6 +14,7 @@ import {
 } from 'react-native';
 import ViewShot from 'react-native-view-shot';
 import capitalizeFirstLetter from '../functions/formatText';
+
 
 type Title = {
   name: string;
@@ -32,9 +34,18 @@ const TeamTitles: React.FC = () => {
     : null;
 
   const titles: Category[] = team ? team.titles : [];
+  const teamColors = team?.cores?.[0] || { main: '#FFFFFF', secondary: '#000000'}; // Fallback para cores padrão
 
   const viewShotRef = useRef<ViewShot>(null);
   const [hasMediaLibraryPermission, setHasMediaLibraryPermission] = useState(false);
+  const screenHeight = Dimensions.get('window').height;
+
+  const [scrollEnabled, setScrollEnabled] = useState(false);
+
+  const handleContentSizeChange = (contentWidth: number, contentHeight: number) => {
+    setScrollEnabled(contentHeight > screenHeight);
+  };
+
 
   useEffect(() => {
     (async () => {
@@ -42,9 +53,6 @@ const TeamTitles: React.FC = () => {
       setHasMediaLibraryPermission(status === 'granted');
     })();
   }, []);
-
- 
-  
 
   const handleCaptureAndSave = async () => {
     if (!hasMediaLibraryPermission) {
@@ -80,17 +88,22 @@ const TeamTitles: React.FC = () => {
 
   return (
     <View style={{ flex: 1 }}>
-      <TouchableOpacity style={styles.captureIcon} onPress={handleCaptureAndSave}>
-        <MaterialIcons name="camera-alt" size={30} color="#fff" />
+      <TouchableOpacity style={[styles.captureIcon, { backgroundColor: teamColors.secondary }]} onPress={handleCaptureAndSave}>
+        <MaterialIcons name="camera-alt" size={30} color={teamColors.main} />
       </TouchableOpacity>
 
-      <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
+      <ScrollView
+        scrollEnabled={scrollEnabled}
+        onContentSizeChange={handleContentSizeChange}
+        contentContainerStyle={{ flexGrow: 1 }}
+      >
+
         <ViewShot
           ref={viewShotRef}
           options={{ format: 'png', quality: 1 }}
           style={styles.viewShot}
         >
-          <View style={styles.container}>
+          <View style={[styles.container, { backgroundColor: teamColors.main, minHeight: screenHeight }]}>
             <Image source={{ uri: team?.shield }} style={styles.shield} />
             {titles.map((category: Category, index: number) => (
               <View key={index} style={{ width: '100%' }}>
@@ -98,13 +111,14 @@ const TeamTitles: React.FC = () => {
                   const total = titleList.reduce((acc, item) => acc + item.count, 0);
                   return (
                     <View key={categoryName}>
-                      <Text style={styles.categoryTitle}>
+                      <Text style={[styles.categoryTitle, { 
+                        backgroundColor: teamColors.third ? teamColors.third : teamColors.secondary, color: teamColors.main }]}>
                         {`${capitalizeFirstLetter(categoryName)} (${total})`}
                       </Text>
                       {titleList.map((title: Title, i: number) => (
                         <View key={i} style={styles.titleItem}>
-                          <Text style={styles.titleCompetition}>{title.name}</Text>
-                          <Text style={styles.titleYear}>{`${title.count}`}</Text>
+                          <Text style={[styles.titleCompetition, { color: teamColors.secondary }]}>{title.name}</Text>
+                          <Text style={[styles.titleYear, { backgroundColor: teamColors.secondary, color: teamColors.main }]}>{`${title.count}`}</Text>
                         </View>
                       ))}
                     </View>
@@ -159,7 +173,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   categoryTitle: {
-    backgroundColor: 'rgba(0, 0, 0, 0.582)',
     color: 'white',
     fontSize: 20,
     fontWeight: 'bold',
@@ -176,7 +189,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 10,
     right: 10,
-    backgroundColor: '#6200ea',
     padding: 10,
     borderRadius: 30,
     zIndex: 1,
