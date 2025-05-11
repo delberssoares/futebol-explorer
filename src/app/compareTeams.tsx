@@ -25,7 +25,7 @@ const CompareTeamsScreen: React.FC = () => {
   const teamsString = Array.isArray(params.teams) ? params.teams[0] : params.teams;
   const teams: Team[] = teamsString ? JSON.parse(teamsString) : [];
 
-  const categoryOrder = ['mundiais', 'internacionais', 'nacionais', 'inter-regionais', 'regionais', 'estaduais'];
+  const categoryOrder = ['mundiais', 'continentais', 'nacionais', 'inter-regionais', 'regionais', 'estaduais'];
   const [isCapturing, setIsCapturing] = useState(false);
 
 
@@ -91,6 +91,16 @@ const CompareTeamsScreen: React.FC = () => {
     }
   };
 
+  const isHighestCount = (titleName: string, index: number): boolean => {
+  const counts = teams.map(team =>
+    team.titles?.flatMap(category => Object.values(category).flat())
+      .find(t => t.name === titleName)?.count || 0
+  );
+
+  const max = Math.max(...counts);
+  return counts[index] === max && counts.filter(c => c === max).length === 1;
+};
+
 
 
   return (
@@ -133,9 +143,15 @@ const CompareTeamsScreen: React.FC = () => {
                               .find(t => t.name === title.name);
                             return (
                               <React.Fragment key={teamIndex}>
-                                <Text style={styles.valueText}>
+                                <Text
+                                  style={[
+                                    styles.valueText,
+                                    isHighestCount(title.name, teamIndex) && styles.highlightedValue
+                                  ]}
+                                >
                                   {titleObj?.count || '0'}
                                 </Text>
+
                                 {teamIndex !== teams.length - 1 && <Text> X </Text>}
                               </React.Fragment>
                             );
@@ -267,6 +283,11 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     zIndex: 1,
   },
+  highlightedValue: {
+  backgroundColor: '#FFD700', // amarelo ouro para destaque
+  color: '#000',
+},
+
 });
 
 export default CompareTeamsScreen;
