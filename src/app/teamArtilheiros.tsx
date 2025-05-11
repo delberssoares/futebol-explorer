@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Image, FlatList, ActivityIndicator, TouchableOpacity } from 'react-native';
-import { useLocalSearchParams } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useLocalSearchParams } from 'expo-router';
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Toast from 'react-native-toast-message';
 
 type Artilheiro = {
@@ -13,6 +13,7 @@ type Team = {
     name: string;
     shield: string;
     artilheiros: Artilheiro[];
+    updateArtilheiros: string;
 };
 
 const TeamArtilheiros: React.FC = () => {
@@ -61,6 +62,7 @@ const TeamArtilheiros: React.FC = () => {
     return (
         <View style={styles.container}>
             <Image source={{ uri: team.shield }} style={styles.shield} />
+            <Text style={styles.updateText}>Última atualização no dia {team.updateArtilheiros}</Text>
             <View style={styles.titlesHeader}>
                 <TouchableOpacity onPress={() => showToast('Posição')}>
                     <MaterialCommunityIcons name="trophy" size={24} style={styles.icon} />
@@ -156,6 +158,11 @@ const styles = StyleSheet.create({
         color: 'gray',
         textAlign: 'center',
         marginTop: 20,
+    },
+     updateText: {
+        fontSize: 12,
+        color: '#666',
+        marginBottom: 8,
     },
 });
 

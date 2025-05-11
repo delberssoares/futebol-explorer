@@ -28,7 +28,9 @@ const teams = [
       { nome: "Ubaldo", gols: 135 },
       { nome: "Marques", gols: 133 },
       { nome: "Nívio", gols: 126 }
-    ], redes: [
+    ],
+    updateArtilheiros: '10/05/2025',
+    redes: [
       { rede: 'Facebook', link: 'https://www.facebook.com/atletico' },
       { rede: 'Instagram', link: 'https://www.instagram.com/atletico' },
       { rede: 'Twitter', link: 'https://x.com/Atletico' }
@@ -66,7 +68,8 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/ecbahia' },
       { rede: 'Instagram', link: 'https://www.instagram.com/ecbahia/' },
       { rede: 'Twitter', link: 'https://x.com/ecbahia' }
-    ], cores: [
+    ], updateArtilheiros: '10/05/2025',
+    cores: [
       { main: 'white', secondary: 'blue', third: 'red' }
     ]
   },
@@ -104,6 +107,7 @@ const teams = [
       { rede: 'Instagram', link: 'https://www.instagram.com/botafogo/' },
       { rede: 'Twitter', link: 'https://x.com/Botafogo' }
     ],
+    updateArtilheiros: '10/05/2025',
     cores: [
       { main: '#FFFFFF', secondary: '#000000' }
     ]
@@ -121,6 +125,7 @@ const teams = [
       { rede: 'Instagram', link: 'https://www.instagram.com/redbullbragantino' },
       { rede: 'Twitter', link: 'https://x.com/RedBullBraga' }
     ],
+    updateArtilheiros: '10/05/2025',
     cores: [
       { main: '#FFFFFF', secondary: '#000000' }
     ]
@@ -160,6 +165,7 @@ const teams = [
       { rede: 'Instagram', link: 'https://www.instagram.com/cearasc/' },
       { rede: 'Twitter', link: 'https://x.com/CearaSC' }
     ],
+    updateArtilheiros: '10/05/2025',
     cores: [
       { main: '#FFFFFF', secondary: '#000000' }
     ]
@@ -204,6 +210,7 @@ const teams = [
       { rede: 'Instagram', link: 'https://www.instagram.com/corinthians/' },
       { rede: 'Twitter', link: 'https://x.com/Corinthians' }
     ],
+    updateArtilheiros: '10/05/2025',
     cores: [
       { main: '#FFFFFF', secondary: '#000000' }
     ]
@@ -243,7 +250,8 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/cruzeirooficial/' },
       { rede: 'Instagram', link: 'https://www.instagram.com/cruzeiro/' },
       { rede: 'Twitter', link: 'https://x.com/Cruzeiro' }
-    ], cores: [
+    ], updateArtilheiros: '10/05/2025',
+    cores: [
       { main: '#FFFFFF', secondary: 'blue' }
     ]
   },
@@ -277,7 +285,8 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/FlamengoOficial' },
       { rede: 'Instagram', link: 'https://www.instagram.com/flamengo/' },
       { rede: 'Twitter', link: 'https://x.com/Flamengo' }
-    ], cores: [
+    ], updateArtilheiros: '10/05/2025',
+    cores: [
       { main: '#000000', secondary: 'red' }
     ]
   },
@@ -316,6 +325,7 @@ const teams = [
       { rede: 'Instagram', link: 'https://www.instagram.com/fluminensefc/' },
       { rede: 'Twitter', link: 'https://x.com/FluminenseFC' }
     ],
+    updateArtilheiros: '10/05/2025',
     cores: [
       {
         main: '#870A28',      // Grená
@@ -354,7 +364,8 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/FortalezaEC' },
       { rede: 'Instagram', link: 'https://www.instagram.com/fortalezaec/' },
       { rede: 'Twitter', link: 'https://x.com/FortalezaEC' }
-    ], cores: [
+    ], updateArtilheiros: '10/05/2025',
+    cores: [
       { main: '#0033A0', secondary: '#FFFFFF', third: '#ED1C24' } // Fortaleza EC
     ]
 
@@ -395,6 +406,7 @@ const teams = [
       { rede: 'Instagram', link: 'https://www.instagram.com/gremio/' },
       { rede: 'Twitter', link: 'https://x.com/Gremio' }
     ],
+    updateArtilheiros: '10/05/2025',
     cores: [
       { main: '#0D80BF', secondary: '#000000', third: '#FFFFFF' }
     ]
@@ -438,7 +450,8 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/scinternacional' },
       { rede: 'Instagram', link: 'https://www.instagram.com/scinternacional/' },
       { rede: 'Twitter', link: 'https://x.com/SCInternacional' }
-    ], cores: [
+    ], updateArtilheiros: '10/05/2025',
+    cores: [
       { main: '#D50032', secondary: '#FFFFFF' }
     ]
 
@@ -458,7 +471,8 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/juventude' },
       { rede: 'Instagram', link: 'https://www.instagram.com/ecjuventude/' },
       { rede: 'Twitter', link: 'https://x.com/ECJuventude' }
-    ], cores: [
+    ], updateArtilheiros: '10/05/2025',
+    cores: [
       { main: '#009639', secondary: '#FFFFFF' }
     ]
 
@@ -479,6 +493,7 @@ const teams = [
       { rede: 'Instagram', link: 'https://www.instagram.com/mirassolfc/' },
       { rede: 'Twitter', link: 'https://x.com/mirassolfc' }
     ],
+    updateArtilheiros: '10/05/2025',
     cores: [
       { main: '#F7C31C', secondary: '#001A57', third: '#F5A300' }
     ]
@@ -520,7 +535,8 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/Palmeiras' },
       { rede: 'Instagram', link: 'https://www.instagram.com/palmeiras' },
       { rede: 'Twitter', link: 'https://x.com/Palmeiras' }
-    ], cores: [
+    ], updateArtilheiros: '10/05/2025',
+    cores: [
       { main: '#006747', secondary: '#FFFFFF' }
     ]
 
@@ -599,7 +615,8 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/saopaulofc' },
       { rede: 'Instagram', link: 'https://www.instagram.com/saopaulofc/' },
       { rede: 'Twitter', link: 'https://x.com/SaoPauloFC' }
-    ], cores: [
+    ], updateArtilheiros: '10/05/2025',
+    cores: [
       { main: '#FFFFFF', secondary: '#000000', third: '#FF0000' }
     ]
   },
@@ -654,6 +671,7 @@ const teams = [
       { rede: "Instagram", link: "https://www.instagram.com/santosfc/" },
       { rede: "Twitter", link: "https://x.com/SantosFC" }
     ],
+    updateArtilheiros: '10/05/2025',
     cores: [
       { main: '#FFFFFF', secondary: '#000000' }
     ]
@@ -702,6 +720,7 @@ const teams = [
       { rede: "Instagram", link: "https://www.instagram.com/sportrecife/" },
       { rede: "Twitter", link: "https://x.com/sportrecife" }
     ],
+    updateArtilheiros: '10/05/2025',
     cores: [
       { main: '#E21B25', secondary: 'black' }
     ]
@@ -741,6 +760,7 @@ const teams = [
       { rede: 'Instagram', link: 'https://www.instagram.com/vascodagama/' },
       { rede: 'Twitter', link: 'https://x.com/VascodaGama' }
     ],
+    updateArtilheiros: '10/05/2025',
     cores: [
       { main: '#FFFFFF', secondary: '#000000' }
     ]
@@ -772,6 +792,7 @@ const teams = [
       { rede: 'Instagram', link: 'https://www.instagram.com/ecvitoria/' },
       { rede: 'Twitter', link: 'https://x.com/ECVitoria' }
     ],
+    updateArtilheiros: '11/05/2025',
     cores: [
       { secondary: 'red', main: '#000000' }
     ]
