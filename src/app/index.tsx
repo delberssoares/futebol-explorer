@@ -60,7 +60,9 @@ const SelectTeamScreen: React.FC = () => {
     };
 
     const renderItem = ({ item }: { item: Team }) => {
-        const isSelected = selectedTeams.some((team) => team.name === item.name);
+        const selectedIndex = selectedTeams.findIndex((team) => team.name === item.name);
+        const isSelected = selectedIndex !== -1;
+
         return (
             <TouchableOpacity
                 onPress={() => handleSelectTeam(item)}
@@ -68,11 +70,19 @@ const SelectTeamScreen: React.FC = () => {
                 onPressOut={handlePressOut}
                 style={[styles.item, isSelected && styles.selectedItem]}
             >
-                <Image source={{ uri: item.shield }} style={styles.shield} />
-                <Text style={styles.name}>{item.name}</Text>
+                <View style={styles.itemContent}>
+                    <View style={styles.itemLeft}>
+                        <Image source={{ uri: item.shield }} style={styles.shield} />
+                        <Text style={styles.name}>{item.name}</Text>
+                    </View>
+                    {isSelected && (
+                        <Text style={styles.selectionNumber}>{selectedIndex + 1}</Text>
+                    )}
+                </View>
             </TouchableOpacity>
         );
     };
+
 
     useEffect(() => {
         const onBackPress = () => {
@@ -124,9 +134,17 @@ const styles = StyleSheet.create({
         borderRadius: 8,
     },
     selectedItem: {
-        backgroundColor: '#CDCDCD',
-        borderColor: '#ADD8E6',
+        backgroundColor: '#d0e8ff', // azul claro
+        borderColor: '#007AFF',     // azul iOS padrão
+        borderWidth: 0.2,
+        borderRadius: 8,
+        shadowColor: '#007AFF',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 3,
+        elevation: 5, // para Android
     },
+
     shield: {
         width: 50,
         height: 50,
@@ -136,6 +154,29 @@ const styles = StyleSheet.create({
     name: {
         fontSize: 18,
     },
+    itemContent: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flex: 1,
+    },
+    itemLeft: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    selectionNumber: {
+        width: 28,
+        height: 28,
+        borderRadius: 14, // deixa a borda arredondada (metade do width/height)
+        backgroundColor: '#007AFF', // cor de fundo (azul padrão iOS)
+        color: 'white',
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginRight: 8,
+    },
+
 });
 
 export default SelectTeamScreen;
