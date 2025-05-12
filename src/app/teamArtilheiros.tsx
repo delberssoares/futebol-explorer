@@ -16,7 +16,7 @@ type Team = {
   shield: string;
   artilheiros: Artilheiro[];
   updateArtilheiros: string;
-  cores?: { main: string; secondary: string }[];
+  cores?: { main: string; secondary: string; third: string }[];
 };
 
 const TeamArtilheiros: React.FC = () => {
@@ -94,7 +94,7 @@ const TeamArtilheiros: React.FC = () => {
   }
 
   const artilheiros = team.artilheiros;
-  const teamColors = team?.cores?.[0] || { main: '#FFFFFF', secondary: '#000000' };
+  const teamColors = team?.cores?.[0] || { main: '#FFFFFF', secondary: '#000000', third: '#000000' };
 
   return (
     <View style={{ flex: 1 }}>
@@ -116,28 +116,33 @@ const TeamArtilheiros: React.FC = () => {
 
           <View style={[styles.container, { backgroundColor: teamColors.main, minHeight: screenHeight }]}>
             <Image source={{ uri: team?.shield }} style={styles.shield} />
-            <Text style={styles.updateText}>Última atualização no dia {team.updateArtilheiros}</Text>
+            <Text
+              style={[styles.updateText, { color: teamColors.third ? teamColors.third : teamColors.secondary }]}
+            >
+              Última atualização no dia {team.updateArtilheiros}
+            </Text>
+
             <View style={styles.titlesHeader}>
               <TouchableOpacity onPress={() => showToast('Posição')}>
-                <MaterialCommunityIcons name="trophy" size={24} style={styles.icon} />
+                <MaterialCommunityIcons name="trophy" size={24} style={styles.icon} color={teamColors.third ? teamColors.third : teamColors.secondary} />
               </TouchableOpacity>
               <TouchableOpacity onPress={() => showToast('Nome do jogador')}>
-                <MaterialCommunityIcons name="account" size={24} style={styles.icon} />
+                <MaterialCommunityIcons name="account" size={24} style={styles.icon} color={teamColors.third ? teamColors.third : teamColors.secondary} />
               </TouchableOpacity>
               <TouchableOpacity onPress={() => showToast('Quantidade de gols')}>
-                <MaterialCommunityIcons name="soccer" size={24} style={styles.icon} />
+                <MaterialCommunityIcons name="soccer" size={24} style={styles.icon} color={teamColors.third ? teamColors.third : teamColors.secondary} />
               </TouchableOpacity>
             </View>
             {artilheiros?.length > 0 ? (
               artilheiros.map((item, index) => (
                 <View key={index.toString()} style={styles.titleItem}>
-                  <Text>{index + 1}</Text>
-                  <Text style={styles.titleCompetition}>{item.nome}</Text>
-                  <Text style={styles.titleYear}>{`${item.gols}`}</Text>
+                  <Text style={{ color: teamColors.secondary }}>{index + 1}</Text>
+                  <Text style={[styles.titleCompetition, { color: teamColors.secondary }]}>{item.nome}</Text>
+                  <Text style={[styles.titleYear, { color: teamColors.secondary }]}>{`${item.gols}`}</Text>
                 </View>
               ))
             ) : (
-              <Text style={styles.noDataText}>Em breve</Text>
+              <Text style={[styles.noDataText, { color: teamColors.secondary }]}>Em breve</Text>
             )}
           </View>
         </ViewShot>
