@@ -25,7 +25,7 @@ const CompareTeamsScreen: React.FC = () => {
   const teamsString = Array.isArray(params.teams) ? params.teams[0] : params.teams;
   const teams: Team[] = teamsString ? JSON.parse(teamsString) : [];
 
-  const categoryOrder = ['mundiais', 'continentais', 'nacionais', 'inter-regionais', 'regionais', 'estaduais'];
+  const categoryOrder = ['mundiais', 'continentais', 'nacionais', 'inter-regionais', 'regionais', 'interestaduais','estaduais'];
   const [isCapturing, setIsCapturing] = useState(false);
 
 
