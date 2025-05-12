@@ -46,6 +46,11 @@ const TeamTitles: React.FC = () => {
     setScrollEnabled(contentHeight > screenHeight);
   };
 
+  const totalTitles = titles.reduce((total, category) => {
+    return total + Object.values(category).reduce((categoryTotal, titleList) => {
+      return categoryTotal + titleList.reduce((acc, title) => acc + title.count, 0);
+    }, 0);
+  }, 0);
 
   useEffect(() => {
     (async () => {
@@ -97,7 +102,6 @@ const TeamTitles: React.FC = () => {
         onContentSizeChange={handleContentSizeChange}
         contentContainerStyle={{ flexGrow: 1 }}
       >
-
         <ViewShot
           ref={viewShotRef}
           options={{ format: 'png', quality: 1 }}
@@ -105,6 +109,10 @@ const TeamTitles: React.FC = () => {
         >
           <View style={[styles.container, { backgroundColor: teamColors.main, minHeight: screenHeight }]}>
             <Image source={{ uri: team?.shield }} style={styles.shield} />
+            <Text style={[styles.totalTitlesText, { color: teamColors.secondary }]}>
+              Total de títulos: {totalTitles}
+            </Text>
+
             {titles.map((category: Category, index: number) => (
               <View key={index} style={{ width: '100%' }}>
                 {Object.entries(category).map(([categoryName, titleList]) => {
@@ -112,7 +120,7 @@ const TeamTitles: React.FC = () => {
                   return (
                     <View key={categoryName}>
                       <Text style={[styles.categoryTitle, { 
-                        backgroundColor: teamColors.third ? teamColors.third : teamColors.secondary, color: teamColors.main }]}>
+                        backgroundColor: teamColors.third ? teamColors.third : teamColors.secondary, color: teamColors.main }]} >
                         {`${capitalizeFirstLetter(categoryName)} (${total})`}
                       </Text>
                       {titleList.map((title: Title, i: number) => (
@@ -147,6 +155,10 @@ const styles = StyleSheet.create({
     height: 100,
     marginVertical: 20,
     resizeMode: 'contain',
+  },
+  totalTitlesText: {
+    fontSize: 14,
+    marginBottom: 10,
   },
   titleItem: {
     flexDirection: 'row',
