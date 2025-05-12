@@ -101,8 +101,6 @@ const CompareTeamsScreen: React.FC = () => {
   return counts[index] === max && counts.filter(c => c === max).length === 1;
 };
 
-
-
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <ViewShot ref={viewShotRef} options={{ format: 'png', quality: 1 }} style={styles.container}>
@@ -119,7 +117,7 @@ const CompareTeamsScreen: React.FC = () => {
         {/* Ícone de captura entre os escudos */}
         {!isCapturing && (
           <TouchableOpacity style={styles.captureIcon} onPress={handleCaptureAndSave}>
-            <MaterialIcons name="camera-alt" size={30} color="#fff" />
+            <MaterialIcons name="camera-alt" size={30} color="#FFF" background='#000' />
           </TouchableOpacity>
         )}
 
@@ -225,12 +223,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   row: {
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    paddingHorizontal: 20,
-    marginBottom: 5,
-    padding: 10,
-  },
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  marginBottom: 2, 
+  paddingHorizontal: 10, 
+  paddingVertical: 2,
+},
   valueContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -278,7 +276,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 100,
     alignSelf: 'center',
-    backgroundColor: '#6200ea',
+    backgroundColor: '#8929B3',
     padding: 10,
     borderRadius: 30,
     zIndex: 1,
