@@ -16,7 +16,7 @@ type Team = {
   shield: string;
   artilheiros: Artilheiro[];
   updateArtilheiros: string;
-  cores?: { main: string; secondary: string; third: string }[];
+  cores?: { main: string; secondary: string; third: string; text: string }[];
 };
 
 const TeamArtilheiros: React.FC = () => {
@@ -94,7 +94,7 @@ const TeamArtilheiros: React.FC = () => {
   }
 
   const artilheiros = team.artilheiros;
-  const teamColors = team?.cores?.[0] || { main: '#FFFFFF', secondary: '#000000', third: '#000000' };
+  const teamColors = team?.cores?.[0] || { main: '#FFFFFF', secondary: '#000000', third: '#000000', text: '#FFFFFF' };
 
   return (
     <View style={{ flex: 1 }}>
@@ -117,7 +117,7 @@ const TeamArtilheiros: React.FC = () => {
           <View style={[styles.container, { backgroundColor: teamColors.main, minHeight: screenHeight }]}>
             <Image source={{ uri: team?.shield }} style={styles.shield} />
             <Text
-              style={[styles.updateText, { color: teamColors.third ? teamColors.third : teamColors.secondary }]}
+              style={[styles.updateText, { color: teamColors.text ? teamColors.text : teamColors.third ? teamColors.third : teamColors.secondary }]}
             >
               Última atualização no dia {team.updateArtilheiros}
             </Text>

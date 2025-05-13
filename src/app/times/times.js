@@ -70,7 +70,7 @@ const teams = [
       { rede: 'Twitter', link: 'https://x.com/ecbahia' }
     ], updateArtilheiros: '12/05/2025',
     cores: [
-      { main: 'white', secondary: 'blue', third: 'red' }
+      { main: '#FFFFFF', secondary: '#0033AA', third: '#FF0000', text: '#0033AA' }
     ]
   },
   {
@@ -265,7 +265,7 @@ const teams = [
       { rede: 'Twitter', link: 'https://x.com/Cruzeiro' }
     ], updateArtilheiros: '12/05/2025',
     cores: [
-      { main: '#FFFFFF', secondary: 'blue' }
+      { main: '#FFFFFF', secondary: '#0033A0' }
     ]
   },
   {
@@ -300,7 +300,7 @@ const teams = [
       { rede: 'Twitter', link: 'https://x.com/Flamengo' }
     ], updateArtilheiros: '12/05/2025',
     cores: [
-      { main: '#000000', secondary: 'red' }
+      { main: '#000000', secondary: '#C8102E' }
     ]
   },
   {
@@ -343,7 +343,8 @@ const teams = [
       {
         main: '#870A28',      // Grená
         secondary: '#FFFFFF', // Verde
-        third: '#00613C'      // Branco
+        third: '#00613C',      // Branco
+        text: '#FFFFFF'
       }
     ]
 
@@ -379,7 +380,7 @@ const teams = [
       { rede: 'Twitter', link: 'https://x.com/FortalezaEC' }
     ], updateArtilheiros: '13/05/2025',
     cores: [
-      { main: '#0033A0', secondary: '#FFFFFF', third: '#ED1C24' }
+      { main: '#0033A0', secondary: '#FFFFFF', third: '#DA291C', text: '#FFFFFF' }
     ]
 
   },
@@ -525,7 +526,7 @@ const teams = [
     ],
     updateArtilheiros: '13/05/2025',
     cores: [
-      { main: '#F7C31C', secondary: '#001A57', third: '#F5A300' }
+      { main: '#F7C31C', secondary: '#001A57', third: '#F5A300', text: '#001A57' }
     ]
 
   },
@@ -618,7 +619,7 @@ const teams = [
       { rede: 'Twitter', link: 'https://x.com/SaoPauloFC' }
     ], updateArtilheiros: '13/05/2025',
     cores: [
-      { main: '#FFFFFF', secondary: '#000000', third: '#FF0000' }
+      { main: '#FFFFFF', secondary: '#000000', third: '#FF0000', text: '#000000' }
     ]
   },
   {
