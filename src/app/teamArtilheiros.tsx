@@ -119,7 +119,7 @@ const TeamArtilheiros: React.FC = () => {
             <Text
               style={[styles.updateText, { color: teamColors.text ? teamColors.text : teamColors.third ? teamColors.third : teamColors.secondary }]}
             >
-              Última atualização no dia {team.updateArtilheiros}
+              Última atualização: {team.updateArtilheiros}
             </Text>
 
             <View style={styles.titlesHeader}>
