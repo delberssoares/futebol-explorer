@@ -1,7 +1,29 @@
+import atletico from '../../../assets/images/shields/atletico.png';
+import bahia from '../../../assets/images/shields/bahia.png';
+import botafogo from '../../../assets/images/shields/botafogo.png';
+import bragantino from '../../../assets/images/shields/bragantino.png';
+import ceara from '../../../assets/images/shields/ceara.png';
+import corinthians from '../../../assets/images/shields/corinthians.png';
+import cruzeiro from '../../../assets/images/shields/cruzeiro.png';
+import flamengo from '../../../assets/images/shields/flamengo.png';
+import fluminense from '../../../assets/images/shields/fluminense.png';
+import fortaleza from '../../../assets/images/shields/fortaleza.png';
+import gremio from '../../../assets/images/shields/gremio.png';
+import internacional from '../../../assets/images/shields/internacional.png';
+import juventude from '../../../assets/images/shields/juventude.png';
+import mirassol from '../../../assets/images/shields/mirassol.png';
+import palmeiras from '../../../assets/images/shields/palmeiras.png';
+import santos from '../../../assets/images/shields/santos.png';
+import saopaulo from '../../../assets/images/shields/saopaulo.png';
+import sport from '../../../assets/images/shields/sport.png';
+import vasco from '../../../assets/images/shields/vasco.png';
+import vitoria from '../../../assets/images/shields/vitoria.png';
+
+
 const teams = [
 
   {
-    name: 'Atlético-MG', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Atletico_mineiro_galo.png/800px-Atletico_mineiro_galo.png', fundacao: '1908', titles: [
+    name: 'Atlético-MG', shield: atletico, fundacao: '1908', titles: [
       {
         continentais: [
           { name: 'Copa Libertadores da América', count: 1 },
@@ -40,7 +62,7 @@ const teams = [
     ]
   },
   {
-    name: 'Bahia', shield: 'https://upload.wikimedia.org/wikipedia/pt/thumb/9/90/ECBahia.png/195px-ECBahia.png', fundacao: '1931', titles: [
+    name: 'Bahia', shield: bahia, fundacao: '1931', titles: [
       {
         nacionais: [
           { name: 'Campeonato Brasileiro', count: 2 },
@@ -74,7 +96,7 @@ const teams = [
     ]
   },
   {
-    name: 'Botafogo', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Botafogo_de_Futebol_e_Regatas_logo.svg/180px-Botafogo_de_Futebol_e_Regatas_logo.svg.png', fundacao: '1894', titles: [
+    name: 'Botafogo', shield: botafogo, fundacao: '1894', titles: [
       {
         continentais: [
           { name: 'Copa Libertadores da América', count: 1 },
@@ -113,7 +135,7 @@ const teams = [
     ]
   },
   {
-    name: 'Bragantino', shield: 'https://upload.wikimedia.org/wikipedia/pt/thumb/9/9e/RedBullBragantino.png/210px-RedBullBragantino.png', fundacao: '1928',
+    name: 'Bragantino', shield: bragantino, fundacao: '1928',
     titles: [
       {
         estaduais: [
@@ -146,7 +168,7 @@ const teams = [
   },
   {
     name: 'Ceará',
-    shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Cear%C3%A1_Sporting_Club_logo.svg/250px-Cear%C3%A1_Sporting_Club_logo.svg.png',
+    shield: ceara,
     fundacao: '1914',
     titles: [
       {
@@ -185,7 +207,7 @@ const teams = [
   },
 
   {
-    name: 'Corinthians', shield: 'https://upload.wikimedia.org/wikipedia/pt/thumb/b/b4/Corinthians_simbolo.png/180px-Corinthians_simbolo.png', fundacao: '1910', titles: [
+    name: 'Corinthians', shield: corinthians, fundacao: '1910', titles: [
       {
         mundiais: [
           { name: 'Copa do Mundo de Clubes da FIFA', count: 2 },
@@ -231,7 +253,7 @@ const teams = [
 
   },
   {
-    name: 'Cruzeiro', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Cruzeiro_Esporte_Clube_%28logo%29.svg/180px-Cruzeiro_Esporte_Clube_%28logo%29.svg.png', fundacao: '1921', titles: [
+    name: 'Cruzeiro', shield: cruzeiro, fundacao: '1921', titles: [
       {
         continentais: [
           { name: 'Copa Libertadores da América', count: 2 },
@@ -269,7 +291,7 @@ const teams = [
     ]
   },
   {
-    name: 'Flamengo', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Flamengo_braz_logo.svg/180px-Flamengo_braz_logo.svg.png', fundacao: '1895', titles: [
+    name: 'Flamengo', shield: flamengo, fundacao: '1895', titles: [
       {
         mundiais: [
           { name: 'Copa Intercontinental', count: 1 },
@@ -304,7 +326,7 @@ const teams = [
     ]
   },
   {
-    name: 'Fluminense', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/FFC_crest.svg/195px-FFC_crest.svg.png', fundacao: '1902', titles: [
+    name: 'Fluminense', shield: fluminense, fundacao: '1902', titles: [
       {
         continentais: [
           { name: 'Copa Libertadores da América', count: 1 },
@@ -350,7 +372,7 @@ const teams = [
 
   },
   {
-    name: 'Fortaleza', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Fortaleza_EC_2018.png/180px-Fortaleza_EC_2018.png', fundacao: '1918', titles: [
+    name: 'Fortaleza', shield: fortaleza, fundacao: '1918', titles: [
       {
         'inter-regionais': [
           { name: 'Torneio Norte–Nordeste', count: 1 },
@@ -385,7 +407,7 @@ const teams = [
 
   },
   {
-    name: 'Grêmio', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Gremio_logo.svg/180px-Gremio_logo.svg.png', fundacao: '1903', titles: [
+    name: 'Grêmio', shield: gremio, fundacao: '1903', titles: [
       {
         mundiais: [
           { name: 'Copa Intercontinental', count: 1 },
@@ -427,7 +449,7 @@ const teams = [
 
   },
   {
-    name: 'Internacional', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Escudo_do_Sport_Club_Internacional.svg/240px-Escudo_do_Sport_Club_Internacional.svg.png', fundacao: '1909', titles: [
+    name: 'Internacional', shield: internacional, fundacao: '1909', titles: [
       {
         mundiais: [
           { name: 'Copa do Mundo de Clubes da FIFA', count: 1 },
@@ -471,7 +493,7 @@ const teams = [
 
   },
   {
-    name: 'Juventude', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/EC_Juventude.svg/210px-EC_Juventude.svg.png', fundacao: '1913', titles: [
+    name: 'Juventude', shield: juventude, fundacao: '1913', titles: [
       {
         nacionais: [
           { name: 'Copa do Brasil', count: 1 },
@@ -504,7 +526,7 @@ const teams = [
 
   },
   {
-    name: 'Mirassol', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Mirassol_FC_logo.png/918px-Mirassol_FC_logo.png',
+    name: 'Mirassol', shield: mirassol,
     fundacao: '1925', titles: [
     ],
     artilheiros: [
@@ -531,7 +553,7 @@ const teams = [
 
   },
   {
-    name: 'Palmeiras', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Palmeiras_logo.svg/180px-Palmeiras_logo.svg.png', fundacao: '1914', titles: [
+    name: 'Palmeiras', shield: palmeiras, fundacao: '1914', titles: [
       {
         continentais: [
           { name: 'Copa Libertadores da América', count: 3 },
@@ -575,7 +597,7 @@ const teams = [
 
   },
   {
-    name: 'São Paulo', shield: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/S%C3%A3o_Paulo_Futebol_Clube.png/180px-S%C3%A3o_Paulo_Futebol_Clube.png', fundacao: '1930', titles: [
+    name: 'São Paulo', shield: saopaulo, fundacao: '1930', titles: [
       {
         mundiais: [
           { name: 'Copa do Mundo de Clubes da FIFA', count: 1 },
@@ -624,7 +646,7 @@ const teams = [
   },
   {
     name: "Santos",
-    shield: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Santos_Logo.png/330px-Santos_Logo.png",
+    shield: santos,
     fundacao: "1912",
     titles: [
       {
@@ -680,7 +702,7 @@ const teams = [
   },
   {
     name: "Sport",
-    shield: "https://upload.wikimedia.org/wikipedia/pt/1/17/Sport_Club_do_Recife.png",
+    shield: sport,
     fundacao: "1905",
     titles: [
       {
@@ -729,7 +751,7 @@ const teams = [
 
   },
   {
-    name: 'Vasco', shield: 'https://upload.wikimedia.org/wikipedia/pt/thumb/a/ac/CRVascodaGama.png/180px-CRVascodaGama.png', fundacao: '1898', titles: [
+    name: 'Vasco', shield: vasco, fundacao: '1898', titles: [
       {
         continentais: [
           { name: 'Copa Libertadores da América', count: 1 },
@@ -769,7 +791,7 @@ const teams = [
 
   },
   {
-    name: 'Vitória', shield: 'https://upload.wikimedia.org/wikipedia/pt/thumb/3/34/Esporte_Clube_Vit%C3%B3ria_logo.png/180px-Esporte_Clube_Vit%C3%B3ria_logo.png', fundacao: '1899', titles: [
+    name: 'Vitória', shield: vitoria, fundacao: '1899', titles: [
       {
         regionais: [
           { name: 'Copa do Nordeste', count: 4 },
