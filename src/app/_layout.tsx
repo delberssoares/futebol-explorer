@@ -1,19 +1,26 @@
 import { Stack } from "expo-router";
+import { Text } from "react-native";
 
-export default function Layout(){
-    return(
+export default function Layout() {
+    return (
         <Stack
-        screenOptions={
-            {
+            screenOptions={{
                 headerStyle: {
                     backgroundColor: "#121212",
                 },
                 headerTintColor: "#FFF",
-                headerTitleAlign: "center", 
-            }
-        }
+                headerTitleAlign: "center",
+                headerTitleStyle: {
+                    fontSize: 18,
+                },
+            }}
         >
-            <Stack.Screen name="index" options={{title: "Times"}}  />
+            <Stack.Screen
+                name="index"
+                options={{
+                    headerTitle: () => <Text style={{ color: "#FFF", fontSize: 18 }}>Times A</Text>
+                }}
+            />
             <Stack.Screen name="teamDetail" options={{ title: "Detalhes do Time" }} />
             <Stack.Screen name="compareTeams" options={{ title: "Comparação - Títulos" }} />
             <Stack.Screen name="teamTitles" options={{ title: "Títulos" }} />
