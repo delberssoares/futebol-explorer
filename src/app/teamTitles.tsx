@@ -107,8 +107,8 @@ const TeamTitles: React.FC = () => {
           options={{ format: 'png', quality: 1 }}
           style={styles.viewShot}
         >
-          <View style={[styles.container, { backgroundColor: teamColors.main, minHeight: screenHeight }]}>
-            <Image source={{ uri: team?.shield }} style={styles.shield} />
+          <View style={[styles.container, { backgroundColor: teamColors.main, minHeight: screenHeight, paddingBottom: 40 }]}>
+            <Image source={team?.shield } style={styles.shield} />
             <Text style={[styles.totalTitlesText, { color: teamColors.secondary }]}>
               Total de títulos: {totalTitles}
             </Text>

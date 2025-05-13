@@ -2,7 +2,7 @@ import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import * as MediaLibrary from 'expo-media-library';
 import { useLocalSearchParams } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, Alert, Dimensions, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, Alert, Dimensions, Image, ImageSourcePropType, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Toast from 'react-native-toast-message';
 import ViewShot from 'react-native-view-shot';
 
@@ -13,7 +13,7 @@ type Artilheiro = {
 
 type Team = {
   name: string;
-  shield: string;
+  shield: ImageSourcePropType;
   artilheiros: Artilheiro[];
   updateArtilheiros: string;
   cores?: { main: string; secondary: string; third: string; text: string }[];
@@ -115,7 +115,7 @@ const TeamArtilheiros: React.FC = () => {
         >
 
           <View style={[styles.container, { backgroundColor: teamColors.main, minHeight: screenHeight }]}>
-            <Image source={{ uri: team?.shield }} style={styles.shield} />
+            <Image source={team.shield} style={styles.shield} />
             <Text
               style={[styles.updateText, { color: teamColors.text ? teamColors.text : teamColors.third ? teamColors.third : teamColors.secondary }]}
             >

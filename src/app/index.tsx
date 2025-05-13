@@ -1,11 +1,11 @@
 import { router } from 'expo-router';
 import React, { useEffect, useState } from 'react';
-import { BackHandler, Button, FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { BackHandler, Button, FlatList, Image, ImageSourcePropType, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import teams from './times/times';
 
 type Team = {
     name: string;
-    shield: string;
+    shield: ImageSourcePropType;
 };
 
 teams.sort((a, b) => a.name.localeCompare(b.name));
@@ -72,7 +72,7 @@ const SelectTeamScreen: React.FC = () => {
             >
                 <View style={styles.itemContent}>
                     <View style={styles.itemLeft}>
-                        <Image source={{ uri: item.shield }} style={styles.shield} />
+                        <Image source={item.shield} style={styles.shield} />
                         <Text style={styles.name}>{item.name}</Text>
                     </View>
                     {isSelected && (

@@ -1,7 +1,7 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity, Linking } from 'react-native';
-import { useLocalSearchParams, router } from 'expo-router';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import { router, useLocalSearchParams } from 'expo-router';
+import React from 'react';
+import { FlatList, Image, ImageSourcePropType, Linking, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 type RedeSocial = {
     nome: string;
@@ -10,7 +10,7 @@ type RedeSocial = {
 
 type Team = {
     name: string;
-    shield: string;
+    shield: ImageSourcePropType;
     fundacao: string;
     redes: RedeSocial[];
 };
@@ -58,7 +58,7 @@ const TeamDetailScreen: React.FC = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.teamName}>{team.name}</Text>
-            <Image source={{ uri: team.shield }} style={styles.shield} />
+             <Image source={team.shield} style={styles.shield} />
             <Text>Fundação: {team.fundacao}</Text>
             <FlatList
                 data={topics}

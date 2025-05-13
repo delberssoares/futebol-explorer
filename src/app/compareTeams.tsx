@@ -2,7 +2,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import * as MediaLibrary from 'expo-media-library';
 import { useLocalSearchParams } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
-import { Alert, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, Image, ImageSourcePropType, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import ViewShot from 'react-native-view-shot';
 import capitalizeFirstLetter from '../functions/formatText';
 
@@ -15,7 +15,7 @@ type TitleCategory = {
 
 type Team = {
   name: string;
-  shield: string;
+  shield: ImageSourcePropType;
   fundacao: string;
   titles: TitleCategory[];
 };
@@ -108,7 +108,7 @@ const CompareTeamsScreen: React.FC = () => {
           {teams.map((team, index) => (
             <View key={index} style={styles.perfilTeam}>
               <Text style={styles.teamName}>{team.name}</Text>
-              <Image source={{ uri: team?.shield }} style={styles.shield} />
+              <Image source={team.shield} style={styles.shield} />
               <Text>Fundação: {team.fundacao}</Text>
             </View>
           ))}
