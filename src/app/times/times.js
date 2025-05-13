@@ -29,7 +29,7 @@ const teams = [
       { nome: "Marques", gols: 133 },
       { nome: "Nívio", gols: 126 }
     ],
-    updateArtilheiros: '10/05/2025',
+    updateArtilheiros: '12/05/2025',
     redes: [
       { rede: 'Facebook', link: 'https://www.facebook.com/atletico' },
       { rede: 'Instagram', link: 'https://www.instagram.com/atletico' },
@@ -53,22 +53,22 @@ const teams = [
         ]
       },
     ], artilheiros: [
-      { nome: "Carlito", gols: 253 },
-      { nome: "Douglas", gols: 211 },
-      { nome: "Hamilton", gols: 154 },
-      { nome: "Uéslei", gols: 140 },
-      { nome: "Osni", gols: 138 },
-      { nome: "Marcelo Ramos", gols: 128 },
-      { nome: "Nonato", gols: 125 },
-      { nome: "Vareta", gols: 121 },
-      { nome: "Alencar", gols: 116 },
-      { nome: "Biriba", gols: 113 }
+      { nome: "Carlito", gols: 233 },
+      { nome: "Douglas", gols: 184 },
+      { nome: "Hamilton", gols: 159 },
+      { nome: "Uéslei", gols: 150 },
+      { nome: "Osni", gols: 133 },
+      { nome: "Vareta", gols: 131 },
+      { nome: "Nonato", gols: 126 },
+      { nome: "Marcelo Ramos", gols: 121 },
+      { nome: "Alencar", gols: 119 },
+      { nome: "Isaltino", gols: 116 }
     ],
     redes: [
       { rede: 'Facebook', link: 'https://www.facebook.com/ecbahia' },
       { rede: 'Instagram', link: 'https://www.instagram.com/ecbahia/' },
       { rede: 'Twitter', link: 'https://x.com/ecbahia' }
-    ], updateArtilheiros: '10/05/2025',
+    ], updateArtilheiros: '12/05/2025',
     cores: [
       { main: 'white', secondary: 'blue', third: 'red' }
     ]
@@ -107,25 +107,38 @@ const teams = [
       { rede: 'Instagram', link: 'https://www.instagram.com/botafogo/' },
       { rede: 'Twitter', link: 'https://x.com/Botafogo' }
     ],
-    updateArtilheiros: '10/05/2025',
+    updateArtilheiros: '12/05/2025',
     cores: [
       { main: '#FFFFFF', secondary: '#000000' }
     ]
   },
   {
-    name: 'Bragantino', shield: 'https://upload.wikimedia.org/wikipedia/pt/thumb/9/9e/RedBullBragantino.png/210px-RedBullBragantino.png', fundacao: '1928', titles: [
+    name: 'Bragantino', shield: 'https://upload.wikimedia.org/wikipedia/pt/thumb/9/9e/RedBullBragantino.png/210px-RedBullBragantino.png', fundacao: '1928',
+    titles: [
       {
         estaduais: [
           { name: 'Campeonato Estadual', count: 1 },
         ]
       },
     ],
+    artilheiros: [
+      { nome: 'Lincom', gols: 59 },
+      { nome: 'Ytalo', gols: 51 },
+      { nome: 'Léo Jaime', gols: 47 },
+      { nome: 'Artur', gols: 38 },
+      { nome: 'Eduardo Sasha', gols: 33 },
+      { nome: 'Helinho', gols: 33 },
+      { nome: 'Claudinho', gols: 32 },
+      { nome: 'Alerrandro', gols: 26 },
+      { nome: 'Thiago Borbas', gols: 24 },
+      { nome: 'Matheus Peixoto', gols: 22 }
+    ],
     redes: [
       { rede: 'Facebook', link: 'https://www.facebook.com/RedBullBragantino' },
       { rede: 'Instagram', link: 'https://www.instagram.com/redbullbragantino' },
       { rede: 'Twitter', link: 'https://x.com/RedBullBraga' }
     ],
-    updateArtilheiros: '10/05/2025',
+    updateArtilheiros: '12/05/2025',
     cores: [
       { main: '#FFFFFF', secondary: '#000000' }
     ]
@@ -165,7 +178,7 @@ const teams = [
       { rede: 'Instagram', link: 'https://www.instagram.com/cearasc/' },
       { rede: 'Twitter', link: 'https://x.com/CearaSC' }
     ],
-    updateArtilheiros: '10/05/2025',
+    updateArtilheiros: '12/05/2025',
     cores: [
       { main: '#FFFFFF', secondary: '#000000' }
     ]
@@ -210,7 +223,7 @@ const teams = [
       { rede: 'Instagram', link: 'https://www.instagram.com/corinthians/' },
       { rede: 'Twitter', link: 'https://x.com/Corinthians' }
     ],
-    updateArtilheiros: '10/05/2025',
+    updateArtilheiros: '12/05/2025',
     cores: [
       { main: '#FFFFFF', secondary: '#000000' }
     ]
@@ -250,7 +263,7 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/cruzeirooficial/' },
       { rede: 'Instagram', link: 'https://www.instagram.com/cruzeiro/' },
       { rede: 'Twitter', link: 'https://x.com/Cruzeiro' }
-    ], updateArtilheiros: '10/05/2025',
+    ], updateArtilheiros: '12/05/2025',
     cores: [
       { main: '#FFFFFF', secondary: 'blue' }
     ]
@@ -280,12 +293,12 @@ const teams = [
           { name: 'Campeonato Estadual', count: 39 },
         ]
       },
-    ], artilheiros: [{ "nome": "Zico", "gols": 509 }, { "nome": "Dida", "gols": 264 }, { "nome": "Henrique Frade", "gols": 216 }, { "nome": "Pirillo", "gols": 204 }, { "nome": "Romário", "gols": 204 }, { "nome": "Gabigol", "gols": 156 }, { "nome": "Jarbas", "gols": 154 }, { "nome": "Leônidas", "gols": 153 }, { "nome": "Bebeto", "gols": 151 }, { "nome": "Zizinho", "gols": 148 }],
+    ], artilheiros: [{ "nome": "Zico", "gols": 508 }, { "nome": "Dida", "gols": 254 }, { "nome": "Henrique Frade", "gols": 214 }, { "nome": "Pirilo", "gols": 209 }, { "nome": "Romário", "gols": 204 }, { "nome": "Gabigol", "gols": 161 }, { "nome": "Jarbas", "gols": 152 }, { "nome": "Bebeto", "gols": 150 }, { "nome": "Leônidas da Silva", "gols": 148 }, { "nome": "Índio", "gols": 144 }],
     redes: [
       { rede: 'Facebook', link: 'https://www.facebook.com/FlamengoOficial' },
       { rede: 'Instagram', link: 'https://www.instagram.com/flamengo/' },
       { rede: 'Twitter', link: 'https://x.com/Flamengo' }
-    ], updateArtilheiros: '10/05/2025',
+    ], updateArtilheiros: '12/05/2025',
     cores: [
       { main: '#000000', secondary: 'red' }
     ]
@@ -311,21 +324,21 @@ const teams = [
     ], artilheiros: [
       { "nome": "Waldo", "gols": 319 },
       { "nome": "Fred", "gols": 199 },
-      { "nome": "Orlando Pingo de Ouro", "gols": 184 },
+      { "nome": "Orlando Pingo de Ouro", "gols": 186 },
       { "nome": "Hércules", "gols": 165 },
-      { "nome": "Telê Santana", "gols": 164 },
+      { "nome": "Telê Santana", "gols": 162 },
       { "nome": "Welfare", "gols": 161 },
-      { "nome": "Russo", "gols": 149 },
-      { "nome": "Preguinho", "gols": 128 },
-      { "nome": "Washington", "gols": 124 },
-      { "nome": "Magno Alves", "gols": 124 }
+      { "nome": "Russo", "gols": 155 },
+      { "nome": "Preguinho", "gols": 132 },
+      { "nome": "Magno Alves", "gols": 124 },
+      { "nome": "Washington “Casal 20” ", "gols": 120 }
     ],
     redes: [
       { rede: 'Facebook', link: 'https://www.facebook.com/FluminenseFC' },
       { rede: 'Instagram', link: 'https://www.instagram.com/fluminensefc/' },
       { rede: 'Twitter', link: 'https://x.com/FluminenseFC' }
     ],
-    updateArtilheiros: '10/05/2025',
+    updateArtilheiros: '12/05/2025',
     cores: [
       {
         main: '#870A28',      // Grená
@@ -364,9 +377,9 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/FortalezaEC' },
       { rede: 'Instagram', link: 'https://www.instagram.com/fortalezaec/' },
       { rede: 'Twitter', link: 'https://x.com/FortalezaEC' }
-    ], updateArtilheiros: '10/05/2025',
+    ], updateArtilheiros: '13/05/2025',
     cores: [
-      { main: '#0033A0', secondary: '#FFFFFF', third: '#ED1C24' } // Fortaleza EC
+      { main: '#0033A0', secondary: '#FFFFFF', third: '#ED1C24' }
     ]
 
   },
@@ -406,7 +419,7 @@ const teams = [
       { rede: 'Instagram', link: 'https://www.instagram.com/gremio/' },
       { rede: 'Twitter', link: 'https://x.com/Gremio' }
     ],
-    updateArtilheiros: '10/05/2025',
+    updateArtilheiros: '13/05/2025',
     cores: [
       { main: '#0D80BF', secondary: '#000000', third: '#FFFFFF' }
     ]
@@ -450,7 +463,7 @@ const teams = [
       { rede: 'Facebook', link: 'https://www.facebook.com/scinternacional' },
       { rede: 'Instagram', link: 'https://www.instagram.com/scinternacional/' },
       { rede: 'Twitter', link: 'https://x.com/SCInternacional' }
-    ], updateArtilheiros: '10/05/2025',
+    ], updateArtilheiros: '13/05/2025',
     cores: [
       { main: '#D50032', secondary: '#FFFFFF' }
     ]
@@ -467,11 +480,23 @@ const teams = [
         ]
       },
     ],
+    artilheiros: [
+      { nome: "Mário Martini", gols: 217 },
+      { nome: "Lory Tonietto", gols: 183 },
+      { nome: "Em breve", gols: '-' },
+      { nome: "Em breve", gols: '-' },
+      { nome: "Em breve", gols: '-' },
+      { nome: "Em breve", gols: '-' },
+      { nome: "Em breve", gols: '-' },
+      { nome: "Em breve", gols: '-' },
+      { nome: "Em breve", gols: '-' },
+      { nome: "Em breve", gols: '-' },
+    ],
     redes: [
       { rede: 'Facebook', link: 'https://www.facebook.com/juventude' },
       { rede: 'Instagram', link: 'https://www.instagram.com/ecjuventude/' },
       { rede: 'Twitter', link: 'https://x.com/ECJuventude' }
-    ], updateArtilheiros: '10/05/2025',
+    ], updateArtilheiros: '13/05/2025',
     cores: [
       { main: '#009639', secondary: '#FFFFFF' }
     ]
@@ -482,18 +507,23 @@ const teams = [
     fundacao: '1925', titles: [
     ],
     artilheiros: [
-      { nome: "X", gols: 0 },
-      { nome: "X", gols: 0 },
-      { nome: "X", gols: 0 },
-      { nome: "X", gols: 0 },
-      { nome: "X", gols: 0 },
+      { nome: "Em breve", gols: '-' },
+      { nome: "Em breve", gols: '-' },
+      { nome: "Em breve", gols: '-' },
+      { nome: "Em breve", gols: '-' },
+      { nome: "Em breve", gols: '-' },
+      { nome: "Em breve", gols: '-' },
+      { nome: "Em breve", gols: '-' },
+      { nome: "Em breve", gols: '-' },
+      { nome: "Em breve", gols: '-' },
+      { nome: "Em breve", gols: '-' },
     ],
     redes: [
       { rede: 'Facebook', link: 'https://www.facebook.com/mirassolfc' },
       { rede: 'Instagram', link: 'https://www.instagram.com/mirassolfc/' },
       { rede: 'Twitter', link: 'https://x.com/mirassolfc' }
     ],
-    updateArtilheiros: '10/05/2025',
+    updateArtilheiros: '13/05/2025',
     cores: [
       { main: '#F7C31C', secondary: '#001A57', third: '#F5A300' }
     ]
@@ -521,7 +551,7 @@ const teams = [
         ]
       },
     ], artilheiros: [
-      { "nome": "Heitor", "gols": 323 },
+      { "nome": "Heitor", "gols": 326 },
       { "nome": "César Maluco", "gols": 182 },
       { "nome": "Ademir da Guia", "gols": 155 },
       { "nome": "Lima", "gols": 149 },
@@ -529,13 +559,14 @@ const teams = [
       { "nome": "Rodrigues Tatu", "gols": 131 },
       { "nome": "Humberto Tozzi", "gols": 127 },
       { "nome": "Evair", "gols": 126 },
-      { "nome": "Luizinho Tupãzinho", "gols": 122 }
+      { "nome": "Luizinho", "gols": 122 },
+      { "nome": "Tupãzinho", "gols": 122 }
     ],
     redes: [
       { rede: 'Facebook', link: 'https://www.facebook.com/Palmeiras' },
       { rede: 'Instagram', link: 'https://www.instagram.com/palmeiras' },
       { rede: 'Twitter', link: 'https://x.com/Palmeiras' }
-    ], updateArtilheiros: '10/05/2025',
+    ], updateArtilheiros: '13/05/2025',
     cores: [
       { main: '#006747', secondary: '#FFFFFF' }
     ]
@@ -571,57 +602,27 @@ const teams = [
         ]
       },
     ], artilheiros: [
-      {
-        nome: "Serginho Chulapa",
-        gols: 242
-      },
-      {
-        nome: "Gino Orlando",
-        gols: 233
-      },
-      {
-        nome: "Luis Fabiano",
-        gols: 212
-      },
-      {
-        nome: "Teixeirinha",
-        gols: 188
-      },
-      {
-        nome: "França",
-        gols: 182
-      },
-      {
-        nome: "Luizinho",
-        gols: 173
-      },
-      {
-        nome: "Müller",
-        gols: 160
-      },
-      {
-        nome: "Leônidas",
-        gols: 144
-      },
-      {
-        nome: "Maurinho",
-        gols: 136
-      },
-      {
-        nome: "Rogério Ceni",
-        gols: 131
-      }
+      { nome: "Serginho Chulapa", gols: 242 },
+      { nome: "Gino Orlando", gols: 233 },
+      { nome: "Luis Fabiano", gols: 212 },
+      { nome: "Teixeirinha", gols: 188 },
+      { nome: "França", gols: 182 },
+      { nome: "Luizinho", gols: 173 },
+      { nome: "Müller", gols: 160 },
+      { nome: "Leônidas", gols: 144 },
+      { nome: "Maurinho", gols: 136 },
+      { nome: "Rogério Ceni", gols: 131 }
     ], redes: [
       { rede: 'Facebook', link: 'https://www.facebook.com/saopaulofc' },
       { rede: 'Instagram', link: 'https://www.instagram.com/saopaulofc/' },
       { rede: 'Twitter', link: 'https://x.com/SaoPauloFC' }
-    ], updateArtilheiros: '10/05/2025',
+    ], updateArtilheiros: '13/05/2025',
     cores: [
       { main: '#FFFFFF', secondary: '#000000', third: '#FF0000' }
     ]
   },
   {
-    name: "Santos Futebol Clube",
+    name: "Santos",
     shield: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Santos_Logo.png/330px-Santos_Logo.png",
     fundacao: "1912",
     titles: [
@@ -656,14 +657,14 @@ const teams = [
     ],
     artilheiros: [
       { nome: "Pelé", gols: 1091 },
-      { nome: "Pepe", gols: 405 },
-      { nome: "Coutinho", gols: 370 },
-      { nome: "Toninho Guerreiro", gols: 283 },
-      { nome: "Feitiço", gols: 216 },
-      { nome: "Dorval", gols: 198 },
-      { nome: "Edu", gols: 183 },
-      { nome: "Araken Patusca", gols: 177 },
-      { nome: "Pagão", gols: 159 },
+      { nome: "Pepe", gols: 403 },
+      { nome: "Coutinho", gols: 368 },
+      { nome: "Toninho Guerreiro", gols: 279 },
+      { nome: "Feitiço", gols: 214 },
+      { nome: "Dorval", gols: 194 },
+      { nome: "Araken Patusca", gols: 184 },
+      { nome: "Edu", gols: 184 },
+      { nome: "Pagão", gols: 157 },
       { nome: "Tite", gols: 151 }
     ],
     redes: [
@@ -671,7 +672,7 @@ const teams = [
       { rede: "Instagram", link: "https://www.instagram.com/santosfc/" },
       { rede: "Twitter", link: "https://x.com/SantosFC" }
     ],
-    updateArtilheiros: '10/05/2025',
+    updateArtilheiros: '13/05/2025',
     cores: [
       { main: '#FFFFFF', secondary: '#000000' }
     ]
@@ -711,16 +712,16 @@ const teams = [
       { nome: "Naninho", gols: 105 },
       { nome: "Dadá Maravilha", gols: 94 },
       { nome: "Marcílio de Aguiar", gols: 93 },
-      { nome: "Diego Souza", gols: 51 },
-      { nome: "André Felipe", gols: 44 },
-      { nome: "Hernane", gols: 36 }
+      { nome: "Raúl Bentancor", gols: 91 },
+      { nome: "Roberto Coração de Leão", gols: 89 },
+      { nome: "Bé", gols: 80 }
     ],
     redes: [
       { rede: "Facebook", link: "https://www.facebook.com/sportrecife" },
       { rede: "Instagram", link: "https://www.instagram.com/sportrecife/" },
       { rede: "Twitter", link: "https://x.com/sportrecife" }
     ],
-    updateArtilheiros: '10/05/2025',
+    updateArtilheiros: '13/05/2025',
     cores: [
       { main: '#E21B25', secondary: 'black' }
     ]
@@ -760,7 +761,7 @@ const teams = [
       { rede: 'Instagram', link: 'https://www.instagram.com/vascodagama/' },
       { rede: 'Twitter', link: 'https://x.com/VascodaGama' }
     ],
-    updateArtilheiros: '10/05/2025',
+    updateArtilheiros: '13/05/2025',
     cores: [
       { main: '#FFFFFF', secondary: '#000000' }
     ]
@@ -782,7 +783,7 @@ const teams = [
       { nome: "Osni", gols: 111 },
       { nome: "André Catimba", gols: 90 },
       { nome: "Didico", gols: 89 },
-      { nome: "Ramon Menezes", gols: 89 },
+      { nome: "Ramon Menezes", gols: 88 },
       { nome: "Neto Baiano", gols: 87 },
       { nome: "Sena", gols: 86 },
       { nome: "Samuel Matos", gols: 77 },
@@ -792,7 +793,7 @@ const teams = [
       { rede: 'Instagram', link: 'https://www.instagram.com/ecvitoria/' },
       { rede: 'Twitter', link: 'https://x.com/ECVitoria' }
     ],
-    updateArtilheiros: '11/05/2025',
+    updateArtilheiros: '13/05/2025',
     cores: [
       { secondary: 'red', main: '#000000' }
     ]
