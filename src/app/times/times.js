@@ -2,26 +2,74 @@ import atletico from '../../../assets/images/shields/atletico.png';
 import bahia from '../../../assets/images/shields/bahia.png';
 import botafogo from '../../../assets/images/shields/botafogo.png';
 import bragantino from '../../../assets/images/shields/bragantino.png';
-import ceara from '../../../assets/images/shields/ceara.png';
+// import ceara from '../../../assets/images/shields/ceara.png';
 import corinthians from '../../../assets/images/shields/corinthians.png';
 import cruzeiro from '../../../assets/images/shields/cruzeiro.png';
 import flamengo from '../../../assets/images/shields/flamengo.png';
 import fluminense from '../../../assets/images/shields/fluminense.png';
-import fortaleza from '../../../assets/images/shields/fortaleza.png';
+// import fortaleza from '../../../assets/images/shields/fortaleza.png';
 import gremio from '../../../assets/images/shields/gremio.png';
 import internacional from '../../../assets/images/shields/internacional.png';
-import juventude from '../../../assets/images/shields/juventude.png';
+// import juventude from '../../../assets/images/shields/juventude.png';
 import mirassol from '../../../assets/images/shields/mirassol.png';
 import palmeiras from '../../../assets/images/shields/palmeiras.png';
 import santos from '../../../assets/images/shields/santos.png';
 import saopaulo from '../../../assets/images/shields/saopaulo.png';
-import sport from '../../../assets/images/shields/sport.png';
+// import sport from '../../../assets/images/shields/sport.png';
 import vasco from '../../../assets/images/shields/vasco.png';
 import vitoria from '../../../assets/images/shields/vitoria.png';
 
 
+import athletico from '../../../assets/images/shields/athletico.png';
+import chapecoense from '../../../assets/images/shields/chapecoense.png';
+import coritiba from '../../../assets/images/shields/coritiba.png';
+import remo from '../../../assets/images/shields/remo.png';
+
+
+
 const teams = [
 
+  {
+    name: 'Athletico', shield: athletico, fundacao: '1924', titles: [
+      {
+        continentais: [
+          { name: 'Copa Sul-Americana', count: 2 },
+        ],
+        nacionais: [
+          { name: 'Campeonato Brasileiro', count: 1 },
+          { name: 'Copa do Brasil', count: 1 },
+        ],
+        estaduais: [
+          { name: 'Campeonato Estadual', count: 28 },
+        ]
+      },
+    ], artilheiros: [
+      { nome: "Sicupira", gols: 158 },
+      { nome: "Jackson", gols: 150 },
+      { nome: "Marreco", gols: 125 },
+      { nome: "Kleber", gols: 124 },
+      { nome: "Cireno", gols: 117 },
+      { nome: "Walter", gols: 108 },
+      { nome: "Paulo Rink", gols: 84 },
+      { nome: "Alex Mineiro", gols: 78 },
+      { nome: "Guará", gols: 76 },
+      { nome: "Pablo", gols: 71 }
+    ],
+    updateArtilheiros: '25/02/2026',
+    redes: [
+      { rede: 'Facebook', link: 'https://www.facebook.com/clubathleticoparanaense' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/athleticoparanaense' },
+      { rede: 'Twitter', link: 'https://x.com/AthleticoPR' }
+    ],
+    cores: [
+      {
+        main: '#C8102E',
+        secondary: '#000000',
+        third: '#1A1A1A',
+        text: '#FFFFFF'
+      }
+    ]
+  },
   {
     name: 'Atlético-MG', shield: atletico, fundacao: '1908', titles: [
       {
@@ -166,46 +214,78 @@ const teams = [
     ]
 
   },
+  // {
+  //   name: 'Ceará',
+  //   shield: ceara,
+  //   fundacao: '1914',
+  //   titles: [
+  //     {
+  //       'inter-regionais': [
+  //         { name: 'Torneio Norte-Nordeste', count: 1 }
+  //       ],
+  //       regionais: [
+  //         { name: 'Copa do Nordeste', count: 3 },
+  //       ],
+  //       estaduais: [
+  //         { name: 'Campeonato Estadual', count: 47 }
+  //       ]
+  //     }
+  //   ],
+  //   artilheiros: [
+  //     { nome: 'Gildo', gols: 261 },
+  //     { nome: 'Mitotônio', gols: 151 },
+  //     { nome: 'Sérgio Alves', gols: 141 },
+  //     { nome: 'Pipiu', gols: 115 },
+  //     { nome: 'Antonino', gols: 110 },
+  //     { nome: 'Magno Alves', gols: 103 },
+  //     { nome: 'Zé Eduardo', gols: 99 },
+  //     { nome: 'Da Costa', gols: 94 },
+  //     { nome: 'Ivanir', gols: 90 },
+  //     { nome: 'Mota', gols: 89 }
+  //   ],
+  //   redes: [
+  //     { rede: 'Facebook', link: 'https://www.facebook.com/cearasc' },
+  //     { rede: 'Instagram', link: 'https://www.instagram.com/cearasc/' },
+  //     { rede: 'Twitter', link: 'https://x.com/CearaSC' }
+  //   ],
+  //   updateArtilheiros: '12/05/2025',
+  //   cores: [
+  //     { main: '#FFFFFF', secondary: '#000000' }
+  //   ]
+  // },
   {
-    name: 'Ceará',
-    shield: ceara,
-    fundacao: '1914',
-    titles: [
+    name: 'Chapeconse', shield: chapecoense, fundacao: '1973', titles: [
       {
-        'inter-regionais': [
-          { name: 'Torneio Norte-Nordeste', count: 1 }
-        ],
-        regionais: [
-          { name: 'Copa do Nordeste', count: 3 },
+        continentais: [
+          { name: 'Copa Sul-Americana', count: 1 },
         ],
         estaduais: [
-          { name: 'Campeonato Estadual', count: 47 }
+          { name: 'Campeonato Estadual', count: 7 },
         ]
-      }
-    ],
-    artilheiros: [
-      { nome: 'Gildo', gols: 261 },
-      { nome: 'Mitotônio', gols: 151 },
-      { nome: 'Sérgio Alves', gols: 141 },
-      { nome: 'Pipiu', gols: 115 },
-      { nome: 'Antonino', gols: 110 },
-      { nome: 'Magno Alves', gols: 103 },
-      { nome: 'Zé Eduardo', gols: 99 },
-      { nome: 'Da Costa', gols: 94 },
-      { nome: 'Ivanir', gols: 90 },
-      { nome: 'Mota', gols: 89 }
+      },
+    ], artilheiros: [
+      { nome: "Bruno Rangel", gols: 77 },
+      { nome: "Perotti", gols: 45 },
+      { nome: "Wellington Paulista", gols: 31 },
+      { nome: "Leandro Pereira", gols: 22 },
+      { nome: "Anselmo Ramon", gols: 21 },
+      { nome: "Túlio de Melo", gols: 20 },
+      { nome: "Marcinho", gols: 20 },
+      { nome: "Everaldo", gols: 19 },
+      { nome: "Mário Sérgio", gols: 17 },
+      { nome: "Carvalheira", gols: 17 }
     ],
     redes: [
-      { rede: 'Facebook', link: 'https://www.facebook.com/cearasc' },
-      { rede: 'Instagram', link: 'https://www.instagram.com/cearasc/' },
-      { rede: 'Twitter', link: 'https://x.com/CearaSC' }
+      { rede: 'Facebook', link: 'https://www.facebook.com/AChapeF' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/chapecoensereal/' },
+      { rede: 'Twitter', link: 'https://x.com/ChapecoenseReal' }
     ],
-    updateArtilheiros: '12/05/2025',
+    updateArtilheiros: '25/02/2026',
     cores: [
-      { main: '#FFFFFF', secondary: '#000000' }
+      { main: '#0f6a07', secondary: '#FFFFFF' }
     ]
-  },
 
+  },
   {
     name: 'Corinthians', shield: corinthians, fundacao: '1910', titles: [
       {
@@ -218,8 +298,8 @@ const teams = [
         ],
         nacionais: [
           { name: 'Campeonato Brasileiro', count: 7 },
-          { name: 'Copa do Brasil', count: 3 },
-          { name: 'Supercopa do Brasil', count: 1 },
+          { name: 'Copa do Brasil', count: 4 },
+          { name: 'Supercopa do Brasil', count: 2 },
         ],
         interestaduais: [
           { name: 'Torneio Rio-São Paulo', count: 5 },
@@ -251,6 +331,43 @@ const teams = [
     ]
 
 
+  },
+  {
+    name: 'Coritiba', shield: coritiba, fundacao: '1909', titles: [
+      {
+        nacionais: [
+          { name: 'Campeonato Brasileiro', count: 1 },
+        ],
+        estaduais: [
+          { name: 'Campeonato Estadual', count: 39 },
+        ]
+      },
+    ], artilheiros: [
+      { nome: "Duílio", gols: 206 },
+      { nome: "Neno", gols: 134 },
+      { nome: "Ivo", gols: 129 },
+      { nome: "Miltinho", gols: 96 },
+      { nome: "Baby", gols: 96 },
+      { nome: "Stacco", gols: 89 },
+      { nome: "Zé Roberto", gols: 72 },
+      { nome: "Keirrison", gols: 72 },
+      { nome: "Alex", gols: 69 },
+      { nome: "Chicão", gols: 65 }
+    ],
+    redes: [
+      { rede: 'Facebook', link: 'https://www.facebook.com/coritibaoficial' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/coritiba/' },
+      { rede: 'Twitter', link: 'https://x.com/Coritiba' }
+    ],
+    updateArtilheiros: '25/02/2026',
+    cores: [
+      {
+        main: '#006437',
+        secondary: '#FFFFFF',
+        third: '#0B8A4A',
+        text: '#FFFFFF'
+      }
+    ]
   },
   {
     name: 'Cruzeiro', shield: cruzeiro, fundacao: '1921', titles: [
@@ -297,13 +414,13 @@ const teams = [
           { name: 'Copa Intercontinental', count: 1 },
         ],
         continentais: [
-          { name: 'Copa Libertadores da América', count: 3 },
+          { name: 'Copa Libertadores da América', count: 4 },
           { name: 'Copa Mercosul', count: 1 },
           { name: 'Recopa Sul-Americana', count: 1 },
           { name: 'Copa de Ouro Nicolás Leoz', count: 1 },
         ],
         nacionais: [
-          { name: 'Campeonato Brasileiro', count: 7 },
+          { name: 'Campeonato Brasileiro', count: 8 },
           { name: 'Copa do Brasil', count: 5 },
           { name: 'Supercopa do Brasil', count: 3 },
           { name: 'Copa dos Campeões', count: 1 },
@@ -371,41 +488,41 @@ const teams = [
     ]
 
   },
-  {
-    name: 'Fortaleza', shield: fortaleza, fundacao: '1918', titles: [
-      {
-        'inter-regionais': [
-          { name: 'Torneio Norte–Nordeste', count: 1 },
-        ],
-        regionais: [
-          { name: 'Copa do Nordeste', count: 3 },
-        ],
-        estaduais: [
-          { name: 'Campeonato Estadual', count: 46 },
-        ]
-      },
-    ], artilheiros: [
-      { nome: "Savará", gols: 154 },
-      { nome: "Clodoaldo", gols: 120 },
-      { nome: "Rinaldo", gols: 108 },
-      { nome: "Amilton", gols: 86 },
-      { nome: "Croinha", gols: 85 },
-      { nome: "Mozart", gols: 83 },
-      { nome: "Moésio Gomes", gols: 83 },
-      { nome: "França", gols: 68 },
-      { nome: "Sandro Gaúcho", gols: 66 },
-      { nome: "Marciano", gols: 63 }
-    ],
-    redes: [
-      { rede: 'Facebook', link: 'https://www.facebook.com/FortalezaEC' },
-      { rede: 'Instagram', link: 'https://www.instagram.com/fortalezaec/' },
-      { rede: 'Twitter', link: 'https://x.com/FortalezaEC' }
-    ], updateArtilheiros: '13/05/2025',
-    cores: [
-      { main: '#0033A0', secondary: '#FFFFFF', third: '#DA291C', text: '#FFFFFF' }
-    ]
+  // {
+  //   name: 'Fortaleza', shield: fortaleza, fundacao: '1918', titles: [
+  //     {
+  //       'inter-regionais': [
+  //         { name: 'Torneio Norte–Nordeste', count: 1 },
+  //       ],
+  //       regionais: [
+  //         { name: 'Copa do Nordeste', count: 3 },
+  //       ],
+  //       estaduais: [
+  //         { name: 'Campeonato Estadual', count: 46 },
+  //       ]
+  //     },
+  //   ], artilheiros: [
+  //     { nome: "Savará", gols: 154 },
+  //     { nome: "Clodoaldo", gols: 120 },
+  //     { nome: "Rinaldo", gols: 108 },
+  //     { nome: "Amilton", gols: 86 },
+  //     { nome: "Croinha", gols: 85 },
+  //     { nome: "Mozart", gols: 83 },
+  //     { nome: "Moésio Gomes", gols: 83 },
+  //     { nome: "França", gols: 68 },
+  //     { nome: "Sandro Gaúcho", gols: 66 },
+  //     { nome: "Marciano", gols: 63 }
+  //   ],
+  //   redes: [
+  //     { rede: 'Facebook', link: 'https://www.facebook.com/FortalezaEC' },
+  //     { rede: 'Instagram', link: 'https://www.instagram.com/fortalezaec/' },
+  //     { rede: 'Twitter', link: 'https://x.com/FortalezaEC' }
+  //   ], updateArtilheiros: '13/05/2025',
+  //   cores: [
+  //     { main: '#0033A0', secondary: '#FFFFFF', third: '#DA291C', text: '#FFFFFF' }
+  //   ]
 
-  },
+  // },
   {
     name: 'Grêmio', shield: gremio, fundacao: '1903', titles: [
       {
@@ -492,39 +609,39 @@ const teams = [
     ]
 
   },
-  {
-    name: 'Juventude', shield: juventude, fundacao: '1913', titles: [
-      {
-        nacionais: [
-          { name: 'Copa do Brasil', count: 1 },
-        ],
-        estaduais: [
-          { name: 'Campeonato Estadual', count: 1 },
-        ]
-      },
-    ],
-    artilheiros: [
-      { nome: "Mário Martini", gols: 217 },
-      { nome: "Lory Tonietto", gols: 183 },
-      { nome: "Em breve", gols: '-' },
-      { nome: "Em breve", gols: '-' },
-      { nome: "Em breve", gols: '-' },
-      { nome: "Em breve", gols: '-' },
-      { nome: "Em breve", gols: '-' },
-      { nome: "Em breve", gols: '-' },
-      { nome: "Em breve", gols: '-' },
-      { nome: "Em breve", gols: '-' },
-    ],
-    redes: [
-      { rede: 'Facebook', link: 'https://www.facebook.com/juventude' },
-      { rede: 'Instagram', link: 'https://www.instagram.com/ecjuventude/' },
-      { rede: 'Twitter', link: 'https://x.com/ECJuventude' }
-    ], updateArtilheiros: '13/05/2025',
-    cores: [
-      { main: '#009639', secondary: '#FFFFFF' }
-    ]
+  // {
+  //   name: 'Juventude', shield: juventude, fundacao: '1913', titles: [
+  //     {
+  //       nacionais: [
+  //         { name: 'Copa do Brasil', count: 1 },
+  //       ],
+  //       estaduais: [
+  //         { name: 'Campeonato Estadual', count: 1 },
+  //       ]
+  //     },
+  //   ],
+  //   artilheiros: [
+  //     { nome: "Mário Martini", gols: 217 },
+  //     { nome: "Lory Tonietto", gols: 183 },
+  //     { nome: "Em breve", gols: '-' },
+  //     { nome: "Em breve", gols: '-' },
+  //     { nome: "Em breve", gols: '-' },
+  //     { nome: "Em breve", gols: '-' },
+  //     { nome: "Em breve", gols: '-' },
+  //     { nome: "Em breve", gols: '-' },
+  //     { nome: "Em breve", gols: '-' },
+  //     { nome: "Em breve", gols: '-' },
+  //   ],
+  //   redes: [
+  //     { rede: 'Facebook', link: 'https://www.facebook.com/juventude' },
+  //     { rede: 'Instagram', link: 'https://www.instagram.com/ecjuventude/' },
+  //     { rede: 'Twitter', link: 'https://x.com/ECJuventude' }
+  //   ], updateArtilheiros: '13/05/2025',
+  //   cores: [
+  //     { main: '#009639', secondary: '#FFFFFF' }
+  //   ]
 
-  },
+  // },
   {
     name: 'Mirassol', shield: mirassol,
     fundacao: '1925', titles: [
@@ -595,6 +712,32 @@ const teams = [
     ]
 
 
+  },
+  {
+    name: 'Remo', shield: remo, fundacao: '1905', titles: [
+      {
+        interestaduais: [
+          { name: 'Copa Verde', count: 1 },
+          { name: 'Taça Norte–Nordeste', count: 1 },
+        ],
+        estaduais: [
+          { name: 'Campeonato Estadual', count: 48 },
+        ]
+      },
+    ], artilheiros: [
+      { nome: "Dadinho", gols: 163 },
+      { nome: "Alcino", gols: 159 },
+      { nome: "Quiba", gols: 154 },
+      { nome: "Mesquita", gols: 132 },
+      { nome: "Bira", gols: 115 },
+    ], redes: [
+      { rede: 'Facebook', link: 'https://www.facebook.com/ClubeDoRemo' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/clubedoremo' },
+      { rede: 'Twitter', link: 'https://x.com/ClubeDoRemo' }
+    ], updateArtilheiros: '25/02/2026',
+    cores: [
+      { main: '#0B3D91', secondary: '#FFFFFF', third: '#0A2A66', text: '#FFFFFF' }
+    ]
   },
   {
     name: 'São Paulo', shield: saopaulo, fundacao: '1930', titles: [
@@ -700,56 +843,56 @@ const teams = [
       { main: '#FFFFFF', secondary: '#000000' }
     ]
   },
-  {
-    name: "Sport",
-    shield: sport,
-    fundacao: "1905",
-    titles: [
-      {
-        nacionais: [
-          { name: "Campeonato Brasileiro Série A", count: 1 },
-          { name: "Copa do Brasil", count: 1 },
-        ]
-      },
-      {
-        "inter-regionais": [
-          { name: "Torneio Norte-Nordeste", count: 1 }
-        ]
-      },
-      {
-        regionais: [
-          { name: "Copa do Nordeste", count: 3 }
-        ]
-      },
-      {
-        estaduais: [
-          { name: "Campeonato Estadual", "count": 44 }
-        ]
-      }
-    ],
-    artilheiros: [
-      { nome: "Traçaia", gols: 202 },
-      { nome: "Djalma Freitas", gols: 161 },
-      { nome: "Leonardo", gols: 136 },
-      { nome: "Luís Carlos", gols: 108 },
-      { nome: "Naninho", gols: 105 },
-      { nome: "Dadá Maravilha", gols: 94 },
-      { nome: "Marcílio de Aguiar", gols: 93 },
-      { nome: "Raúl Bentancor", gols: 91 },
-      { nome: "Roberto Coração de Leão", gols: 89 },
-      { nome: "Bé", gols: 80 }
-    ],
-    redes: [
-      { rede: "Facebook", link: "https://www.facebook.com/sportrecife" },
-      { rede: "Instagram", link: "https://www.instagram.com/sportrecife/" },
-      { rede: "Twitter", link: "https://x.com/sportrecife" }
-    ],
-    updateArtilheiros: '13/05/2025',
-    cores: [
-      { main: '#E21B25', secondary: 'black' }
-    ]
+  // {
+  //   name: "Sport",
+  //   shield: sport,
+  //   fundacao: "1905",
+  //   titles: [
+  //     {
+  //       nacionais: [
+  //         { name: "Campeonato Brasileiro Série A", count: 1 },
+  //         { name: "Copa do Brasil", count: 1 },
+  //       ]
+  //     },
+  //     {
+  //       "inter-regionais": [
+  //         { name: "Torneio Norte-Nordeste", count: 1 }
+  //       ]
+  //     },
+  //     {
+  //       regionais: [
+  //         { name: "Copa do Nordeste", count: 3 }
+  //       ]
+  //     },
+  //     {
+  //       estaduais: [
+  //         { name: "Campeonato Estadual", "count": 44 }
+  //       ]
+  //     }
+  //   ],
+  //   artilheiros: [
+  //     { nome: "Traçaia", gols: 202 },
+  //     { nome: "Djalma Freitas", gols: 161 },
+  //     { nome: "Leonardo", gols: 136 },
+  //     { nome: "Luís Carlos", gols: 108 },
+  //     { nome: "Naninho", gols: 105 },
+  //     { nome: "Dadá Maravilha", gols: 94 },
+  //     { nome: "Marcílio de Aguiar", gols: 93 },
+  //     { nome: "Raúl Bentancor", gols: 91 },
+  //     { nome: "Roberto Coração de Leão", gols: 89 },
+  //     { nome: "Bé", gols: 80 }
+  //   ],
+  //   redes: [
+  //     { rede: "Facebook", link: "https://www.facebook.com/sportrecife" },
+  //     { rede: "Instagram", link: "https://www.instagram.com/sportrecife/" },
+  //     { rede: "Twitter", link: "https://x.com/sportrecife" }
+  //   ],
+  //   updateArtilheiros: '13/05/2025',
+  //   cores: [
+  //     { main: '#E21B25', secondary: 'black' }
+  //   ]
 
-  },
+  // },
   {
     name: 'Vasco', shield: vasco, fundacao: '1898', titles: [
       {
