@@ -244,7 +244,6 @@ const styles = StyleSheet.create({
 
     // ── LISTA
     listContent: {
-        paddingHorizontal: 16,
         paddingBottom: 32,
     },
     card: {
@@ -262,6 +261,7 @@ const styles = StyleSheet.create({
         shadowRadius: 3,
         borderWidth: 1,
         borderColor: '#F3F4F6',
+        marginHorizontal: 16,
     },
     cardTop3: {
         borderColor: '#D1FAE5',
