@@ -1,193 +1,612 @@
 const teams = [
   {
-    name: 'Athletico', shield: 'athletico', fundacao: '1924', titles: [
+    "name": "América-MG",
+    "shield": "america-mg",
+    "fundacao": "1912",
+    "titles": [
       {
-        internacionais: [
-          { name: 'Copa Sul-Americana', count: 2 },
+        "nacionais": [
+          {
+            "name": "Campeonato Brasileiro Série B",
+            "count": 2
+          }
         ],
-        nacionais: [
-          { name: 'Campeonato Brasileiro', count: 1 },
-          { name: 'Copa do Brasil', count: 1 },
-        ],
-        estaduais: [
-          { name: 'Campeonato Estadual', count: 28 },
+        "estaduais": [
+          {
+            "name": "Campeonato Estadual",
+            "count": 16
+          }
         ]
-      },
-    ], artilheiros: [
-      { nome: "Sicupira", gols: 157 },
-      { nome: "Jackson", gols: 143 },
-      { nome: "Kleber Pereira", gols: 124 },
-      { nome: "Marreco", gols: 115 },
-      { nome: "Cireno", gols: 114 },
-      { nome: "Valter", gols: 106 },
-      { nome: "Paulo Rink", gols: 80 },
-      { nome: "Guará", gols: 76 },
-      { nome: "Pablo", gols: 66 },
-      { nome: "Alex Mineiro", gols: 65 },
-      { nome: "Adriano Gabiru", gols: 65 },
-    ], redes: [
-      { rede: 'Facebook', link: 'https://www.facebook.com/clubathleticoparanaense' },
-      { rede: 'Instagram', link: 'https://www.instagram.com/athleticoparanaense/' },
-      { rede: 'Twitter', link: 'https://x.com/AthleticoPR' }
-    ]
-  },
-  {
-    name: 'Atlético-GO', shield: 'atletico-go', fundacao: '1937', titles: [
-      {
-        estaduais: [
-          { name: 'Campeonato Estadual', count: 18 },
-        ]
-      },
+      }
     ],
-    redes: [
-      { rede: 'Facebook', link: 'https://www.facebook.com/ACGOficial' },
-      { rede: 'Instagram', link: 'https://www.instagram.com/acgoficial/' },
-      { rede: 'Twitter', link: 'https://x.com/ACGOficial' }
+    "artilheiros": [],
+    "redes": [
+      {
+        "rede": "Facebook",
+        "link": "https://www.facebook.com/americamg"
+      },
+      {
+        "rede": "Instagram",
+        "link": "https://www.instagram.com/americamg/"
+      },
+      {
+        "rede": "Twitter",
+        "link": "https://x.com/AmericaMG"
+      }
     ]
   },
   {
-    name: 'Atlético-MG', shield: 'atletico-mg', fundacao: '1908', titles: [
-      {
-        internacionais: [
-          { name: 'Copa Libertadores da América', count: 1 },
-          { name: 'Recopa Sul-Americana', count: 1 },
-          { name: 'Copa CONMEBOL', count: 2 },
-        ],
-        nacionais: [
-          { name: 'Campeonato Brasileiro', count: 3 },
-          { name: 'Copa do Brasil', count: 2 },
-          { name: 'Supercopa do Brasil', count: 1 },
-        ],
-        estaduais: [
-          { name: 'Campeonato Estadual', count: 49 },
-        ]
-      },
-    ], artilheiros: [
-      { nome: "Reinaldo", gols: 255 },
-      { nome: "Dadá Maravilha", gols: 211 },
-      { nome: "Mário de Castro", gols: 195 },
-      { nome: "Guará", gols: 168 },
-      { nome: "Lucas Miranda", gols: 152 },
-      { nome: "Said", gols: 142 },
-      { nome: "Guilherme", gols: 139 },
-      { nome: "Ubaldo", gols: 135 },
-      { nome: "Marques", gols: 133 },
-      { nome: "Nívio", gols: 126 }
-    ], redes: [
-      { rede: 'Facebook', link: 'https://www.facebook.com/atletico' },
-      { rede: 'Instagram', link: 'https://www.instagram.com/atletico' },
-      { rede: 'Twitter', link: 'https://x.com/Atletico' }
+    name: 'Athletic', shield: 'athletic', fundacao: '1909', titles: [], artilheiros: [], redes: [
+      { rede: 'Facebook', link: 'https://www.facebook.com/athleticclube' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/athleticclube/' },
+      { rede: 'Twitter', link: 'https://x.com/AthleticClube' }
     ]
   },
   {
-    name: 'Bahia', shield: 'bahia', fundacao: '1931', titles: [
+    "name": "Athletico",
+    "shield": "athletico",
+    "fundacao": "1924",
+    "titles": [
       {
-        nacionais: [
-          { name: 'Campeonato Brasileiro', count: 2 },
+        "internacionais": [
+          {
+            "name": "Copa Sul-Americana",
+            "count": 2
+          }
         ],
-        estaduais: [
-          { name: 'Campeonato Estadual', count: 50 },
+        "nacionais": [
+          {
+            "name": "Campeonato Brasileiro",
+            "count": 1
+          },
+          {
+            "name": "Campeonato Brasileiro Série B",
+            "count": 1
+          },
+          {
+            "name": "Copa do Brasil",
+            "count": 1
+          }
+        ],
+        "estaduais": [
+          {
+            "name": "Campeonato Estadual",
+            "count": 28
+          }
         ]
-      },
-    ], artilheiros: [
-      { nome: "Carlito", gols: 253 },
-      { nome: "Douglas", gols: 211 },
-      { nome: "Hamilton", gols: 154 },
-      { nome: "Uéslei", gols: 140 },
-      { nome: "Osni", gols: 138 },
-      { nome: "Marcelo Ramos", gols: 128 },
-      { nome: "Nonato", gols: 125 },
-      { nome: "Vareta", gols: 121 },
-      { nome: "Alencar", gols: 116 },
-      { nome: "Biriba", gols: 113 }
+      }
     ],
-    redes: [
-      { rede: 'Facebook', link: 'https://www.facebook.com/ecbahia' },
-      { rede: 'Instagram', link: 'https://www.instagram.com/ecbahia/' },
-      { rede: 'Twitter', link: 'https://x.com/ecbahia' }
+    "artilheiros": [
+      {
+        "nome": "Sicupira",
+        "gols": 157
+      },
+      {
+        "nome": "Jackson",
+        "gols": 143
+      },
+      {
+        "nome": "Kleber Pereira",
+        "gols": 124
+      },
+      {
+        "nome": "Marreco",
+        "gols": 115
+      },
+      {
+        "nome": "Cireno",
+        "gols": 114
+      },
+      {
+        "nome": "Valter",
+        "gols": 106
+      },
+      {
+        "nome": "Paulo Rink",
+        "gols": 80
+      },
+      {
+        "nome": "Guará",
+        "gols": 76
+      },
+      {
+        "nome": "Pablo",
+        "gols": 66
+      },
+      {
+        "nome": "Alex Mineiro",
+        "gols": 65
+      },
+      {
+        "nome": "Adriano Gabiru",
+        "gols": 65
+      }
+    ],
+    "redes": [
+      {
+        "rede": "Facebook",
+        "link": "https://www.facebook.com/clubathleticoparanaense"
+      },
+      {
+        "rede": "Instagram",
+        "link": "https://www.instagram.com/athleticoparanaense/"
+      },
+      {
+        "rede": "Twitter",
+        "link": "https://x.com/AthleticoPR"
+      }
     ]
   },
   {
-    name: 'Botafogo', shield: 'botafogo', fundacao: '1894', titles: [
+    "name": "Atlético-GO",
+    "shield": "atletico-go",
+    "fundacao": "1937",
+    "titles": [
       {
-        internacionais: [
-          { name: 'Copa CONMEBOL', count: 1 },
+        "nacionais": [
+          { name: 'Campeonato Brasileiro Série B', count: 1 },
         ],
-        nacionais: [
-          { name: 'Campeonato Brasileiro', count: 2 },
+        "estaduais": [
+          {
+            "name": "Campeonato Estadual",
+            "count": 18
+          }
+        ]
+      }
+    ],
+    "artilheiros": [],
+    "redes": [
+      {
+        "rede": "Facebook",
+        "link": "https://www.facebook.com/ACGOficial"
+      },
+      {
+        "rede": "Instagram",
+        "link": "https://www.instagram.com/acgoficial/"
+      },
+      {
+        "rede": "Twitter",
+        "link": "https://x.com/ACGOficial"
+      }
+    ]
+  },
+  {
+    "name": "Atlético-MG",
+    "shield": "atletico-mg",
+    "fundacao": "1908",
+    "titles": [
+      {
+        "internacionais": [
+          {
+            "name": "Copa Libertadores da América",
+            "count": 1
+          },
+          {
+            "name": "Recopa Sul-Americana",
+            "count": 1
+          },
+          {
+            "name": "Copa CONMEBOL",
+            "count": 2
+          }
         ],
+        "nacionais": [
+          {
+            "name": "Campeonato Brasileiro",
+            "count": 3
+          },
+          { name: 'Campeonato Brasileiro Série B', count: 1 },
+          {
+            "name": "Copa do Brasil",
+            "count": 2
+          },
+          {
+            "name": "Supercopa do Brasil",
+            "count": 1
+          }
+        ],
+        "estaduais": [
+          {
+            "name": "Campeonato Estadual",
+            "count": 50
+          }
+        ]
+      }
+    ],
+    "artilheiros": [
+      {
+        "nome": "Reinaldo",
+        "gols": 255
+      },
+      {
+        "nome": "Dadá Maravilha",
+        "gols": 211
+      },
+      {
+        "nome": "Mário de Castro",
+        "gols": 195
+      },
+      {
+        "nome": "Guará",
+        "gols": 168
+      },
+      {
+        "nome": "Lucas Miranda",
+        "gols": 152
+      },
+      {
+        "nome": "Said",
+        "gols": 142
+      },
+      {
+        "nome": "Hulk",
+        "gols": 140
+      },
+      {
+        "nome": "Guilherme",
+        "gols": 139
+      },
+      {
+        "nome": "Ubaldo",
+        "gols": 135
+      },
+      {
+        "nome": "Marques",
+        "gols": 133
+      }
+    ],
+    "redes": [
+      {
+        "rede": "Facebook",
+        "link": "https://www.facebook.com/atletico"
+      },
+      {
+        "rede": "Instagram",
+        "link": "https://www.instagram.com/atletico"
+      },
+      {
+        "rede": "Twitter",
+        "link": "https://x.com/Atletico"
+      }
+    ]
+  },
+  {
+    name: 'Avaí', shield: 'avai', fundacao: '1923', titles: [
+      {
         estaduais: [
-          { name: 'Campeonato Estadual', count: 21 },
+          { name: 'Campeonato Estadual', count: 19 },
         ]
       },
-    ], artilheiros: [
-      { "nome": "Quarentinha", "gols": 313 },
-      { "nome": "Carvalho Leite", "gols": 261 },
-      { "nome": "Garrincha", "gols": 245 },
-      { "nome": "Heleno de Freitas", "gols": 209 },
-      { "nome": "Nilo", "gols": 190 },
-      { "nome": "Jairzinho", "gols": 189 },
-      { "nome": "Octávio Moraes", "gols": 171 },
-      { "nome": "Túlio Maravilha", "gols": 167 },
-      { "nome": "Roberto Miranda", "gols": 154 },
-      { "nome": "Dino da Costa", "gols": 144 }
+    ], artilheiros: [], redes: [
+      { rede: 'Facebook', link: 'https://www.facebook.com/avaifc' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/avaifc/' },
+      { rede: 'Twitter', link: 'https://x.com/AvaiFC' }
+    ]
+  },
+  {
+    "name": "Bahia",
+    "shield": "bahia",
+    "fundacao": "1931",
+    "titles": [
+      {
+        "nacionais": [
+          {
+            "name": "Campeonato Brasileiro",
+            "count": 2
+          }
+        ],
+        "estaduais": [
+          {
+            "name": "Campeonato Estadual",
+            "count": 52
+          }
+        ]
+      }
     ],
-    redes: [
-      { rede: 'Facebook', link: 'https://www.facebook.com/Botafogo' },
-      { rede: 'Instagram', link: 'https://www.instagram.com/botafogo/' },
-      { rede: 'Twitter', link: 'https://x.com/Botafogo' }
+    "artilheiros": [
+      {
+        "nome": "Carlito",
+        "gols": 253
+      },
+      {
+        "nome": "Douglas",
+        "gols": 211
+      },
+      {
+        "nome": "Hamilton",
+        "gols": 154
+      },
+      {
+        "nome": "Uéslei",
+        "gols": 140
+      },
+      {
+        "nome": "Osni",
+        "gols": 138
+      },
+      {
+        "nome": "Marcelo Ramos",
+        "gols": 128
+      },
+      {
+        "nome": "Nonato",
+        "gols": 125
+      },
+      {
+        "nome": "Vareta",
+        "gols": 121
+      },
+      {
+        "nome": "Alencar",
+        "gols": 116
+      },
+      {
+        "nome": "Biriba",
+        "gols": 113
+      }
+    ],
+    "redes": [
+      {
+        "rede": "Facebook",
+        "link": "https://www.facebook.com/ecbahia"
+      },
+      {
+        "rede": "Instagram",
+        "link": "https://www.instagram.com/ecbahia/"
+      },
+      {
+        "rede": "Twitter",
+        "link": "https://x.com/ecbahia"
+      }
+    ]
+  },
+  {
+    "name": "Botafogo",
+    "shield": "botafogo",
+    "fundacao": "1894",
+    "titles": [
+      {
+        "internacionais": [
+          {
+            "name": "Copa Libertadores da América",
+            "count": 1
+          },
+          {
+            "name": "Copa CONMEBOL",
+            "count": 1
+          }
+        ],
+        "nacionais": [
+          {
+            "name": "Campeonato Brasileiro",
+            "count": 3
+          },
+          {
+            "name": "Campeonato Brasileiro Série B",
+            "count": 2
+          }
+        ],
+        "estaduais": [
+          {
+            "name": "Campeonato Estadual",
+            "count": 21
+          }
+        ]
+      }
+    ],
+    "artilheiros": [
+      {
+        "nome": "Quarentinha",
+        "gols": 313
+      },
+      {
+        "nome": "Carvalho Leite",
+        "gols": 261
+      },
+      {
+        "nome": "Garrincha",
+        "gols": 245
+      },
+      {
+        "nome": "Heleno de Freitas",
+        "gols": 209
+      },
+      {
+        "nome": "Nilo",
+        "gols": 190
+      },
+      {
+        "nome": "Jairzinho",
+        "gols": 189
+      },
+      {
+        "nome": "Octávio Moraes",
+        "gols": 171
+      },
+      {
+        "nome": "Túlio Maravilha",
+        "gols": 167
+      },
+      {
+        "nome": "Roberto Miranda",
+        "gols": 154
+      },
+      {
+        "nome": "Dino da Costa",
+        "gols": 144
+      }
+    ],
+    "redes": [
+      {
+        "rede": "Facebook",
+        "link": "https://www.facebook.com/Botafogo"
+      },
+      {
+        "rede": "Instagram",
+        "link": "https://www.instagram.com/botafogo/"
+      },
+      {
+        "rede": "Twitter",
+        "link": "https://x.com/Botafogo"
+      }
+    ]
+  },
+  {
+    name: 'Botafogo-SP', shield: 'botafogo-sp', fundacao: '1918', titles: [
+      {
+        estaduais: [
+          { name: 'Campeonato Estadual', count: 2 },
+        ]
+      },
+    ], artilheiros: [], redes: [
+      { rede: 'Facebook', link: 'https://www.facebook.com/botafogosp' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/botafogoribeiraopreto/' },
+      { rede: 'Twitter', link: 'https://x.com/BotafogoSP' }
     ]
   },
   {
     name: 'Bragantino', shield: 'bragantino', fundacao: '1928', titles: [
       {
+        nacionais: [
+          {
+            "name": "Campeonato Brasileiro Série B",
+            "count": 2
+          }
+        ],
         estaduais: [
           { name: 'Campeonato Estadual', count: 1 },
         ]
       },
-    ],
-    redes: [
+    ], artilheiros: [], redes: [
       { rede: 'Facebook', link: 'https://www.facebook.com/RedBullBragantino' },
       { rede: 'Instagram', link: 'https://www.instagram.com/redbullbragantino' },
       { rede: 'Twitter', link: 'https://x.com/RedBullBraga' }
     ]
-
   },
   {
-    name: 'Corinthians', shield: 'corinthians', fundacao: '1910', titles: [
+    name: 'Ceará', shield: 'ceara', fundacao: '1914', titles: [
       {
-        mundiais: [
-          { name: 'Copa do Mundo de Clubes da FIFA', count: 2 },
-        ],
-        internacionais: [
-          { name: 'Copa Libertadores da América', count: 1 },
-          { name: 'Recopa Sul-Americana', count: 1 },
-        ],
-        nacionais: [
-          { name: 'Campeonato Brasileiro', count: 7 },
-          { name: 'Copa do Brasil', count: 3 },
-          { name: 'Supercopa do Brasil', count: 1 },
-        ],
         estaduais: [
-          { name: 'Campeonato Estadual', count: 30 },
+          { name: 'Campeonato Estadual', count: 47 },
         ]
       },
     ], artilheiros: [
-      { nome: "Cláudio Christóvam", gols: 306 },
-      { nome: "Baltazar", gols: 270 },
-      { nome: "Teleco", gols: 257 },
-      { nome: "Neco", gols: 242 },
-      { nome: "Marcelinho Carioca", gols: 206 },
-      { nome: "Servílio", gols: 200 },
-      { nome: "Luizinho", gols: 174 },
-      { nome: "Sócrates", gols: 172 },
-      { nome: "Flávio", gols: 170 },
-      { nome: "Paulo", gols: 147 }
+      { nome: "Sérgio Alves", gols: 132 },
+      { nome: "Mazola", gols: 118 },
+      { nome: "Narciso", gols: 98 },
+      { nome: "Mauro Sampaio", gols: 92 },
+      { nome: "Bebeto", gols: 85 },
+      { nome: "Magno Alves", gols: 84 },
+      { nome: "Tiago Alves", gols: 65 },
+      { nome: "Richardson", gols: 56 },
+      { nome: "Leandro Carvalho", gols: 52 },
+      { nome: "Vina", gols: 48 }
+    ], redes: [
+      { rede: 'Facebook', link: 'https://www.facebook.com/CearaSC' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/cearasc/' },
+      { rede: 'Twitter', link: 'https://x.com/CearaSC' }
+    ]
+  },
+  {
+    name: 'Chapecoense', shield: 'chapecoense', fundacao: '1929', titles: [
+      {
+        internacionais: [
+          { name: 'Copa Sul-Americana', count: 1 }
+        ],
+        nacionais: [
+          { name: 'Campeonato Brasileiro Série B', count: 1 }
+        ],
+        estaduais: [
+          { name: 'Campeonato Estadual', count: 7 },
+        ]
+      },
+    ], artilheiros: [], redes: [
+      { rede: 'Facebook', link: 'https://www.facebook.com/chapecoense' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/chapecoense/' },
+      { rede: 'Twitter', link: 'https://x.com/chapecoense' }
+    ]
+  },
+  {
+    "name": "Corinthians",
+    "shield": "corinthians",
+    "fundacao": "1910",
+    "titles": [
+      {
+        "mundiais": [
+          { "name": "Copa do Mundo de Clubes da FIFA", "count": 2 }
+        ],
+        "internacionais": [
+          { "name": "Copa Libertadores da América", "count": 1 },
+          { "name": "Recopa Sul-Americana", "count": 1 }
+        ],
+        "nacionais": [
+          { "name": "Campeonato Brasileiro", "count": 7 },
+          { name: 'Campeonato Brasileiro Série B', count: 1 },
+          { "name": "Copa do Brasil", "count": 4 },
+          { "name": "Supercopa do Brasil", "count": 2 }
+        ],
+        "estaduais": [
+          { "name": "Campeonato Estadual", "count": 31 }
+        ]
+      }
     ],
-    redes: [
-      { rede: 'Facebook', link: 'https://www.facebook.com/corinthians' },
-      { rede: 'Instagram', link: 'https://www.instagram.com/corinthians/' },
-      { rede: 'Twitter', link: 'https://x.com/Corinthians' }
+    "artilheiros": [
+      { "nome": "Cláudio Christóvam", "gols": 306 },
+      { "nome": "Baltazar", "gols": 270 },
+      { "nome": "Teleco", "gols": 257 },
+      { "nome": "Neco", "gols": 242 },
+      { "nome": "Marcelinho Carioca", "gols": 206 },
+      { "nome": "Servílio", "gols": 200 },
+      { "nome": "Luizinho", "gols": 174 },
+      { "nome": "Sócrates", "gols": 172 },
+      { "nome": "Flávio", "gols": 170 },
+      { "nome": "Paulo", "gols": 147 }
+    ],
+    "redes": [
+      { "rede": "Facebook", "link": "https://www.facebook.com/corinthians" },
+      { "rede": "Instagram", "link": "https://www.instagram.com/corinthians/" },
+      { "rede": "Twitter", "link": "https://x.com/Corinthians" }
+    ]
+  },
+  {
+    name: 'Coritiba', shield: 'coritiba', fundacao: '1909', titles: [
+      {
+        nacionais: [
+          { name: 'Campeonato Brasileiro', count: 1 },
+          { name: 'Campeonato Brasileiro Série B', count: 3 }
+        ],
+        estaduais: [
+          { name: 'Campeonato Estadual', count: 39 },
+        ]
+      },
+    ], artilheiros: [
+      { nome: "Dario Meira", gols: 205 },
+      { nome: "Ademar", gols: 174 },
+      { nome: "Alvinho", gols: 162 },
+      { nome: "Procópio", gols: 130 },
+      { nome: "Alex", gols: 124 },
+      { nome: "Nilson", gols: 110 },
+      { nome: "Lula", gols: 106 },
+      { nome: "Rodrigo Dias", gols: 98 },
+      { nome: "Neto", gols: 92 },
+      { nome: "Deivid", gols: 87 }
+    ], redes: [
+      { rede: 'Facebook', link: 'https://www.facebook.com/coritiba' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/coritiba/' },
+      { rede: 'Twitter', link: 'https://x.com/Coritiba' }
+    ]
+  },
+  {
+    name: 'CRB', shield: 'crb', fundacao: '1912', titles: [
+      {
+        estaduais: [
+          { name: 'Campeonato Estadual', count: 36 },
+        ]
+      },
+    ], artilheiros: [], redes: [
+      { rede: 'Facebook', link: 'https://www.facebook.com/CRBoficial' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/crboficial/' },
+      { rede: 'Twitter', link: 'https://x.com/CRBoficial' }
     ]
   },
   {
@@ -195,13 +614,13 @@ const teams = [
       {
         nacionais: [
           { name: 'Copa do Brasil', count: 1 },
+          { name: 'Campeonato Brasileiro Série B', count: 1 }
         ],
         estaduais: [
           { name: 'Campeonato Estadual', count: 12 },
         ]
       },
-    ],
-    redes: [
+    ], artilheiros: [], redes: [
       { rede: 'Facebook', link: 'https://www.facebook.com/criciumaec' },
       { rede: 'Instagram', link: 'https://www.instagram.com/criciumaoficial/' },
       { rede: 'Twitter', link: 'https://x.com/CriciumaEC' }
@@ -218,10 +637,11 @@ const teams = [
         ],
         nacionais: [
           { name: 'Campeonato Brasileiro', count: 4 },
+          { name: 'Campeonato Brasileiro Série B', count: 1 },
           { name: 'Copa do Brasil', count: 6 },
         ],
         estaduais: [
-          { name: 'Campeonato Estadual', count: 38 },
+          { name: 'Campeonato Estadual', count: 40 },
         ]
       },
     ], artilheiros: [
@@ -234,8 +654,8 @@ const teams = [
       { nome: "Palhinha", gols: 145 },
       { nome: "Alcides", gols: 144 },
       { nome: "Joãozinho", gols: 118 },
-      { nome: "Raimundinho", gols: 110 }],
-    redes: [
+      { nome: "Raimundinho", gols: 110 }
+    ], redes: [
       { rede: 'Facebook', link: 'https://www.facebook.com/cruzeirooficial/' },
       { rede: 'Instagram', link: 'https://www.instagram.com/cruzeiro/' },
       { rede: 'Twitter', link: 'https://x.com/Cruzeiro' }
@@ -255,38 +675,52 @@ const teams = [
       { nome: "Moreno", gols: 31 },
       { nome: "Robinho", gols: 29 },
       { nome: "Jenison", gols: 26 }
-    ],
-    redes: [
+    ], redes: [
       { rede: 'Facebook', link: 'https://www.facebook.com/cuiabaec' },
       { rede: 'Instagram', link: 'https://www.instagram.com/cuiabaec/' },
       { rede: 'Twitter', link: 'https://x.com/CuiabaEC' }
     ]
   },
   {
-    name: 'Flamengo', shield: 'flamengo', fundacao: '1895', titles: [
+    "name": "Flamengo",
+    "shield": "flamengo",
+    "fundacao": "1895",
+    "titles": [
       {
-        mundiais: [
-          { name: 'Copa Intercontinental', count: 1 },
+        "mundiais": [
+          { "name": "Copa Intercontinental", "count": 1 }
         ],
-        internacionais: [
-          { name: 'Copa Libertadores da América', count: 3 },
-          { name: 'Copa Mercosul', count: 1 },
-          { name: 'Recopa Sul-Americana', count: 1 },
+        "internacionais": [
+          { "name": "Copa Libertadores da América", "count": 4 },
+          { "name": "Copa Mercosul", "count": 1 },
+          { "name": "Recopa Sul-Americana", "count": 1 }
         ],
-        nacionais: [
-          { name: 'Campeonato Brasileiro', count: 7 },
-          { name: 'Copa do Brasil', count: 4 },
-          { name: 'Supercopa do Brasil', count: 2 },
+        "nacionais": [
+          { "name": "Campeonato Brasileiro", "count": 8 },
+          { "name": "Copa do Brasil", "count": 5 },
+          { "name": "Supercopa do Brasil", "count": 3 }
         ],
-        estaduais: [
-          { name: 'Campeonato Estadual', count: 38 },
+        "estaduais": [
+          { "name": "Campeonato Estadual", "count": 40 }
         ]
-      },
-    ], artilheiros: [{ "nome": "Zico", "gols": 509 }, { "nome": "Dida", "gols": 264 }, { "nome": "Henrique Frade", "gols": 216 }, { "nome": "Pirillo", "gols": 204 }, { "nome": "Romário", "gols": 204 }, { "nome": "Gabigol", "gols": 156 }, { "nome": "Jarbas", "gols": 154 }, { "nome": "Leônidas", "gols": 153 }, { "nome": "Bebeto", "gols": 151 }, { "nome": "Zizinho", "gols": 148 }],
-    redes: [
-      { rede: 'Facebook', link: 'https://www.facebook.com/FlamengoOficial' },
-      { rede: 'Instagram', link: 'https://www.instagram.com/flamengo/' },
-      { rede: 'Twitter', link: 'https://x.com/Flamengo' }
+      }
+    ],
+    "artilheiros": [
+      { "nome": "Zico", "gols": 508 },
+      { "nome": "Dida", "gols": 253 },
+      { "nome": "Henrique Frade", "gols": 214 },
+      { "nome": "Pirillo", "gols": 209 },
+      { "nome": "Romário", "gols": 204 },
+      { "nome": "Pedro", "gols": 167 },
+      { "nome": "Gabigol", "gols": 161 },
+      { "nome": "Jarbas", "gols": 152 },
+      { "nome": "Bebeto", "gols": 150 },
+      { "nome": "Leônidas da Silva", "gols": 148 }
+    ],
+    "redes": [
+      { "rede": "Facebook", "link": "https://www.facebook.com/FlamengoOficial" },
+      { "rede": "Instagram", "link": "https://www.instagram.com/flamengo/" },
+      { "rede": "Twitter", "link": "https://x.com/Flamengo" }
     ]
   },
   {
@@ -305,28 +739,33 @@ const teams = [
         ]
       },
     ], artilheiros: [
-      { "nome": "Waldo", "gols": 319 },
-      { "nome": "Fred", "gols": 199 },
-      { "nome": "Orlando Pingo de Ouro", "gols": 184 },
-      { "nome": "Hércules", "gols": 165 },
-      { "nome": "Telê Santana", "gols": 164 },
-      { "nome": "Welfare", "gols": 161 },
-      { "nome": "Russo", "gols": 149 },
-      { "nome": "Preguinho", "gols": 128 },
-      { "nome": "Washington", "gols": 124 },
-      { "nome": "Magno Alves", "gols": 124 }
-    ],
-    redes: [
+      { nome: "Waldo", gols: 319 },
+      { nome: "Fred", gols: 199 },
+      { nome: "Orlando Pingo de Ouro", gols: 184 },
+      { nome: "Hércules", gols: 165 },
+      { nome: "Telê Santana", gols: 164 },
+      { nome: "Welfare", gols: 161 },
+      { nome: "Russo", gols: 149 },
+      { nome: "Preguinho", gols: 128 },
+      { nome: "Washington", gols: 124 },
+      { nome: "Magno Alves", gols: 124 }
+    ], redes: [
       { rede: 'Facebook', link: 'https://www.facebook.com/FluminenseFC' },
       { rede: 'Instagram', link: 'https://www.instagram.com/fluminensefc/' },
       { rede: 'Twitter', link: 'https://x.com/FluminenseFC' }
     ]
   },
   {
-    name: 'Fortaleza', shield: 'fortaleza', fundacao: '1918', ttitles: [
+    name: 'Fortaleza', shield: 'fortaleza', fundacao: '1918', titles: [
       {
+        nacionais: [
+          {
+            "name": "Campeonato Brasileiro Série B",
+            "count": 1
+          },
+        ],
         estaduais: [
-          { name: 'Campeonato Estadual', count: 46 },
+          { name: 'Campeonato Estadual', count: 47 },
         ]
       },
     ], artilheiros: [
@@ -340,11 +779,37 @@ const teams = [
       { nome: "França", gols: 68 },
       { nome: "Sandro Gaúcho", gols: 66 },
       { nome: "Marciano", gols: 63 }
-    ],
-    redes: [
+    ], redes: [
       { rede: 'Facebook', link: 'https://www.facebook.com/FortalezaEC' },
       { rede: 'Instagram', link: 'https://www.instagram.com/fortalezaec/' },
       { rede: 'Twitter', link: 'https://x.com/FortalezaEC' }
+    ]
+  },
+  {
+    name: 'Goiás', shield: 'goias', fundacao: '1943', titles: [
+      {
+        nacionais: [
+          { name: 'Campeonato Brasileiro Série B', count: 2 }
+        ],
+        estaduais: [
+          { name: 'Campeonato Estadual', count: 29 },
+        ]
+      },
+    ], artilheiros: [
+      { nome: "Mauro Shampoo", gols: 156 },
+      { nome: "Pintado", gols: 118 },
+      { nome: "Baldochi", gols: 108 },
+      { nome: "Nílton Batata", gols: 93 },
+      { nome: "Leandro", gols: 79 },
+      { nome: "Lúcio Flávio", gols: 71 },
+      { nome: "Marcelo Ramos", gols: 64 },
+      { nome: "Élton", gols: 63 },
+      { nome: "Pedro Raul", gols: 52 },
+      { nome: "Rafael Moura", gols: 49 }
+    ], redes: [
+      { rede: 'Facebook', link: 'https://www.facebook.com/goiasec' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/goiasec/' },
+      { rede: 'Twitter', link: 'https://x.com/GoiasEC' }
     ]
   },
   {
@@ -359,11 +824,12 @@ const teams = [
         ],
         nacionais: [
           { name: 'Campeonato Brasileiro', count: 2 },
+          { name: 'Campeonato Brasileiro Série B', count: 1 },
           { name: 'Copa do Brasil', count: 5 },
           { name: 'Supercopa do Brasil', count: 1 },
         ],
         estaduais: [
-          { name: 'Campeonato Estadual', count: 43 },
+          { name: 'Campeonato Estadual', count: 44 },
         ]
       },
     ], artilheiros: [
@@ -377,13 +843,11 @@ const teams = [
       { nome: "Milton Kuelle", gols: 129 },
       { nome: "Foguinho", gols: 127 },
       { nome: "Marino", gols: 117 }
-    ],
-    redes: [
+    ], redes: [
       { rede: 'Facebook', link: 'https://www.facebook.com/Gremio' },
       { rede: 'Instagram', link: 'https://www.instagram.com/gremio/' },
       { rede: 'Twitter', link: 'https://x.com/Gremio' }
     ]
-
   },
   {
     name: 'Internacional', shield: 'internacional', fundacao: '1909', titles: [
@@ -401,7 +865,7 @@ const teams = [
           { name: 'Copa do Brasil', count: 1 },
         ],
         estaduais: [
-          { name: 'Campeonato Estadual', count: 45 },
+          { name: 'Campeonato Estadual', count: 46 },
         ]
       },
     ], artilheiros: [
@@ -415,8 +879,7 @@ const teams = [
       { nome: "Ivo Diogo", gols: 122 },
       { nome: "Jair", gols: 118 },
       { nome: "Adãozinho", gols: 113 }
-    ],
-    redes: [
+    ], redes: [
       { rede: 'Facebook', link: 'https://www.facebook.com/scinternacional' },
       { rede: 'Instagram', link: 'https://www.instagram.com/scinternacional/' },
       { rede: 'Twitter', link: 'https://x.com/SCInternacional' }
@@ -427,16 +890,74 @@ const teams = [
       {
         nacionais: [
           { name: 'Copa do Brasil', count: 1 },
+          { name: 'Campeonato Brasileiro Série B', count: 1 }
         ],
         estaduais: [
           { name: 'Campeonato Estadual', count: 1 },
         ]
       },
-    ],
-    redes: [
+    ], artilheiros: [], redes: [
       { rede: 'Facebook', link: 'https://www.facebook.com/juventude' },
       { rede: 'Instagram', link: 'https://www.instagram.com/ecjuventude/' },
       { rede: 'Twitter', link: 'https://x.com/ECJuventude' }
+    ]
+  },
+  {
+    name: 'Londrina', shield: 'londrina', fundacao: '1956', titles: [
+      {
+        nacionais: [
+          { name: 'Campeonato Brasileiro Série B', count: 1 },
+        ],
+        estaduais: [
+          { name: 'Campeonato Estadual', count: 5 },
+        ]
+      },
+    ], artilheiros: [], redes: [
+      { rede: 'Facebook', link: 'https://www.facebook.com/londrinaec' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/londrinaec/' },
+      { rede: 'Twitter', link: 'https://x.com/LondrinaEC' }
+    ]
+  },
+  {
+    name: 'Mirassol', shield: 'mirassol', fundacao: '1925', titles: [
+    ], artilheiros: [], redes: [
+      { rede: 'Facebook', link: 'https://www.facebook.com/mirassolfc' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/mirassolfc/' },
+      { rede: 'Twitter', link: 'https://x.com/MirassolFC' }
+    ]
+  },
+  {
+    name: 'Náutico', shield: 'nautico', fundacao: '1901', titles: [
+      {
+        estaduais: [
+          { name: 'Campeonato Estadual', count: 24 },
+        ]
+      },
+    ], artilheiros: [], redes: [
+      { rede: 'Facebook', link: 'https://www.facebook.com/nautico' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/nauticooficial/' },
+      { rede: 'Twitter', link: 'https://x.com/nauticooficial' }
+    ]
+  },
+  {
+    name: 'Novorizontino', shield: 'novorizontino', fundacao: '1973', titles: [
+    ], artilheiros: [], redes: [
+      { rede: 'Facebook', link: 'https://www.facebook.com/novorizontino' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/novorizontino/' },
+      { rede: 'Twitter', link: 'https://x.com/Novorizontino' }
+    ]
+  },
+  {
+    name: 'Operário-PR', shield: 'operario-pr', fundacao: '1912', titles: [
+      {
+        estaduais: [
+          { name: 'Campeonato Estadual', count: 3 },
+        ]
+      },
+    ], artilheiros: [], redes: [
+      { rede: 'Facebook', link: 'https://www.facebook.com/OperarioFerroviarioEC' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/operarioferroviario/' },
+      { rede: 'Twitter', link: 'https://x.com/OperarioEC' }
     ]
   },
   {
@@ -449,28 +970,104 @@ const teams = [
         ],
         nacionais: [
           { name: 'Campeonato Brasileiro', count: 12 },
+          { name: 'Campeonato Brasileiro Série B', count: 2 },
           { name: 'Copa do Brasil', count: 4 },
           { name: 'Supercopa do Brasil', count: 1 },
         ],
         estaduais: [
-          { name: 'Campeonato Estadual', count: 26 },
+          { name: 'Campeonato Estadual', count: 27 },
         ]
       },
     ], artilheiros: [
-      { "nome": "Heitor", "gols": 323 },
-      { "nome": "César Maluco", "gols": 182 },
-      { "nome": "Ademir da Guia", "gols": 155 },
-      { "nome": "Lima", "gols": 149 },
-      { "nome": "Servílio", "gols": 139 },
-      { "nome": "Rodrigues Tatu", "gols": 131 },
-      { "nome": "Humberto Tozzi", "gols": 127 },
-      { "nome": "Evair", "gols": 126 },
-      { "nome": "Luizinho Tupãzinho", "gols": 122 }
-    ],
-    redes: [
+      { nome: "Heitor", gols: 323 },
+      { nome: "César Maluco", gols: 182 },
+      { nome: "Ademir da Guia", gols: 155 },
+      { nome: "Lima", gols: 149 },
+      { nome: "Servílio", gols: 139 },
+      { nome: "Rodrigues Tatu", gols: 131 },
+      { nome: "Humberto Tozzi", gols: 127 },
+      { nome: "Evair", gols: 126 },
+      { nome: "Luizinho Tupãzinho", gols: 122 }
+    ], redes: [
       { rede: 'Facebook', link: 'https://www.facebook.com/Palmeiras' },
       { rede: 'Instagram', link: 'https://www.instagram.com/palmeiras' },
       { rede: 'Twitter', link: 'https://x.com/Palmeiras' }
+    ]
+  },
+  {
+    name: 'Ponte Preta', shield: 'ponte-preta', fundacao: '1900', titles: [
+    ], artilheiros: [
+      { nome: "Julinho Botelho", gols: 189 },
+      { nome: "Carlos Verardi", gols: 142 },
+      { nome: "Arlindo", gols: 128 },
+      { nome: "Cléber", gols: 112 },
+      { nome: "Mário Tilico", gols: 96 },
+      { nome: "Ferreti", gols: 88 },
+      { nome: "Dirceu", gols: 76 },
+      { nome: "Chiquinho", gols: 72 },
+      { nome: "Rodrigo Tiuí", gols: 61 },
+      { nome: "Léo Mineiro", gols: 58 }
+    ], redes: [
+      { rede: 'Facebook', link: 'https://www.facebook.com/aaponte' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/aaponte/' },
+      { rede: 'Twitter', link: 'https://x.com/AAPontePreta' }
+    ]
+  },
+  {
+    name: 'Remo', shield: 'remo', fundacao: '1905', titles: [
+      {
+        estaduais: [
+          { name: 'Campeonato Estadual', count: 48 },
+        ]
+      },
+    ], artilheiros: [], redes: [
+      { rede: 'Facebook', link: 'https://www.facebook.com/clubedoremo' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/clubedoremo/' },
+      { rede: 'Twitter', link: 'https://x.com/ClubeDoRemo' }
+    ]
+  },
+  {
+    name: 'Santos', shield: 'santos', fundacao: '1912', titles: [
+      {
+        mundiais: [
+          { name: 'Copa Intercontinental', count: 2 },
+        ],
+        internacionais: [
+          { name: 'Copa Libertadores da América', count: 2 },
+          { name: 'Recopa Sul-Americana', count: 1 },
+        ],
+        nacionais: [
+          { name: 'Campeonato Brasileiro', count: 8 },
+          { name: 'Campeonato Brasileiro Série B', count: 1 },
+          { name: 'Copa do Brasil', count: 1 },
+        ],
+        estaduais: [
+          { name: 'Campeonato Estadual', count: 22 },
+        ]
+      },
+    ], artilheiros: [
+      { nome: "Pelé", gols: 643 },
+      { nome: "Coutinho", gols: 323 },
+      { nome: "Pepe", gols: 302 },
+      { nome: "Pagão", gols: 248 },
+      { nome: "Dorval", gols: 201 },
+      { nome: "Edu", gols: 185 },
+      { nome: "Neymar", gols: 136 },
+      { nome: "Serginho Chulapa", gols: 121 },
+      { nome: "Guilherme", gols: 96 },
+      { nome: "Diego Pituca", gols: 52 }
+    ], redes: [
+      { rede: 'Facebook', link: 'https://www.facebook.com/santos' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/santosfc/' },
+      { rede: 'Twitter', link: 'https://x.com/SantosFC' }
+    ]
+  },
+  {
+    name: 'São Bernardo', shield: 'sao-bernardo', fundacao: '1916', titles: [
+    ], artilheiros: [], redes: [
+      { rede: 'Facebook', link: 'https://www.facebook.com/saobernardofc' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/saobernardofc/' },
+      { rede: 'Twitter', link: 'https://x.com/SaoBernardoFC' }
     ]
   },
   {
@@ -487,7 +1084,6 @@ const teams = [
           { name: 'Supercopa Libertadores', count: 1 },
           { name: 'Copa CONMEBOL', count: 1 },
           { name: 'Copa Master da CONMEBOL', count: 1 },
-
         ],
         nacionais: [
           { name: 'Campeonato Brasileiro', count: 6 },
@@ -499,50 +1095,55 @@ const teams = [
         ]
       },
     ], artilheiros: [
-      {
-        nome: "Serginho Chulapa",
-        gols: 242
-      },
-      {
-        nome: "Gino Orlando",
-        gols: 233
-      },
-      {
-        nome: "Luis Fabiano",
-        gols: 212
-      },
-      {
-        nome: "Teixeirinha",
-        gols: 188
-      },
-      {
-        nome: "França",
-        gols: 182
-      },
-      {
-        nome: "Luizinho",
-        gols: 173
-      },
-      {
-        nome: "Müller",
-        gols: 160
-      },
-      {
-        nome: "Leônidas",
-        gols: 144
-      },
-      {
-        nome: "Maurinho",
-        gols: 136
-      },
-      {
-        nome: "Rogério Ceni",
-        gols: 131
-      }
+      { nome: "Serginho Chulapa", gols: 242 },
+      { nome: "Gino Orlando", gols: 233 },
+      { nome: "Luis Fabiano", gols: 212 },
+      { nome: "Teixeirinha", gols: 188 },
+      { nome: "França", gols: 182 },
+      { nome: "Luizinho", gols: 173 },
+      { nome: "Müller", gols: 160 },
+      { nome: "Leônidas", gols: 144 },
+      { nome: "Maurinho", gols: 136 },
+      { nome: "Rogério Ceni", gols: 131 }
     ], redes: [
       { rede: 'Facebook', link: 'https://www.facebook.com/saopaulofc' },
       { rede: 'Instagram', link: 'https://www.instagram.com/saopaulofc/' },
       { rede: 'Twitter', link: 'https://x.com/SaoPauloFC' }
+    ]
+  },
+  {
+    name: 'Sport', shield: 'sport', fundacao: '1905', titles: [
+      {
+        nacionais: [
+          {
+            name: "Campeonato Brasileiro",
+            count: 1
+          },
+          { name: 'Copa do Brasil', count: 1 },
+          {
+            name: "Campeonato Brasileiro Série B",
+            count: 1
+          },
+        ],
+        estaduais: [
+          { name: 'Campeonato Estadual', count: 46 },
+        ]
+      },
+    ], artilheiros: [
+      { nome: "Ademir de Menezes", gols: 180 },
+      { nome: "Valdo Candido", gols: 162 },
+      { nome: "Nílton", gols: 148 },
+      { nome: "Sílvio", gols: 136 },
+      { nome: "Mainha", gols: 112 },
+      { nome: "Evandro", gols: 101 },
+      { nome: "Leandro Ávila", gols: 88 },
+      { nome: "Ricardinho", gols: 76 },
+      { nome: "Diego Souza", gols: 72 },
+      { nome: "Hernane", gols: 68 }
+    ], redes: [
+      { rede: 'Facebook', link: 'https://www.facebook.com/sportrecife' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/sportrecife/' },
+      { rede: 'Twitter', link: 'https://x.com/SportRecife' }
     ]
   },
   {
@@ -554,6 +1155,7 @@ const teams = [
         ],
         nacionais: [
           { name: 'Campeonato Brasileiro', count: 4 },
+          { name: 'Campeonato Brasileiro Série B', count: 1 },
           { name: 'Copa do Brasil', count: 1 },
         ],
         estaduais: [
@@ -561,41 +1163,56 @@ const teams = [
         ]
       },
     ], artilheiros: [
-      { "nome": "Roberto Dinamite", "gols": 708 },
-      { "nome": "Romário", "gols": 326 },
-      { "nome": "Ademir de Menezes", "gols": 301 },
-      { "nome": "Pinga", "gols": 250 },
-      { "nome": "Russinho", "gols": 230 },
-      { "nome": "Ipojucan", "gols": 225 },
-      { "nome": "Vavá", "gols": 191 },
-      { "nome": "Sabará", "gols": 165 },
-      { "nome": "Lelé", "gols": 147 },
-      { "nome": "Valdir Bigode", "gols": 144 }
+      { nome: "Roberto Dinamite", gols: 708 },
+      { nome: "Romário", gols: 326 },
+      { nome: "Ademir de Menezes", gols: 301 },
+      { nome: "Pinga", gols: 250 },
+      { nome: "Russinho", gols: 230 },
+      { nome: "Ipojucan", gols: 225 },
+      { nome: "Vavá", gols: 191 },
+      { nome: "Sabará", gols: 165 },
+      { nome: "Lelé", gols: 147 },
+      { nome: "Valdir Bigode", gols: 144 }
     ], redes: [
       { rede: 'Facebook', link: 'https://www.facebook.com/vascodagama' },
       { rede: 'Instagram', link: 'https://www.instagram.com/vascodagama/' },
       { rede: 'Twitter', link: 'https://x.com/VascodaGama' }
     ]
-
+  },
+  {
+    name: 'Vila Nova', shield: 'vila-nova', fundacao: '1943', titles: [
+      {
+        estaduais: [
+          { name: 'Campeonato Estadual', count: 16 },
+        ]
+      },
+    ], artilheiros: [], redes: [
+      { rede: 'Facebook', link: 'https://www.facebook.com/vilanovafcoficial' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/vilanovafcoficial/' },
+      { rede: 'Twitter', link: 'https://x.com/VilanovaFC' }
+    ]
   },
   {
     name: 'Vitória', shield: 'vitoria', fundacao: '1899', titles: [
       {
+        nacionais: [
+          { name: 'Campeonato Brasileiro Série B', count: 1 }
+        ],
         estaduais: [
           { name: 'Campeonato Estadual', count: 30 },
         ]
       },
     ], artilheiros: [
-      { "nome": "Juvenal", "gols": 150 },
-      { "nome": "Siri", "gols": 132 },
-      { "nome": "Osni", "gols": 111 },
-      { "nome": "André Catimba", "gols": 90 },
-      { "nome": "Didico", "gols": 89 },
-      { "nome": "Ramon Menezes", "gols": 89 },
-      { "nome": "Neto Baiano", "gols": 87 },
-      { "nome": "Sena", "gols": 86 },
-      { "nome": "Samuel Matos", "gols": 77 },
-      { "nome": "Tombinho", "gols": 76 }
+      { nome: "Juvenal", gols: 150 },
+      { nome: "Siri", gols: 132 },
+      { nome: "Osni", gols: 111 },
+      { nome: "André Catimba", gols: 90 },
+      { nome: "Didico", gols: 89 },
+      { nome: "Ramon Menezes", gols: 89 },
+      { nome: "Neto Baiano", gols: 87 },
+      { nome: "Sena", gols: 86 },
+      { nome: "Samuel Matos", gols: 77 },
+      { nome: "Tombinho", gols: 76 }
     ], redes: [
       { rede: 'Facebook', link: 'https://www.facebook.com/ecvitoria' },
       { rede: 'Instagram', link: 'https://www.instagram.com/ecvitoria/' },

@@ -1,13 +1,16 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
+import * as MediaLibrary from 'expo-media-library';
 import { useLocalSearchParams } from 'expo-router';
+import React, { useEffect, useRef, useState } from 'react';
+import { Alert, Image, Platform, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { captureRef } from 'react-native-view-shot';
 import { getShieldSource } from './times/shields';
 
 type TitleCategory = {
-    mundiais: { name: string; count: number }[];
-    internacionais: { name: string; count: number }[];
-    nacionais: { name: string; count: number }[];
-    estaduais: { name: string; count: number }[];
+    mundiais?: { name: string; count: number }[];
+    internacionais?: { name: string; count: number }[];
+    nacionais?: { name: string; count: number }[];
+    estaduais?: { name: string; count: number }[];
 };
 
 type Team = {
@@ -17,193 +20,354 @@ type Team = {
     titles: TitleCategory[];
 };
 
+const CATEGORY_ORDER = ['mundiais', 'internacionais', 'nacionais', 'estaduais'];
+
+const CATEGORY_CONFIG: Record<string, { label: string; icon: string; accent: string; accentLight: string }> = {
+    mundiais:       { label: 'Mundiais',       icon: '🌍', accent: '#7C3AED', accentLight: '#EDE9FE' },
+    internacionais: { label: 'Internacionais', icon: '🌎', accent: '#2563EB', accentLight: '#DBEAFE' },
+    nacionais:      { label: 'Nacionais',      icon: '🇧🇷', accent: '#16A34A', accentLight: '#DCFCE7' },
+    estaduais:      { label: 'Estaduais',      icon: '📍', accent: '#F59E0B', accentLight: '#FEF3C7' },
+};
+
 const CompareTeamsScreen: React.FC = () => {
     const params = useLocalSearchParams();
     const teamsString = Array.isArray(params.teams) ? params.teams[0] : params.teams;
     const teams: Team[] = teamsString ? JSON.parse(teamsString) : [];
+    const viewRef = useRef<React.ElementRef<typeof View>>(null);
+    const [hasPermission, setHasPermission] = useState(false);
 
-    const categoryOrder = ['mundiais', 'internacionais', 'nacionais', 'estaduais'];
+    useEffect(() => {
+        (async () => {
+            const { status } = await MediaLibrary.requestPermissionsAsync();
+            setHasPermission(status === 'granted');
+        })();
+    }, []);
 
-    const extractTitlesByCategory = (teams: Team[]) => {
-        const titlesByCategory: { [category: string]: { name: string }[] } = {};
-        categoryOrder.forEach(category => titlesByCategory[category] = []);
+    const handleCaptureAndSave = async () => {
+        try {
+            if (!hasPermission) {
+                Alert.alert('Permissão necessária', 'É necessário permitir o acesso à galeria para salvar a imagem.');
+                return;
+            }
+            const uri = await captureRef(viewRef, { format: 'png', quality: 1 });
+            if (Platform.OS === 'android' && Platform.Version >= 30) {
+                const permissions = await MediaLibrary.requestPermissionsAsync();
+                if (!permissions.granted) {
+                    Alert.alert('Permissão necessária', 'Acesso ao armazenamento negado.');
+                    return;
+                }
+            }
+            await MediaLibrary.saveToLibraryAsync(uri);
+            Alert.alert('Sucesso', 'Imagem salva na galeria!');
+        } catch (error) {
+            Alert.alert('Atenção', 'Para salvar imagens, use o app instalado (não o Expo Go).');
+        }
+    };
 
-        teams?.forEach(team => {
-            team?.titles?.forEach(category => {
-                Object.entries(category).forEach(([categoryName, titleList]) => {
-                    if (titlesByCategory[categoryName]) {
-                        titleList.forEach(title => {
-                            if (!titlesByCategory[categoryName].some(t => t.name === title.name)) {
-                                titlesByCategory[categoryName].push({ name: title.name });
-                            }
-                        });
-                    }
+    const allTitlesByCategory: Record<string, { name: string; counts: number[] }[]> = {};
+    CATEGORY_ORDER.forEach(cat => (allTitlesByCategory[cat] = []));
+
+    CATEGORY_ORDER.forEach(cat => {
+        const titleMap: Record<string, number[]> = {};
+        teams.forEach((team, ti) => {
+            team.titles?.forEach((block: any) => {
+                (block[cat] ?? []).forEach((t: { name: string; count: number }) => {
+                    if (!titleMap[t.name]) titleMap[t.name] = teams.map(() => 0);
+                    titleMap[t.name][ti] = t.count;
                 });
             });
         });
+        allTitlesByCategory[cat] = Object.entries(titleMap).map(([name, counts]) => ({ name, counts }));
+    });
 
-        return titlesByCategory;
-    };
+    const totals = teams.map((_, ti) =>
+        CATEGORY_ORDER.flatMap(cat => allTitlesByCategory[cat])
+            .reduce((sum, t) => sum + (t.counts[ti] ?? 0), 0)
+    );
 
-    const allTitlesByCategory = extractTitlesByCategory(teams);
+    const winner = totals[0] > totals[1] ? 0 : totals[1] > totals[0] ? 1 : -1;
 
     return (
-        <ScrollView contentContainerStyle={styles.scrollContainer}>
-            <View style={styles.container}>
-                <View style={styles.teams}>
-                    {teams.map((team, index) => (
-                        <View key={index} style={styles.perfilTeam}>
-                            <Text style={styles.teamName}>{team.name}</Text>
-                            <Image source={getShieldSource(team.shield)} style={styles.shield} resizeMode="contain" />
-                            <Text>Fundação: {team.fundacao}</Text>
-                        </View>
-                    ))}
-                </View>
+        <View style={styles.root} ref={viewRef}>
+            <StatusBar barStyle="dark-content" backgroundColor="#F8F9FA" />
+            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
 
-                <View style={styles.tableContainer}>
-                    <View style={styles.table}>
-                        {categoryOrder.map((category, categoryIndex) => (
-                            <View key={categoryIndex} style={styles.categoryContainer}>
-                                {allTitlesByCategory[category].length > 0 && (
-                                    <>
-                                        <Text style={styles.categoryTitle}>{category.charAt(0).toUpperCase() + category.slice(1)}</Text>
-                                        {allTitlesByCategory[category].map((title, titleIndex) => (
-                                            <View key={titleIndex} style={styles.row}>
-                                                <View style={styles.titleContainer}>
-                                                    <Text style={styles.typeTitle}>{title.name}</Text>
-                                                </View>
+                {/* ── HERO com os dois times ── */}
+                <View style={styles.hero}>
 
-                                                <View style={styles.valueContainer}>
-                                                    {teams.map((team, teamIndex) => {
-                                                        const titleObj = team.titles
-                                                            .flatMap(category => Object.values(category).flat())
-                                                            .find(t => t.name === title.name);
-                                                        return (
-                                                            <React.Fragment key={teamIndex}>
-                                                                <Text style={styles.valueText}>
-                                                                    {titleObj?.count || '0'}
-                                                                </Text>
-                                                                {teamIndex !== teams.length - 1 && <Text> X </Text>}
-                                                            </React.Fragment>
-                                                        );
-                                                    })}
-                                                </View>
-                                            </View>
-                                        ))}
-                                    </>
-                                )}
+                    {/* Times lado a lado */}
+                    <View style={styles.heroTeamsRow}>
+
+                        {/* Time A */}
+                        <View style={styles.teamHero}>
+                            <Image
+                                source={getShieldSource(teams[0]?.shield)}
+                                style={styles.shield}
+                                resizeMode="contain"
+                            />
+                            <Text style={styles.teamName} numberOfLines={2}>{teams[0]?.name}</Text>
+                            <View style={[styles.totalBadge, winner === 0 && styles.totalBadgeWinner]}>
+                                <Text style={[styles.totalText, winner === 0 && styles.totalTextWinner]}>
+                                    🏆 {totals[0]}
+                                </Text>
                             </View>
-                        ))}
+                        </View>
+
+                        {/* Centro: VS + botão print */}
+                        <View style={styles.centerCol}>
+                            <Text style={styles.vsText}>VS</Text>
+                            <TouchableOpacity style={styles.captureBtn} onPress={handleCaptureAndSave}>
+                                <MaterialIcons name="camera-alt" size={20} color="#FFF" />
+                            </TouchableOpacity>
+                        </View>
+
+                        {/* Time B */}
+                        <View style={styles.teamHero}>
+                            <Image
+                                source={getShieldSource(teams[1]?.shield)}
+                                style={styles.shield}
+                                resizeMode="contain"
+                            />
+                            <Text style={styles.teamName} numberOfLines={2}>{teams[1]?.name}</Text>
+                            <View style={[styles.totalBadge, winner === 1 && styles.totalBadgeWinner]}>
+                                <Text style={[styles.totalText, winner === 1 && styles.totalTextWinner]}>
+                                    🏆 {totals[1]}
+                                </Text>
+                            </View>
+                        </View>
+
                     </View>
                 </View>
-            </View>
-        </ScrollView>
+
+                {/* ── CATEGORIAS ── */}
+                <View style={styles.body}>
+                    {CATEGORY_ORDER.map(cat => {
+                        const rows = allTitlesByCategory[cat];
+                        if (!rows.length) return null;
+                        const config = CATEGORY_CONFIG[cat];
+                        const catTotals = teams.map((_, ti) => rows.reduce((s, r) => s + r.counts[ti], 0));
+
+                        return (
+                            <View key={cat} style={styles.categoryBlock}>
+                                <View style={[styles.categoryHeader, { backgroundColor: config.accentLight }]}>
+                                    <Text style={styles.categoryIcon}>{config.icon}</Text>
+                                    <Text style={[styles.categoryLabel, { color: config.accent }]}>{config.label}</Text>
+                                    <View style={styles.catTotalsRow}>
+                                        {catTotals.map((ct, i) => (
+                                            <React.Fragment key={i}>
+                                                <View style={[styles.catTotalBadge, { backgroundColor: config.accent }]}>
+                                                    <Text style={styles.catTotalText}>{ct}</Text>
+                                                </View>
+                                                {i === 0 && <Text style={[styles.catVs, { color: config.accent }]}>×</Text>}
+                                            </React.Fragment>
+                                        ))}
+                                    </View>
+                                </View>
+
+                                {rows.map((row, ri) => {
+                                    const [a, b] = row.counts;
+                                    const aWins = a > b, bWins = b > a;
+                                    return (
+                                        <View key={ri} style={styles.titleRow}>
+                                            <View style={[styles.scoreBox, aWins && { backgroundColor: config.accentLight }]}>
+                                                <Text style={[styles.scoreText, aWins && { color: config.accent }]}>{a}</Text>
+                                            </View>
+                                            <Text style={styles.titleName} numberOfLines={2}>{row.name}</Text>
+                                            <View style={[styles.scoreBox, bWins && { backgroundColor: config.accentLight }]}>
+                                                <Text style={[styles.scoreText, bWins && { color: config.accent }]}>{b}</Text>
+                                            </View>
+                                        </View>
+                                    );
+                                })}
+                            </View>
+                        );
+                    })}
+                </View>
+
+                <View style={{ height: 32 }} />
+            </ScrollView>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
-    scrollContainer: {
+    root: {
+        flex: 1,
+        backgroundColor: '#F8F9FA',
+    },
+    scrollContent: {
         flexGrow: 1,
     },
-    container: {
-        flex: 1,
-        justifyContent: 'flex-start',
+
+    // ── HERO
+    hero: {
+        backgroundColor: '#FFFFFF',
         alignItems: 'center',
-        paddingHorizontal: 20,
-    },
-    teams: {
-        width: '100%',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: 20,
-    },
-    teamName: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        marginBottom: 10,
-        textAlign: 'center',
-    },
-    shield: {
-        width: 80,
-        height: 80,
-        marginBottom: 10,
-    },
-    tableContainer: {
-        flex: 1,
-        width: '100%',
+        paddingTop: 32,
+        paddingBottom: 28,
+        paddingHorizontal: 16,
+        overflow: 'hidden',
+        position: 'relative',
+        borderBottomLeftRadius: 32,
+        borderBottomRightRadius: 32,
+        elevation: 4,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.08,
+        shadowRadius: 10,
         marginBottom: 20,
     },
-    table: {
-        backgroundColor: '#f8f8f8',
-        borderRadius: 10,
-        padding: 0,
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
-        width: '100%',
-    },
-    titleContainer: {
-        marginBottom: 5,
-        padding: 5,
-        borderRadius: 5,
-    },
-    row: {
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        paddingHorizontal: 20,
-        marginBottom: 5,
-        padding: 10,
-    },
-    valueContainer: {
+    heroTeamsRow: {
         flexDirection: 'row',
-        justifyContent: 'space-around',
         alignItems: 'center',
-        paddingVertical: 5,
-        backgroundColor: '#ffffff',
-        borderRadius: 20,
-        borderWidth: 1,
-        borderColor: '#e0e0e0',
+        justifyContent: 'center',
+        width: '100%',
+        gap: 8,
     },
-    header: {
-        textAlign: 'center',
-        fontSize: 20,
-        fontWeight: 'bold',
+    teamHero: {
+        flex: 1,
+        alignItems: 'center',
+        gap: 10,
+        padding: 12,
+        borderRadius: 16,
     },
-    categoryContainer: {
+    shield: {
+        width: 72,
+        height: 72,
     },
-    categoryTitle: {
-        fontWeight: 'bold',
-        backgroundColor: 'rgba(0, 0, 0, 0.600)',
-        color: 'white',
-        fontSize: 18,
-        textAlign: 'center',
-        padding: 0,
-        margin: 0,
-    },
-    valueText: {
+    teamName: {
         fontSize: 14,
-        fontWeight: 'bold',
-        borderRadius: 20,
-        paddingHorizontal: 10,
-        paddingVertical: 5,
-        backgroundColor: 'rgba(0, 0, 0, 0.100)',
-        color: '#000',
-    },
-    perfilTeam: {
-        alignItems: 'center',
-        padding: 10,
-        borderRadius: 10,
-    },
-    typeTitle:{ 
+        fontWeight: '800',
+        color: '#111827',
         textAlign: 'center',
-        fontWeight: 'bold'
-    }
+    },
+    totalBadge: {
+        backgroundColor: '#F3F4F6',
+        borderRadius: 12,
+        paddingHorizontal: 10,
+        paddingVertical: 4,
+        borderWidth: 1,
+        borderColor: '#E5E7EB',
+    },
+    totalBadgeWinner: {
+        backgroundColor: '#FEF3C7',
+        borderColor: '#F59E0B',
+    },
+    totalText: {
+        fontSize: 13,
+        fontWeight: '700',
+        color: '#374151',
+    },
+    totalTextWinner: {
+        color: '#B45309',
+    },
+
+    // Centro VS + câmera
+    centerCol: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 10,
+    },
+    vsText: {
+        fontSize: 14,
+        fontWeight: '900',
+        color: '#D1D5DB',
+        letterSpacing: 1,
+    },
+    captureBtn: {
+        backgroundColor: '#6200EA',
+        padding: 9,
+        borderRadius: 22,
+        elevation: 6,
+        shadowColor: '#6200EA',
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.35,
+        shadowRadius: 6,
+    },
+
+    // ── BODY
+    body: {
+        paddingHorizontal: 16,
+        gap: 14,
+    },
+    categoryBlock: {
+        backgroundColor: '#FFFFFF',
+        borderRadius: 16,
+        overflow: 'hidden',
+        elevation: 2,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.06,
+        shadowRadius: 4,
+        borderWidth: 1,
+        borderColor: '#F3F4F6',
+    },
+    categoryHeader: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 14,
+        gap: 8,
+    },
+    categoryIcon: {
+        fontSize: 16,
+    },
+    categoryLabel: {
+        flex: 1,
+        fontSize: 14,
+        fontWeight: '800',
+        letterSpacing: 0.3,
+    },
+    catTotalsRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 6,
+    },
+    catTotalBadge: {
+        borderRadius: 10,
+        paddingHorizontal: 9,
+        paddingVertical: 3,
+    },
+    catTotalText: {
+        color: '#FFF',
+        fontSize: 13,
+        fontWeight: '700',
+    },
+    catVs: {
+        fontSize: 12,
+        fontWeight: '700',
+    },
+    titleRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingVertical: 11,
+        paddingHorizontal: 14,
+        borderTopWidth: 1,
+        borderTopColor: '#F3F4F6',
+        gap: 8,
+    },
+    titleName: {
+        flex: 1,
+        fontSize: 13,
+        fontWeight: '500',
+        color: '#374151',
+        textAlign: 'center',
+    },
+    scoreBox: {
+        width: 34,
+        height: 34,
+        borderRadius: 10,
+        backgroundColor: '#F9FAFB',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: 1,
+        borderColor: '#E5E7EB',
+    },
+    scoreText: {
+        fontSize: 15,
+        fontWeight: '800',
+        color: '#9CA3AF',
+    },
 });
 
 export default CompareTeamsScreen;
