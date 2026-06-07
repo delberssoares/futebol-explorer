@@ -1,14 +1,20 @@
+import { MaterialIcons } from '@expo/vector-icons';
+import * as MediaLibrary from 'expo-media-library';
 import { useLocalSearchParams } from 'expo-router';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
     ActivityIndicator,
+    Alert,
     FlatList,
     Image,
+    Platform,
     StatusBar,
     StyleSheet,
     Text,
+    TouchableOpacity,
     View
 } from 'react-native';
+import { captureRef } from 'react-native-view-shot';
 import { getShieldSource } from './times/shields';
 
 type Artilheiro = {
@@ -27,7 +33,16 @@ const MEDAL: Record<number, string> = { 0: '🥇', 1: '🥈', 2: '🥉' };
 const TeamArtilheiros: React.FC = () => {
     const [loading, setLoading] = useState(true);
     const [team, setTeam] = useState<Team | null>(null);
+    const [hasPermission, setHasPermission] = useState(false);
+    const viewRef = useRef<React.ElementRef<typeof View>>(null);
     const params = useLocalSearchParams();
+
+    useEffect(() => {
+        (async () => {
+            const { status } = await MediaLibrary.requestPermissionsAsync();
+            setHasPermission(status === 'granted');
+        })();
+    }, []);
 
     useEffect(() => {
         const teamString = params.team;
@@ -37,6 +52,27 @@ const TeamArtilheiros: React.FC = () => {
         }
         setLoading(false);
     }, [params.team]);
+
+    const handleCaptureAndSave = async () => {
+        if (!hasPermission) {
+            Alert.alert('Permissão necessária', 'É necessário permitir o acesso à galeria para salvar a imagem.');
+            return;
+        }
+        try {
+            const uri = await captureRef(viewRef, { format: 'png', quality: 1 });
+            if (Platform.OS === 'android' && Platform.Version >= 30) {
+                const permissions = await MediaLibrary.requestPermissionsAsync();
+                if (!permissions.granted) {
+                    Alert.alert('Permissão necessária', 'Acesso ao armazenamento negado.');
+                    return;
+                }
+            }
+            await MediaLibrary.saveToLibraryAsync(uri);
+            Alert.alert('Sucesso', 'Imagem salva na galeria!');
+        } catch (error) {
+            Alert.alert('Erro', 'Não foi possível salvar a imagem.');
+        }
+    };
 
     if (loading) {
         return (
@@ -89,8 +125,14 @@ const TeamArtilheiros: React.FC = () => {
     };
 
     return (
-        <View style={styles.root}>
+        <View style={styles.root} ref={viewRef}>
             <StatusBar barStyle="dark-content" backgroundColor="#F8F9FA" />
+
+            {/* Botão câmera */}
+            <TouchableOpacity style={styles.captureBtn} onPress={handleCaptureAndSave}>
+                <MaterialIcons name="camera-alt" size={22} color="#FFF" />
+            </TouchableOpacity>
+
             <FlatList
                 data={artilheiros}
                 keyExtractor={(_, i) => i.toString()}
@@ -124,6 +166,20 @@ const styles = StyleSheet.create({
     root: {
         flex: 1,
         backgroundColor: '#F8F9FA',
+    },
+    captureBtn: {
+        position: 'absolute',
+        top: 12,
+        right: 12,
+        backgroundColor: '#6200EA',
+        padding: 10,
+        borderRadius: 24,
+        zIndex: 10,
+        elevation: 6,
+        shadowColor: '#6200EA',
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.35,
+        shadowRadius: 6,
     },
     centered: {
         flex: 1,
