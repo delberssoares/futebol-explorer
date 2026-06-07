@@ -1,31 +1,26 @@
 {
   "expo": {
     "name": "Futebol Explorer",
-    "slug": "futebol-explorer",
-    "version": "1.0.9",
+    "slug": "dss-apps",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "futebol-explorer",
+    "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "newArchEnabled": true,
-    "ios": {
-      "supportsTablet": true
-    },
     "android": {
-      "versionCode": 9,
+      "versionCode": 3,
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.delberss.dssapps",
       "permissions": [
-        "android.permission.READ_MEDIA_IMAGES",
-        "android.permission.READ_EXTERNAL_STORAGE"
+        "android.permission.WRITE_EXTERNAL_STORAGE"
       ],
       "blockedPermissions": [
         "android.permission.ACCESS_MEDIA_LOCATION"
@@ -38,24 +33,17 @@
     },
     "plugins": [
       "expo-router",
-      [
-        "expo-splash-screen",
-        {
-          "image": "./assets/images/splash.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
-        }
-      ],
-      "expo-web-browser"
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true
     },
     "extra": {
-      "router": {},
+      "router": {
+        "origin": false
+      },
       "eas": {
-        "projectId": "e824493d-4c82-4ba7-9c81-5ede01c49309"
+        "projectId": "81586e2e-aa2c-453b-860d-154d3542217d"
       }
     }
   }
