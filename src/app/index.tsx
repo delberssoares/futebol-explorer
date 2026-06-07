@@ -1,11 +1,12 @@
-import { router } from 'expo-router';
-import React, { useEffect, useState } from 'react';
-import { BackHandler, Button, FlatList, Image, ImageSourcePropType, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image, Button } from 'react-native';
 import teams from './times/times';
+import { getShieldSource } from './times/shields';
+import { router } from 'expo-router';
 
 type Team = {
     name: string;
-    shield: ImageSourcePropType;
+    shield: string;
 };
 
 teams.sort((a, b) => a.name.localeCompare(b.name));
@@ -16,7 +17,7 @@ const handlePress = (team: Team) => {
 
 const SelectTeamScreen: React.FC = () => {
     const [selectedTeams, setSelectedTeams] = useState<Team[]>([]);
-    const [longPressTimeout, setLongPressTimeout] = useState<number | null>(null);
+    const [longPressTimeout, setLongPressTimeout] = useState<NodeJS.Timeout | null>(null);
 
     const handleSelectTeam = (team: Team) => {
         if (selectedTeams.length === 0) {
@@ -60,9 +61,7 @@ const SelectTeamScreen: React.FC = () => {
     };
 
     const renderItem = ({ item }: { item: Team }) => {
-        const selectedIndex = selectedTeams.findIndex((team) => team.name === item.name);
-        const isSelected = selectedIndex !== -1;
-
+        const isSelected = selectedTeams.some((team) => team.name === item.name);
         return (
             <TouchableOpacity
                 onPress={() => handleSelectTeam(item)}
@@ -70,33 +69,12 @@ const SelectTeamScreen: React.FC = () => {
                 onPressOut={handlePressOut}
                 style={[styles.item, isSelected && styles.selectedItem]}
             >
-                <View style={styles.itemContent}>
-                    <View style={styles.itemLeft}>
-                        <Image source={item.shield} style={styles.shield} />
-                        <Text style={styles.name}>{item.name}</Text>
-                    </View>
-                    {isSelected && (
-                        <Text style={styles.selectionNumber}>{selectedIndex + 1}</Text>
-                    )}
-                </View>
+                <Image source={getShieldSource(item.shield)} style={styles.shield} resizeMode="contain" />
+                <Text style={styles.name}>{item.name}</Text>
             </TouchableOpacity>
         );
     };
 
-
-    useEffect(() => {
-        const onBackPress = () => {
-            if (selectedTeams.length > 0) {
-                setSelectedTeams([]);
-                return true; // impede o comportamento padrão (fechar o app)
-            }
-            return false; // permite o comportamento padrão (sair do app)
-        };
-
-        const subscription = BackHandler.addEventListener('hardwareBackPress', onBackPress);
-
-        return () => subscription.remove();
-    }, [selectedTeams]);
     return (
         <View style={styles.container}>
             <Text style={styles.mainTitle}>
@@ -134,49 +112,17 @@ const styles = StyleSheet.create({
         borderRadius: 8,
     },
     selectedItem: {
-        backgroundColor: '#d0e8ff', // azul claro
-        borderColor: '#007AFF',     // azul iOS padrão
-        borderWidth: 0.2,
-        borderRadius: 8,
-        shadowColor: '#007AFF',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.3,
-        shadowRadius: 3,
-        elevation: 5, // para Android
+        backgroundColor: '#CDCDCD',
+        borderColor: '#ADD8E6',
     },
-
     shield: {
         width: 50,
         height: 50,
         marginRight: 16,
-        resizeMode: 'contain',
     },
     name: {
         fontSize: 18,
     },
-    itemContent: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        flex: 1,
-    },
-    itemLeft: {
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    selectionNumber: {
-        width: 28,
-        height: 28,
-        borderRadius: 14, // deixa a borda arredondada (metade do width/height)
-        backgroundColor: '#007AFF', // cor de fundo (azul padrão iOS)
-        color: 'white',
-        textAlign: 'center',
-        textAlignVertical: 'center',
-        fontSize: 16,
-        fontWeight: 'bold',
-        marginRight: 8,
-    },
-
 });
 
 export default SelectTeamScreen;

@@ -1,7 +1,8 @@
-import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
-import { router, useLocalSearchParams } from 'expo-router';
 import React from 'react';
-import { FlatList, Image, ImageSourcePropType, Linking, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity, Linking } from 'react-native';
+import { useLocalSearchParams, router } from 'expo-router';
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import { getShieldSource } from './times/shields';
 
 type RedeSocial = {
     nome: string;
@@ -10,7 +11,7 @@ type RedeSocial = {
 
 type Team = {
     name: string;
-    shield: ImageSourcePropType;
+    shield: string;
     fundacao: string;
     redes: RedeSocial[];
 };
@@ -58,7 +59,7 @@ const TeamDetailScreen: React.FC = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.teamName}>{team.name}</Text>
-             <Image source={team.shield} style={styles.shield} />
+            <Image source={getShieldSource(team.shield)} style={styles.shield} resizeMode="contain" />
             <Text>Fundação: {team.fundacao}</Text>
             <FlatList
                 data={topics}
@@ -100,7 +101,6 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
         marginVertical: 16,
-        resizeMode: 'contain',
     },
     teamName: {
         fontSize: 24,
