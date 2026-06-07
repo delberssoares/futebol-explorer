@@ -274,7 +274,7 @@ const teams = [
     name: 'Avaí', shield: 'avai', fundacao: '1923', titles: [
       {
         estaduais: [
-          { name: 'Campeonato Estadual', count: 20 },
+          { name: 'Campeonato Estadual', count: 19 },
         ]
       },
     ], artilheiros: [], redes: [
@@ -298,7 +298,7 @@ const teams = [
         "estaduais": [
           {
             "name": "Campeonato Estadual",
-            "count": 50
+            "count": 52
           }
         ]
       }
@@ -510,11 +510,14 @@ const teams = [
   {
     name: 'Chapecoense', shield: 'chapecoense', fundacao: '1929', titles: [
       {
+        internacionais: [
+          { name: 'Copa Sul-Americana', count: 1 }
+        ],
         nacionais: [
           { name: 'Campeonato Brasileiro Série B', count: 1 }
         ],
         estaduais: [
-          { name: 'Campeonato Estadual', count: 9 },
+          { name: 'Campeonato Estadual', count: 7 },
         ]
       },
     ], artilheiros: [], redes: [
@@ -573,7 +576,7 @@ const teams = [
           { name: 'Campeonato Brasileiro Série B', count: 3 }
         ],
         estaduais: [
-          { name: 'Campeonato Estadual', count: 38 },
+          { name: 'Campeonato Estadual', count: 39 },
         ]
       },
     ], artilheiros: [
@@ -597,7 +600,7 @@ const teams = [
     name: 'CRB', shield: 'crb', fundacao: '1912', titles: [
       {
         estaduais: [
-          { name: 'Campeonato Estadual', count: 34 },
+          { name: 'Campeonato Estadual', count: 36 },
         ]
       },
     ], artilheiros: [], redes: [
@@ -638,7 +641,7 @@ const teams = [
           { name: 'Copa do Brasil', count: 6 },
         ],
         estaduais: [
-          { name: 'Campeonato Estadual', count: 38 },
+          { name: 'Campeonato Estadual', count: 40 },
         ]
       },
     ], artilheiros: [
@@ -762,7 +765,7 @@ const teams = [
           },
         ],
         estaduais: [
-          { name: 'Campeonato Estadual', count: 46 },
+          { name: 'Campeonato Estadual', count: 47 },
         ]
       },
     ], artilheiros: [
@@ -789,7 +792,7 @@ const teams = [
           { name: 'Campeonato Brasileiro Série B', count: 2 }
         ],
         estaduais: [
-          { name: 'Campeonato Estadual', count: 22 },
+          { name: 'Campeonato Estadual', count: 29 },
         ]
       },
     ], artilheiros: [
@@ -826,7 +829,7 @@ const teams = [
           { name: 'Supercopa do Brasil', count: 1 },
         ],
         estaduais: [
-          { name: 'Campeonato Estadual', count: 43 },
+          { name: 'Campeonato Estadual', count: 44 },
         ]
       },
     ], artilheiros: [
@@ -862,7 +865,7 @@ const teams = [
           { name: 'Copa do Brasil', count: 1 },
         ],
         estaduais: [
-          { name: 'Campeonato Estadual', count: 45 },
+          { name: 'Campeonato Estadual', count: 46 },
         ]
       },
     ], artilheiros: [
@@ -906,7 +909,7 @@ const teams = [
           { name: 'Campeonato Brasileiro Série B', count: 1 },
         ],
         estaduais: [
-          { name: 'Campeonato Estadual', count: 7 },
+          { name: 'Campeonato Estadual', count: 5 },
         ]
       },
     ], artilheiros: [], redes: [
@@ -917,11 +920,6 @@ const teams = [
   },
   {
     name: 'Mirassol', shield: 'mirassol', fundacao: '1925', titles: [
-      {
-        estaduais: [
-          { name: 'Campeonato Estadual', count: 1 },
-        ]
-      },
     ], artilheiros: [], redes: [
       { rede: 'Facebook', link: 'https://www.facebook.com/mirassolfc' },
       { rede: 'Instagram', link: 'https://www.instagram.com/mirassolfc/' },
@@ -943,11 +941,6 @@ const teams = [
   },
   {
     name: 'Novorizontino', shield: 'novorizontino', fundacao: '1973', titles: [
-      {
-        estaduais: [
-          { name: 'Campeonato Estadual', count: 1 },
-        ]
-      },
     ], artilheiros: [], redes: [
       { rede: 'Facebook', link: 'https://www.facebook.com/novorizontino' },
       { rede: 'Instagram', link: 'https://www.instagram.com/novorizontino/' },
@@ -958,7 +951,7 @@ const teams = [
     name: 'Operário-PR', shield: 'operario-pr', fundacao: '1912', titles: [
       {
         estaduais: [
-          { name: 'Campeonato Estadual', count: 5 },
+          { name: 'Campeonato Estadual', count: 3 },
         ]
       },
     ], artilheiros: [], redes: [
@@ -982,7 +975,7 @@ const teams = [
           { name: 'Supercopa do Brasil', count: 1 },
         ],
         estaduais: [
-          { name: 'Campeonato Estadual', count: 26 },
+          { name: 'Campeonato Estadual', count: 27 },
         ]
       },
     ], artilheiros: [
@@ -1003,11 +996,6 @@ const teams = [
   },
   {
     name: 'Ponte Preta', shield: 'ponte-preta', fundacao: '1900', titles: [
-      {
-        estaduais: [
-          { name: 'Campeonato Estadual', count: 8 },
-        ]
-      },
     ], artilheiros: [
       { nome: "Julinho Botelho", gols: 189 },
       { nome: "Carlos Verardi", gols: 142 },
@@ -1054,7 +1042,7 @@ const teams = [
           { name: 'Copa do Brasil', count: 1 },
         ],
         estaduais: [
-          { name: 'Campeonato Estadual', count: 23 },
+          { name: 'Campeonato Estadual', count: 22 },
         ]
       },
     ], artilheiros: [
@@ -1076,11 +1064,6 @@ const teams = [
   },
   {
     name: 'São Bernardo', shield: 'sao-bernardo', fundacao: '1916', titles: [
-      {
-        estaduais: [
-          { name: 'Campeonato Estadual', count: 1 },
-        ]
-      },
     ], artilheiros: [], redes: [
       { rede: 'Facebook', link: 'https://www.facebook.com/saobernardofc' },
       { rede: 'Instagram', link: 'https://www.instagram.com/saobernardofc/' },
@@ -1132,15 +1115,18 @@ const teams = [
     name: 'Sport', shield: 'sport', fundacao: '1905', titles: [
       {
         nacionais: [
+          {
+            name: "Campeonato Brasileiro",
+            count: 1
+          },
           { name: 'Copa do Brasil', count: 1 },
           {
-            "name": "Campeonato Brasileiro Série B",
-            "count": 1
+            name: "Campeonato Brasileiro Série B",
+            count: 1
           },
-          { name: 'Copa do Nordeste', count: 5 },
         ],
         estaduais: [
-          { name: 'Campeonato Estadual', count: 43 },
+          { name: 'Campeonato Estadual', count: 46 },
         ]
       },
     ], artilheiros: [
@@ -1196,11 +1182,8 @@ const teams = [
   {
     name: 'Vila Nova', shield: 'vila-nova', fundacao: '1943', titles: [
       {
-        nacionais: [
-          { name: 'Campeonato Brasileiro Série B', count: 1 },
-        ],
         estaduais: [
-          { name: 'Campeonato Estadual', count: 15 },
+          { name: 'Campeonato Estadual', count: 16 },
         ]
       },
     ], artilheiros: [], redes: [
