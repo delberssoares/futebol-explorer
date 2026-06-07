@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         alignItems: 'center',
         paddingTop: 36,
-        paddingBottom: 40,
+        paddingBottom: 20,
         overflow: 'hidden',
         position: 'relative',
         borderBottomLeftRadius: 32,
