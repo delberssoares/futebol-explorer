@@ -1,6 +1,9 @@
+import { MaterialIcons } from '@expo/vector-icons';
+import * as MediaLibrary from 'expo-media-library';
 import { useLocalSearchParams } from 'expo-router';
-import React from 'react';
-import { Image, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { Alert, Image, Platform, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { captureRef } from 'react-native-view-shot';
 import { getShieldSource } from './times/shields';
 
 type TitleCategory = {
@@ -30,8 +33,37 @@ const CompareTeamsScreen: React.FC = () => {
     const params = useLocalSearchParams();
     const teamsString = Array.isArray(params.teams) ? params.teams[0] : params.teams;
     const teams: Team[] = teamsString ? JSON.parse(teamsString) : [];
+    const viewRef = useRef<React.ElementRef<typeof View>>(null);
+    const [hasPermission, setHasPermission] = useState(false);
 
-    // Monta mapa de títulos por categoria → título → [count time A, count time B]
+    useEffect(() => {
+        (async () => {
+            const { status } = await MediaLibrary.requestPermissionsAsync();
+            setHasPermission(status === 'granted');
+        })();
+    }, []);
+
+    const handleCaptureAndSave = async () => {
+        try {
+            if (!hasPermission) {
+                Alert.alert('Permissão necessária', 'É necessário permitir o acesso à galeria para salvar a imagem.');
+                return;
+            }
+            const uri = await captureRef(viewRef, { format: 'png', quality: 1 });
+            if (Platform.OS === 'android' && Platform.Version >= 30) {
+                const permissions = await MediaLibrary.requestPermissionsAsync();
+                if (!permissions.granted) {
+                    Alert.alert('Permissão necessária', 'Acesso ao armazenamento negado.');
+                    return;
+                }
+            }
+            await MediaLibrary.saveToLibraryAsync(uri);
+            Alert.alert('Sucesso', 'Imagem salva na galeria!');
+        } catch (error) {
+            Alert.alert('Atenção', 'Para salvar imagens, use o app instalado (não o Expo Go).');
+        }
+    };
+
     const allTitlesByCategory: Record<string, { name: string; counts: number[] }[]> = {};
     CATEGORY_ORDER.forEach(cat => (allTitlesByCategory[cat] = []));
 
@@ -48,46 +80,63 @@ const CompareTeamsScreen: React.FC = () => {
         allTitlesByCategory[cat] = Object.entries(titleMap).map(([name, counts]) => ({ name, counts }));
     });
 
-    // Total por time
     const totals = teams.map((_, ti) =>
         CATEGORY_ORDER.flatMap(cat => allTitlesByCategory[cat])
             .reduce((sum, t) => sum + (t.counts[ti] ?? 0), 0)
     );
 
-    const winner = totals[0] > totals[1] ? 0 : totals[1] > totals[0] ? 1 : -1; // -1 = empate
+    const winner = totals[0] > totals[1] ? 0 : totals[1] > totals[0] ? 1 : -1;
 
     return (
-        <View style={styles.root}>
+        <View style={styles.root} ref={viewRef}>
             <StatusBar barStyle="dark-content" backgroundColor="#F8F9FA" />
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
 
                 {/* ── HERO com os dois times ── */}
                 <View style={styles.hero}>
-                    {teams.map((team, i) => (
-                        <React.Fragment key={i}>
-                            {i === 1 && (
-                                <View style={styles.vsContainer}>
-                                    <Text style={styles.vsText}>VS</Text>
-                                </View>
-                            )}
-                            <View style={[styles.teamHero, winner === i && styles.teamHeroWinner]}>
-                                {winner === i && (
-                                    <View style={styles.winnerBadge}>
-                                        <Text style={styles.winnerBadgeText}>👑 Mais títulos</Text>
-                                    </View>
-                                )}
-                                <Image
-                                    source={getShieldSource(team.shield)}
-                                    style={styles.shield}
-                                    resizeMode="contain"
-                                />
-                                <Text style={styles.teamName} numberOfLines={2}>{team.name}</Text>
-                                <View style={styles.totalBadge}>
-                                    <Text style={styles.totalText}>🏆 {totals[i]}</Text>
-                                </View>
+
+                    {/* Times lado a lado */}
+                    <View style={styles.heroTeamsRow}>
+
+                        {/* Time A */}
+                        <View style={styles.teamHero}>
+                            <Image
+                                source={getShieldSource(teams[0]?.shield)}
+                                style={styles.shield}
+                                resizeMode="contain"
+                            />
+                            <Text style={styles.teamName} numberOfLines={2}>{teams[0]?.name}</Text>
+                            <View style={[styles.totalBadge, winner === 0 && styles.totalBadgeWinner]}>
+                                <Text style={[styles.totalText, winner === 0 && styles.totalTextWinner]}>
+                                    🏆 {totals[0]}
+                                </Text>
                             </View>
-                        </React.Fragment>
-                    ))}
+                        </View>
+
+                        {/* Centro: VS + botão print */}
+                        <View style={styles.centerCol}>
+                            <Text style={styles.vsText}>VS</Text>
+                            <TouchableOpacity style={styles.captureBtn} onPress={handleCaptureAndSave}>
+                                <MaterialIcons name="camera-alt" size={20} color="#FFF" />
+                            </TouchableOpacity>
+                        </View>
+
+                        {/* Time B */}
+                        <View style={styles.teamHero}>
+                            <Image
+                                source={getShieldSource(teams[1]?.shield)}
+                                style={styles.shield}
+                                resizeMode="contain"
+                            />
+                            <Text style={styles.teamName} numberOfLines={2}>{teams[1]?.name}</Text>
+                            <View style={[styles.totalBadge, winner === 1 && styles.totalBadgeWinner]}>
+                                <Text style={[styles.totalText, winner === 1 && styles.totalTextWinner]}>
+                                    🏆 {totals[1]}
+                                </Text>
+                            </View>
+                        </View>
+
+                    </View>
                 </View>
 
                 {/* ── CATEGORIAS ── */}
@@ -100,11 +149,9 @@ const CompareTeamsScreen: React.FC = () => {
 
                         return (
                             <View key={cat} style={styles.categoryBlock}>
-                                {/* Cabeçalho */}
                                 <View style={[styles.categoryHeader, { backgroundColor: config.accentLight }]}>
                                     <Text style={styles.categoryIcon}>{config.icon}</Text>
                                     <Text style={[styles.categoryLabel, { color: config.accent }]}>{config.label}</Text>
-                                    {/* Totais da categoria lado a lado */}
                                     <View style={styles.catTotalsRow}>
                                         {catTotals.map((ct, i) => (
                                             <React.Fragment key={i}>
@@ -117,33 +164,17 @@ const CompareTeamsScreen: React.FC = () => {
                                     </View>
                                 </View>
 
-                                {/* Linhas de título */}
                                 {rows.map((row, ri) => {
                                     const [a, b] = row.counts;
                                     const aWins = a > b, bWins = b > a;
                                     return (
                                         <View key={ri} style={styles.titleRow}>
-                                            {/* Placar time A */}
-                                            <View style={[
-                                                styles.scoreBox,
-                                                aWins && { backgroundColor: config.accentLight },
-                                            ]}>
-                                                <Text style={[styles.scoreText, aWins && { color: config.accent }]}>
-                                                    {a}
-                                                </Text>
+                                            <View style={[styles.scoreBox, aWins && { backgroundColor: config.accentLight }]}>
+                                                <Text style={[styles.scoreText, aWins && { color: config.accent }]}>{a}</Text>
                                             </View>
-
-                                            {/* Nome do título */}
                                             <Text style={styles.titleName} numberOfLines={2}>{row.name}</Text>
-
-                                            {/* Placar time B */}
-                                            <View style={[
-                                                styles.scoreBox,
-                                                bWins && { backgroundColor: config.accentLight },
-                                            ]}>
-                                                <Text style={[styles.scoreText, bWins && { color: config.accent }]}>
-                                                    {b}
-                                                </Text>
+                                            <View style={[styles.scoreBox, bWins && { backgroundColor: config.accentLight }]}>
+                                                <Text style={[styles.scoreText, bWins && { color: config.accent }]}>{b}</Text>
                                             </View>
                                         </View>
                                     );
@@ -171,11 +202,9 @@ const styles = StyleSheet.create({
     // ── HERO
     hero: {
         backgroundColor: '#FFFFFF',
-        flexDirection: 'row',
-        alignItems: 'flex-start',
-        justifyContent: 'center',
+        alignItems: 'center',
         paddingTop: 32,
-        paddingBottom: 36,
+        paddingBottom: 28,
         paddingHorizontal: 16,
         overflow: 'hidden',
         position: 'relative',
@@ -187,6 +216,12 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.08,
         shadowRadius: 10,
         marginBottom: 20,
+    },
+    heroTeamsRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
         gap: 8,
     },
     teamHero: {
@@ -195,24 +230,6 @@ const styles = StyleSheet.create({
         gap: 10,
         padding: 12,
         borderRadius: 16,
-        borderWidth: 2,
-        borderColor: 'transparent',
-    },
-    teamHeroWinner: {
-        borderColor: '#F59E0B',
-        backgroundColor: '#FFFBEB',
-    },
-    winnerBadge: {
-        backgroundColor: '#F59E0B',
-        borderRadius: 12,
-        paddingHorizontal: 8,
-        paddingVertical: 3,
-    },
-    winnerBadgeText: {
-        fontSize: 10,
-        fontWeight: '800',
-        color: '#FFF',
-        letterSpacing: 0.3,
     },
     shield: {
         width: 72,
@@ -232,21 +249,40 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#E5E7EB',
     },
+    totalBadgeWinner: {
+        backgroundColor: '#FEF3C7',
+        borderColor: '#F59E0B',
+    },
     totalText: {
         fontSize: 13,
         fontWeight: '700',
         color: '#374151',
     },
-    vsContainer: {
-        justifyContent: 'center',
+    totalTextWinner: {
+        color: '#B45309',
+    },
+
+    // Centro VS + câmera
+    centerCol: {
         alignItems: 'center',
-        paddingTop: 40,
+        justifyContent: 'center',
+        gap: 10,
     },
     vsText: {
         fontSize: 14,
         fontWeight: '900',
         color: '#D1D5DB',
         letterSpacing: 1,
+    },
+    captureBtn: {
+        backgroundColor: '#6200EA',
+        padding: 9,
+        borderRadius: 22,
+        elevation: 6,
+        shadowColor: '#6200EA',
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.35,
+        shadowRadius: 6,
     },
 
     // ── BODY
