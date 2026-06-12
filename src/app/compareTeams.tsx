@@ -33,7 +33,7 @@ const CompareTeamsScreen: React.FC = () => {
     const params = useLocalSearchParams();
     const teamsString = Array.isArray(params.teams) ? params.teams[0] : params.teams;
     const teams: Team[] = teamsString ? JSON.parse(teamsString) : [];
-    const viewRef = useRef<React.ElementRef<typeof View>>(null);
+    const contentRef = useRef<View>(null);
     const [hasPermission, setHasPermission] = useState(false);
 
     useEffect(() => {
@@ -49,7 +49,7 @@ const CompareTeamsScreen: React.FC = () => {
                 Alert.alert('Permissão necessária', 'É necessário permitir o acesso à galeria para salvar a imagem.');
                 return;
             }
-            const uri = await captureRef(viewRef, { format: 'png', quality: 1 });
+            const uri = await captureRef(contentRef, { format: 'png', quality: 1, result: 'tmpfile' });
             if (Platform.OS === 'android' && Platform.Version >= 30) {
                 const permissions = await MediaLibrary.requestPermissionsAsync();
                 if (!permissions.granted) {
@@ -88,103 +88,105 @@ const CompareTeamsScreen: React.FC = () => {
     const winner = totals[0] > totals[1] ? 0 : totals[1] > totals[0] ? 1 : -1;
 
     return (
-        <View style={styles.root} ref={viewRef}>
+        <View style={styles.root}>
             <StatusBar barStyle="dark-content" backgroundColor="#F8F9FA" />
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
+                <View ref={contentRef} collapsable={false}>
 
-                {/* ── HERO com os dois times ── */}
-                <View style={styles.hero}>
+                    {/* ── HERO com os dois times ── */}
+                    <View style={styles.hero}>
 
-                    {/* Times lado a lado */}
-                    <View style={styles.heroTeamsRow}>
+                        {/* Times lado a lado */}
+                        <View style={styles.heroTeamsRow}>
 
-                        {/* Time A */}
-                        <View style={styles.teamHero}>
-                            <Image
-                                source={getShieldSource(teams[0]?.shield)}
-                                style={styles.shield}
-                                resizeMode="contain"
-                            />
-                            <Text style={styles.teamName} numberOfLines={2}>{teams[0]?.name}</Text>
-                            <View style={[styles.totalBadge, winner === 0 && styles.totalBadgeWinner]}>
-                                <Text style={[styles.totalText, winner === 0 && styles.totalTextWinner]}>
-                                    🏆 {totals[0]}
-                                </Text>
-                            </View>
-                        </View>
-
-                        {/* Centro: VS + botão print */}
-                        <View style={styles.centerCol}>
-                            <Text style={styles.vsText}>VS</Text>
-                            <TouchableOpacity style={styles.captureBtn} onPress={handleCaptureAndSave}>
-                                <MaterialIcons name="camera-alt" size={20} color="#FFF" />
-                            </TouchableOpacity>
-                        </View>
-
-                        {/* Time B */}
-                        <View style={styles.teamHero}>
-                            <Image
-                                source={getShieldSource(teams[1]?.shield)}
-                                style={styles.shield}
-                                resizeMode="contain"
-                            />
-                            <Text style={styles.teamName} numberOfLines={2}>{teams[1]?.name}</Text>
-                            <View style={[styles.totalBadge, winner === 1 && styles.totalBadgeWinner]}>
-                                <Text style={[styles.totalText, winner === 1 && styles.totalTextWinner]}>
-                                    🏆 {totals[1]}
-                                </Text>
-                            </View>
-                        </View>
-
-                    </View>
-                </View>
-
-                {/* ── CATEGORIAS ── */}
-                <View style={styles.body}>
-                    {CATEGORY_ORDER.map(cat => {
-                        const rows = allTitlesByCategory[cat];
-                        if (!rows.length) return null;
-                        const config = CATEGORY_CONFIG[cat];
-                        const catTotals = teams.map((_, ti) => rows.reduce((s, r) => s + r.counts[ti], 0));
-
-                        return (
-                            <View key={cat} style={styles.categoryBlock}>
-                                <View style={[styles.categoryHeader, { backgroundColor: config.accentLight }]}>
-                                    <Text style={styles.categoryIcon}>{config.icon}</Text>
-                                    <Text style={[styles.categoryLabel, { color: config.accent }]}>{config.label}</Text>
-                                    <View style={styles.catTotalsRow}>
-                                        {catTotals.map((ct, i) => (
-                                            <React.Fragment key={i}>
-                                                <View style={[styles.catTotalBadge, { backgroundColor: config.accent }]}>
-                                                    <Text style={styles.catTotalText}>{ct}</Text>
-                                                </View>
-                                                {i === 0 && <Text style={[styles.catVs, { color: config.accent }]}>×</Text>}
-                                            </React.Fragment>
-                                        ))}
-                                    </View>
+                            {/* Time A */}
+                            <View style={styles.teamHero}>
+                                <Image
+                                    source={getShieldSource(teams[0]?.shield)}
+                                    style={styles.shield}
+                                    resizeMode="contain"
+                                />
+                                <Text style={styles.teamName} numberOfLines={2}>{teams[0]?.name}</Text>
+                                <View style={[styles.totalBadge, winner === 0 && styles.totalBadgeWinner]}>
+                                    <Text style={[styles.totalText, winner === 0 && styles.totalTextWinner]}>
+                                        🏆 {totals[0]}
+                                    </Text>
                                 </View>
-
-                                {rows.map((row, ri) => {
-                                    const [a, b] = row.counts;
-                                    const aWins = a > b, bWins = b > a;
-                                    return (
-                                        <View key={ri} style={styles.titleRow}>
-                                            <View style={[styles.scoreBox, aWins && { backgroundColor: config.accentLight }]}>
-                                                <Text style={[styles.scoreText, aWins && { color: config.accent }]}>{a}</Text>
-                                            </View>
-                                            <Text style={styles.titleName} numberOfLines={2}>{row.name}</Text>
-                                            <View style={[styles.scoreBox, bWins && { backgroundColor: config.accentLight }]}>
-                                                <Text style={[styles.scoreText, bWins && { color: config.accent }]}>{b}</Text>
-                                            </View>
-                                        </View>
-                                    );
-                                })}
                             </View>
-                        );
-                    })}
-                </View>
 
-                <View style={{ height: 32 }} />
+                            {/* Centro: VS + botão print */}
+                            <View style={styles.centerCol}>
+                                <Text style={styles.vsText}>VS</Text>
+                                <TouchableOpacity style={styles.captureBtn} onPress={handleCaptureAndSave}>
+                                    <MaterialIcons name="camera-alt" size={20} color="#FFF" />
+                                </TouchableOpacity>
+                            </View>
+
+                            {/* Time B */}
+                            <View style={styles.teamHero}>
+                                <Image
+                                    source={getShieldSource(teams[1]?.shield)}
+                                    style={styles.shield}
+                                    resizeMode="contain"
+                                />
+                                <Text style={styles.teamName} numberOfLines={2}>{teams[1]?.name}</Text>
+                                <View style={[styles.totalBadge, winner === 1 && styles.totalBadgeWinner]}>
+                                    <Text style={[styles.totalText, winner === 1 && styles.totalTextWinner]}>
+                                        🏆 {totals[1]}
+                                    </Text>
+                                </View>
+                            </View>
+
+                        </View>
+                    </View>
+
+                    {/* ── CATEGORIAS ── */}
+                    <View style={styles.body}>
+                        {CATEGORY_ORDER.map(cat => {
+                            const rows = allTitlesByCategory[cat];
+                            if (!rows.length) return null;
+                            const config = CATEGORY_CONFIG[cat];
+                            const catTotals = teams.map((_, ti) => rows.reduce((s, r) => s + r.counts[ti], 0));
+
+                            return (
+                                <View key={cat} style={styles.categoryBlock}>
+                                    <View style={[styles.categoryHeader, { backgroundColor: config.accentLight }]}>
+                                        <Text style={styles.categoryIcon}>{config.icon}</Text>
+                                        <Text style={[styles.categoryLabel, { color: config.accent }]}>{config.label}</Text>
+                                        <View style={styles.catTotalsRow}>
+                                            {catTotals.map((ct, i) => (
+                                                <React.Fragment key={i}>
+                                                    <View style={[styles.catTotalBadge, { backgroundColor: config.accent }]}>
+                                                        <Text style={styles.catTotalText}>{ct}</Text>
+                                                    </View>
+                                                    {i === 0 && <Text style={[styles.catVs, { color: config.accent }]}>×</Text>}
+                                                </React.Fragment>
+                                            ))}
+                                        </View>
+                                    </View>
+
+                                    {rows.map((row, ri) => {
+                                        const [a, b] = row.counts;
+                                        const aWins = a > b, bWins = b > a;
+                                        return (
+                                            <View key={ri} style={styles.titleRow}>
+                                                <View style={[styles.scoreBox, aWins && { backgroundColor: config.accentLight }]}>
+                                                    <Text style={[styles.scoreText, aWins && { color: config.accent }]}>{a}</Text>
+                                                </View>
+                                                <Text style={styles.titleName} numberOfLines={2}>{row.name}</Text>
+                                                <View style={[styles.scoreBox, bWins && { backgroundColor: config.accentLight }]}>
+                                                    <Text style={[styles.scoreText, bWins && { color: config.accent }]}>{b}</Text>
+                                                </View>
+                                            </View>
+                                        );
+                                    })}
+                                </View>
+                            );
+                        })}
+                    </View>
+
+                    <View style={{ height: 32 }} />
+                </View>
             </ScrollView>
         </View>
     );

@@ -34,7 +34,9 @@ const TeamArtilheiros: React.FC = () => {
     const [loading, setLoading] = useState(true);
     const [team, setTeam] = useState<Team | null>(null);
     const [hasPermission, setHasPermission] = useState(false);
-    const viewRef = useRef<React.ElementRef<typeof View>>(null);
+
+    // ✅ Ref no View que envolve a FlatList
+    const contentRef = useRef<View>(null);
     const params = useLocalSearchParams();
 
     useEffect(() => {
@@ -59,7 +61,7 @@ const TeamArtilheiros: React.FC = () => {
             return;
         }
         try {
-            const uri = await captureRef(viewRef, { format: 'png', quality: 1 });
+            const uri = await captureRef(contentRef, { format: 'png', quality: 1, result: 'tmpfile' });
             if (Platform.OS === 'android' && Platform.Version >= 30) {
                 const permissions = await MediaLibrary.requestPermissionsAsync();
                 if (!permissions.granted) {
@@ -99,15 +101,12 @@ const TeamArtilheiros: React.FC = () => {
 
         return (
             <View style={[styles.card, isTop3 && styles.cardTop3]}>
-                {/* Posição */}
                 <View style={styles.rankBox}>
                     {isTop3
                         ? <Text style={styles.medal}>{MEDAL[index]}</Text>
                         : <Text style={styles.rankNum}>{index + 1}</Text>
                     }
                 </View>
-
-                {/* Info */}
                 <View style={styles.info}>
                     <View style={styles.infoRow}>
                         <Text style={styles.playerName} numberOfLines={1}>{item.nome}</Text>
@@ -115,7 +114,6 @@ const TeamArtilheiros: React.FC = () => {
                             <Text style={styles.golsText}>⚽ {item.gols}</Text>
                         </View>
                     </View>
-                    {/* Barra de progresso */}
                     <View style={styles.barTrack}>
                         <View style={[styles.barFill, { width: barWidth as any }]} />
                     </View>
@@ -125,39 +123,44 @@ const TeamArtilheiros: React.FC = () => {
     };
 
     return (
-        <View style={styles.root} ref={viewRef}>
+        // ✅ View raiz SEM ref
+        <View style={styles.root}>
             <StatusBar barStyle="dark-content" backgroundColor="#F8F9FA" />
 
-            {/* Botão câmera */}
+            {/* Botão câmera fora do conteúdo capturado */}
             <TouchableOpacity style={styles.captureBtn} onPress={handleCaptureAndSave}>
                 <MaterialIcons name="camera-alt" size={22} color="#FFF" />
             </TouchableOpacity>
 
-            <FlatList
-                data={artilheiros}
-                keyExtractor={(_, i) => i.toString()}
-                renderItem={renderItem}
-                showsVerticalScrollIndicator={false}
-                ListHeaderComponent={
-                    <View style={styles.hero}>
-                        <Image
-                            source={getShieldSource(team.shield)}
-                            style={styles.shield}
-                            resizeMode="contain"
-                        />
-                        <Text style={styles.teamName}>{team.name}</Text>
-                        <View style={styles.subtitleBadge}>
-                            <Text style={styles.subtitleText}>⚽ {artilheiros.length} maiores goleadores</Text>
+            {/* ✅ View com ref e collapsable={false} envolvendo a FlatList */}
+            <View ref={contentRef} collapsable={false} style={styles.listWrapper}>
+                <FlatList
+                    data={artilheiros}
+                    keyExtractor={(_, i) => i.toString()}
+                    renderItem={renderItem}
+                    showsVerticalScrollIndicator={false}
+                    scrollEnabled={false}
+                    ListHeaderComponent={
+                        <View style={styles.hero}>
+                            <Image
+                                source={getShieldSource(team.shield)}
+                                style={styles.shield}
+                                resizeMode="contain"
+                            />
+                            <Text style={styles.teamName}>{team.name}</Text>
+                            <View style={styles.subtitleBadge}>
+                                <Text style={styles.subtitleText}>⚽ {artilheiros.length} maiores goleadores</Text>
+                            </View>
                         </View>
-                    </View>
-                }
-                ListEmptyComponent={
-                    <View style={styles.centered}>
-                        <Text style={styles.emptyText}>Em breve</Text>
-                    </View>
-                }
-                contentContainerStyle={styles.listContent}
-            />
+                    }
+                    ListEmptyComponent={
+                        <View style={styles.centered}>
+                            <Text style={styles.emptyText}>Em breve</Text>
+                        </View>
+                    }
+                    contentContainerStyle={styles.listContent}
+                />
+            </View>
         </View>
     );
 };
@@ -166,6 +169,10 @@ const styles = StyleSheet.create({
     root: {
         flex: 1,
         backgroundColor: '#F8F9FA',
+    },
+    // ✅ Wrapper ocupa todo o espaço disponível
+    listWrapper: {
+        flex: 1,
     },
     captureBtn: {
         position: 'absolute',
@@ -196,8 +203,6 @@ const styles = StyleSheet.create({
         color: '#9CA3AF',
         marginTop: 32,
     },
-
-    // ── HERO
     hero: {
         backgroundColor: '#FFFFFF',
         alignItems: 'center',
@@ -241,8 +246,6 @@ const styles = StyleSheet.create({
         fontWeight: '700',
         color: '#374151',
     },
-
-    // ── LISTA
     listContent: {
         paddingBottom: 32,
     },

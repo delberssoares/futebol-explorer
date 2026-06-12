@@ -31,7 +31,7 @@ const TeamTitles: React.FC = () => {
     ? (Array.isArray(teamString) ? JSON.parse(teamString[0]) : JSON.parse(teamString))
     : null;
 
-  const viewRef = useRef<React.ElementRef<typeof View>>(null);
+  const contentRef = useRef<View>(null);
   const [hasPermission, setHasPermission] = useState(false);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ const TeamTitles: React.FC = () => {
       return;
     }
     try {
-      const uri = await captureRef(viewRef, { format: 'png', quality: 1 });
+      const uri = await captureRef(contentRef, { format: 'png', quality: 1, result: 'tmpfile' });
       if (Platform.OS === 'android' && Platform.Version >= 30) {
         const permissions = await MediaLibrary.requestPermissionsAsync();
         if (!permissions.granted) {
@@ -70,7 +70,6 @@ const TeamTitles: React.FC = () => {
     );
   }
 
-  // Achata todos os títulos organizados por categoria
   const titlesByCategory: Record<string, { name: string; count: number }[]> = {};
   CATEGORY_ORDER.forEach(cat => (titlesByCategory[cat] = []));
 
@@ -87,10 +86,10 @@ const TeamTitles: React.FC = () => {
     .reduce((acc, t) => acc + t.count, 0);
 
   return (
-    <View style={styles.root} ref={viewRef}>
+    <View style={styles.root}>
       <StatusBar barStyle="dark-content" backgroundColor="#F8F9FA" />
 
-      {/* Botão câmera */}
+
       <TouchableOpacity style={styles.captureBtn} onPress={handleCaptureAndSave}>
         <MaterialIcons name="camera-alt" size={22} color="#FFF" />
       </TouchableOpacity>
@@ -99,64 +98,66 @@ const TeamTitles: React.FC = () => {
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
-        {/* ── HERO ── */}
-        <View style={styles.hero}>
-          <Image
-            source={getShieldSource(team.shield)}
-            style={styles.shield}
-            resizeMode="contain"
-          />
-          <Text style={styles.teamName}>{team.name}</Text>
-          <View style={styles.totalBadge}>
-            <Text style={styles.totalIcon}>🏆</Text>
-            <Text style={styles.totalLabel}>{totalTitles} títulos no total</Text>
+        <View ref={contentRef} collapsable={false}>
+
+          {/* ── HERO ── */}
+          <View style={styles.hero}>
+            <Image
+              source={getShieldSource(team.shield)}
+              style={styles.shield}
+              resizeMode="contain"
+            />
+            <Text style={styles.teamName}>{team.name}</Text>
+            <View style={styles.totalBadge}>
+              <Text style={styles.totalIcon}>🏆</Text>
+              <Text style={styles.totalLabel}>{totalTitles} títulos no total</Text>
+            </View>
           </View>
-        </View>
 
-        {/* ── CATEGORIAS ── */}
-        <View style={styles.body}>
-          {CATEGORY_ORDER.map((cat) => {
-            const list = titlesByCategory[cat];
-            if (!list || list.length === 0) return null;
-            const config = CATEGORY_CONFIG[cat];
-            return (
-              <View key={cat} style={styles.categoryBlock}>
-                {/* Cabeçalho da categoria */}
-                <View style={[styles.categoryHeader, { backgroundColor: config.accentLight }]}>
-                  <Text style={styles.categoryIcon}>{config.icon}</Text>
-                  <Text style={[styles.categoryLabel, { color: config.accent }]}>
-                    {config.label}
-                  </Text>
-                  <View style={[styles.categoryCount, { backgroundColor: config.accent }]}>
-                    <Text style={styles.categoryCountText}>
-                      {list.reduce((a, t) => a + t.count, 0)}
+          {/* ── CATEGORIAS ── */}
+          <View style={styles.body}>
+            {CATEGORY_ORDER.map((cat) => {
+              const list = titlesByCategory[cat];
+              if (!list || list.length === 0) return null;
+              const config = CATEGORY_CONFIG[cat];
+              return (
+                <View key={cat} style={styles.categoryBlock}>
+                  <View style={[styles.categoryHeader, { backgroundColor: config.accentLight }]}>
+                    <Text style={styles.categoryIcon}>{config.icon}</Text>
+                    <Text style={[styles.categoryLabel, { color: config.accent }]}>
+                      {config.label}
                     </Text>
-                  </View>
-                </View>
-
-                {/* Linhas de título */}
-                {list.map((title, i) => (
-                  <View
-                    key={i}
-                    style={[
-                      styles.titleRow,
-                      i === list.length - 1 && styles.titleRowLast,
-                    ]}
-                  >
-                    <Text style={styles.titleName}>{title.name}</Text>
-                    <View style={[styles.countBadge, { backgroundColor: config.accentLight }]}>
-                      <Text style={[styles.countText, { color: config.accent }]}>
-                        {title.count}×
+                    <View style={[styles.categoryCount, { backgroundColor: config.accent }]}>
+                      <Text style={styles.categoryCountText}>
+                        {list.reduce((a, t) => a + t.count, 0)}
                       </Text>
                     </View>
                   </View>
-                ))}
-              </View>
-            );
-          })}
-        </View>
 
-        <View style={{ height: 32 }} />
+                  {list.map((title, i) => (
+                    <View
+                      key={i}
+                      style={[
+                        styles.titleRow,
+                        i === list.length - 1 && styles.titleRowLast,
+                      ]}
+                    >
+                      <Text style={styles.titleName}>{title.name}</Text>
+                      <View style={[styles.countBadge, { backgroundColor: config.accentLight }]}>
+                        <Text style={[styles.countText, { color: config.accent }]}>
+                          {title.count}×
+                        </Text>
+                      </View>
+                    </View>
+                  ))}
+                </View>
+              );
+            })}
+          </View>
+
+          <View style={{ height: 32 }} />
+
+        </View>{/* fim do contentRef */}
       </ScrollView>
     </View>
   );
@@ -179,8 +180,6 @@ const styles = StyleSheet.create({
     color: '#EF4444',
     fontSize: 16,
   },
-
-  // Botão câmera
   captureBtn: {
     position: 'absolute',
     top: 12,
@@ -195,8 +194,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.35,
     shadowRadius: 6,
   },
-
-  // ── HERO
   hero: {
     backgroundColor: '#FFFFFF',
     alignItems: 'center',
@@ -254,8 +251,6 @@ const styles = StyleSheet.create({
     color: '#374151',
     letterSpacing: 0.2,
   },
-
-  // ── CATEGORIAS
   body: {
     paddingHorizontal: 16,
     gap: 14,
