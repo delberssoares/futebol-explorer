@@ -34,6 +34,7 @@ const TeamArtilheiros: React.FC = () => {
     const [loading, setLoading] = useState(true);
     const [team, setTeam] = useState<Team | null>(null);
     const [hasPermission, setHasPermission] = useState(false);
+    const [capturing, setCapturing] = useState(false);
 
     // ✅ Ref no View interno, dentro do ScrollView
     const contentRef = useRef<View>(null);
@@ -61,6 +62,8 @@ const TeamArtilheiros: React.FC = () => {
             return;
         }
         try {
+            setCapturing(true);
+            await new Promise(resolve => setTimeout(resolve, 50));
             const uri = await captureRef(contentRef, { format: 'png', quality: 1, result: 'tmpfile' });
             if (Platform.OS === 'android' && Platform.Version >= 30) {
                 const permissions = await MediaLibrary.requestPermissionsAsync();
@@ -70,8 +73,10 @@ const TeamArtilheiros: React.FC = () => {
                 }
             }
             await MediaLibrary.saveToLibraryAsync(uri);
+            setCapturing(false);
             Alert.alert('Sucesso', 'Imagem salva na galeria!');
         } catch (error) {
+            setCapturing(false);
             Alert.alert('Erro', 'Não foi possível salvar a imagem.');
         }
     };
@@ -99,12 +104,10 @@ const TeamArtilheiros: React.FC = () => {
         <View style={styles.root}>
             <StatusBar barStyle="dark-content" backgroundColor="#F8F9FA" />
 
-            {/* Botão câmera fora do conteúdo capturado */}
-            <TouchableOpacity style={styles.captureBtn} onPress={handleCaptureAndSave}>
+            <TouchableOpacity style={[styles.captureBtn, { opacity: capturing ? 0 : 1 }]} onPress={handleCaptureAndSave}>
                 <MaterialIcons name="camera-alt" size={22} color="#FFF" />
             </TouchableOpacity>
 
-            {/* ✅ ScrollView faz o scroll da tela */}
             <ScrollView
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={styles.scrollContent}

@@ -35,6 +35,7 @@ const CompareTeamsScreen: React.FC = () => {
     const teams: Team[] = teamsString ? JSON.parse(teamsString) : [];
     const contentRef = useRef<View>(null);
     const [hasPermission, setHasPermission] = useState(false);
+    const [capturing, setCapturing] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -49,6 +50,8 @@ const CompareTeamsScreen: React.FC = () => {
                 Alert.alert('Permissão necessária', 'É necessário permitir o acesso à galeria para salvar a imagem.');
                 return;
             }
+            setCapturing(true);
+            await new Promise(resolve => setTimeout(resolve, 50));
             const uri = await captureRef(contentRef, { format: 'png', quality: 1, result: 'tmpfile' });
             if (Platform.OS === 'android' && Platform.Version >= 30) {
                 const permissions = await MediaLibrary.requestPermissionsAsync();
@@ -58,8 +61,10 @@ const CompareTeamsScreen: React.FC = () => {
                 }
             }
             await MediaLibrary.saveToLibraryAsync(uri);
+            setCapturing(false);
             Alert.alert('Sucesso', 'Imagem salva na galeria!');
         } catch (error) {
+            setCapturing(false);
             Alert.alert('Atenção', 'Para salvar imagens, use o app instalado (não o Expo Go).');
         }
     };
@@ -114,12 +119,13 @@ const CompareTeamsScreen: React.FC = () => {
                                 </View>
                             </View>
 
-                            {/* Centro: VS + botão print */}
                             <View style={styles.centerCol}>
                                 <Text style={styles.vsText}>VS</Text>
-                                <TouchableOpacity style={styles.captureBtn} onPress={handleCaptureAndSave}>
-                                    <MaterialIcons name="camera-alt" size={20} color="#FFF" />
-                                </TouchableOpacity>
+                                {!capturing && (
+                                    <TouchableOpacity style={styles.captureBtn} onPress={handleCaptureAndSave}>
+                                        <MaterialIcons name="camera-alt" size={20} color="#FFF" />
+                                    </TouchableOpacity>
+                                )}
                             </View>
 
                             {/* Time B */}
