@@ -23,23 +23,23 @@ const teams = [
     "redes": [
       {
         "rede": "Facebook",
-        "link": "https://www.facebook.com/americamg"
+        "link": "https://www.facebook.com/AmericaFutebolClube1912"
       },
       {
         "rede": "Instagram",
-        "link": "https://www.instagram.com/americamg/"
+        "link": "https://www.instagram.com/america_mg/"
       },
       {
         "rede": "Twitter",
-        "link": "https://x.com/AmericaMG"
+        "link": "https://x.com/AmericaFC1912"
       }
     ]
   },
   {
     name: 'Athletic', shield: 'athletic', fundacao: '1909', titles: [], artilheiros: [], redes: [
-      { rede: 'Facebook', link: 'https://www.facebook.com/athleticclube' },
-      { rede: 'Instagram', link: 'https://www.instagram.com/athleticclube/' },
-      { rede: 'Twitter', link: 'https://x.com/AthleticClube' }
+      { rede: 'Facebook', link: 'https://www.facebook.com/athleticclubfutebol/?locale=pt_BR' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/athleticclubfutebol/' },
+      { rede: 'Twitter', link: 'https://x.com/athleticclubmg' }
     ]
   },
   {
@@ -459,9 +459,9 @@ const teams = [
         ]
       },
     ], artilheiros: [], redes: [
-      { rede: 'Facebook', link: 'https://www.facebook.com/botafogosp' },
-      { rede: 'Instagram', link: 'https://www.instagram.com/botafogoribeiraopreto/' },
-      { rede: 'Twitter', link: 'https://x.com/BotafogoSP' }
+      { rede: 'Facebook', link: 'https://www.facebook.com/botafogofutebolsa/?locale=pt_BR' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/botafogosp/?hl=pt' },
+      { rede: 'Twitter', link: 'https://x.com/botafogofsa' }
     ]
   },
   {
@@ -521,9 +521,9 @@ const teams = [
         ]
       },
     ], artilheiros: [], redes: [
-      { rede: 'Facebook', link: 'https://www.facebook.com/chapecoense' },
-      { rede: 'Instagram', link: 'https://www.instagram.com/chapecoense/' },
-      { rede: 'Twitter', link: 'https://x.com/chapecoense' }
+      { rede: 'Facebook', link: 'https://www.facebook.com/AChapeF/?locale=pt_BR' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/chapecoensereal/' },
+      { rede: 'Twitter', link: 'https://x.com/ChapecoenseReal' }
     ]
   },
   {
@@ -591,7 +591,7 @@ const teams = [
       { nome: "Neto", gols: 92 },
       { nome: "Deivid", gols: 87 }
     ], redes: [
-      { rede: 'Facebook', link: 'https://www.facebook.com/coritiba' },
+      { rede: 'Facebook', link: 'https://www.facebook.com/coritibaoficial/?locale=pt_BR' },
       { rede: 'Instagram', link: 'https://www.instagram.com/coritiba/' },
       { rede: 'Twitter', link: 'https://x.com/Coritiba' }
     ]
@@ -807,9 +807,9 @@ const teams = [
       { nome: "Pedro Raul", gols: 52 },
       { nome: "Rafael Moura", gols: 49 }
     ], redes: [
-      { rede: 'Facebook', link: 'https://www.facebook.com/goiasec' },
-      { rede: 'Instagram', link: 'https://www.instagram.com/goiasec/' },
-      { rede: 'Twitter', link: 'https://x.com/GoiasEC' }
+      { rede: 'Facebook', link: 'https://www.facebook.com/goiasoficial/?locale=pt_BR' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/goiasoficial/?hl=pt-br' },
+      { rede: 'Twitter', link: 'https://x.com/goiasoficial' }
     ]
   },
   {
@@ -934,17 +934,17 @@ const teams = [
         ]
       },
     ], artilheiros: [], redes: [
-      { rede: 'Facebook', link: 'https://www.facebook.com/nautico' },
-      { rede: 'Instagram', link: 'https://www.instagram.com/nauticooficial/' },
-      { rede: 'Twitter', link: 'https://x.com/nauticooficial' }
+      { rede: 'Facebook', link: 'https://www.facebook.com/nauticope/?locale=pt_BR' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/nauticope/' },
+      { rede: 'Twitter', link: 'https://x.com/nauticope' }
     ]
   },
   {
     name: 'Novorizontino', shield: 'novorizontino', fundacao: '1973', titles: [
     ], artilheiros: [], redes: [
-      { rede: 'Facebook', link: 'https://www.facebook.com/novorizontino' },
-      { rede: 'Instagram', link: 'https://www.instagram.com/novorizontino/' },
-      { rede: 'Twitter', link: 'https://x.com/Novorizontino' }
+      { rede: 'Facebook', link: 'https://www.facebook.com/oficialnovorizontino/?locale=pt_BR' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/oficialnovorizontino/' },
+      { rede: 'Twitter', link: 'https://x.com/novorizontino' }
     ]
   },
   {
@@ -955,9 +955,9 @@ const teams = [
         ]
       },
     ], artilheiros: [], redes: [
-      { rede: 'Facebook', link: 'https://www.facebook.com/OperarioFerroviarioEC' },
+      { rede: 'Facebook', link: 'https://www.facebook.com/OFECoficial/?locale=pt_BR' },
       { rede: 'Instagram', link: 'https://www.instagram.com/operarioferroviario/' },
-      { rede: 'Twitter', link: 'https://x.com/OperarioEC' }
+      { rede: 'Twitter', link: 'https://x.com/OFECoficial' }
     ]
   },
   {
@@ -1008,9 +1008,9 @@ const teams = [
       { nome: "Rodrigo Tiuí", gols: 61 },
       { nome: "Léo Mineiro", gols: 58 }
     ], redes: [
-      { rede: 'Facebook', link: 'https://www.facebook.com/aaponte' },
-      { rede: 'Instagram', link: 'https://www.instagram.com/aaponte/' },
-      { rede: 'Twitter', link: 'https://x.com/AAPontePreta' }
+      { rede: 'Facebook', link: 'https://www.facebook.com/PontePretaOficial/?locale=pt_BR' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/pontepretaoficial/?hl=pt-br' },
+      { rede: 'Twitter', link: 'https://x.com/aapp_oficial' }
     ]
   },
   {
@@ -1065,9 +1065,9 @@ const teams = [
   {
     name: 'São Bernardo', shield: 'sao-bernardo', fundacao: '1916', titles: [
     ], artilheiros: [], redes: [
-      { rede: 'Facebook', link: 'https://www.facebook.com/saobernardofc' },
-      { rede: 'Instagram', link: 'https://www.instagram.com/saobernardofc/' },
-      { rede: 'Twitter', link: 'https://x.com/SaoBernardoFC' }
+      { rede: 'Facebook', link: 'https://www.facebook.com/saobernardofutebolclube/?locale=pt_BR' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/saobernardo_fc/' },
+      { rede: 'Twitter', link: 'https://x.com/saobernardosaf' }
     ]
   },
   {
@@ -1141,7 +1141,7 @@ const teams = [
       { nome: "Diego Souza", gols: 72 },
       { nome: "Hernane", gols: 68 }
     ], redes: [
-      { rede: 'Facebook', link: 'https://www.facebook.com/sportrecife' },
+      { rede: 'Facebook', link: 'https://www.facebook.com/sportclubdorecife/?locale=pt_BR' },
       { rede: 'Instagram', link: 'https://www.instagram.com/sportrecife/' },
       { rede: 'Twitter', link: 'https://x.com/SportRecife' }
     ]
@@ -1187,9 +1187,9 @@ const teams = [
         ]
       },
     ], artilheiros: [], redes: [
-      { rede: 'Facebook', link: 'https://www.facebook.com/vilanovafcoficial' },
-      { rede: 'Instagram', link: 'https://www.instagram.com/vilanovafcoficial/' },
-      { rede: 'Twitter', link: 'https://x.com/VilanovaFC' }
+      { rede: 'Facebook', link: 'https://www.facebook.com/vilanovafc/?locale=pt_BR' },
+      { rede: 'Instagram', link: 'https://www.instagram.com/vilanovafc/?hl=pt-br' },
+      { rede: 'Twitter', link: 'https://x.com/VilaNovaFC' }
     ]
   },
   {
