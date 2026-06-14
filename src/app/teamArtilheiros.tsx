@@ -5,9 +5,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import {
     ActivityIndicator,
     Alert,
-    FlatList,
     Image,
     Platform,
+    ScrollView,
     StatusBar,
     StyleSheet,
     Text,
@@ -34,7 +34,9 @@ const TeamArtilheiros: React.FC = () => {
     const [loading, setLoading] = useState(true);
     const [team, setTeam] = useState<Team | null>(null);
     const [hasPermission, setHasPermission] = useState(false);
-    const viewRef = useRef<React.ElementRef<typeof View>>(null);
+
+    // ✅ Ref no View interno, dentro do ScrollView
+    const contentRef = useRef<View>(null);
     const params = useLocalSearchParams();
 
     useEffect(() => {
@@ -59,7 +61,7 @@ const TeamArtilheiros: React.FC = () => {
             return;
         }
         try {
-            const uri = await captureRef(viewRef, { format: 'png', quality: 1 });
+            const uri = await captureRef(contentRef, { format: 'png', quality: 1, result: 'tmpfile' });
             if (Platform.OS === 'android' && Platform.Version >= 30) {
                 const permissions = await MediaLibrary.requestPermissionsAsync();
                 if (!permissions.granted) {
@@ -93,52 +95,24 @@ const TeamArtilheiros: React.FC = () => {
     const artilheiros = team.artilheiros ?? [];
     const maxGols = artilheiros[0]?.gols ?? 1;
 
-    const renderItem = ({ item, index }: { item: Artilheiro; index: number }) => {
-        const isTop3 = index < 3;
-        const barWidth = `${Math.round((item.gols / maxGols) * 100)}%`;
-
-        return (
-            <View style={[styles.card, isTop3 && styles.cardTop3]}>
-                {/* Posição */}
-                <View style={styles.rankBox}>
-                    {isTop3
-                        ? <Text style={styles.medal}>{MEDAL[index]}</Text>
-                        : <Text style={styles.rankNum}>{index + 1}</Text>
-                    }
-                </View>
-
-                {/* Info */}
-                <View style={styles.info}>
-                    <View style={styles.infoRow}>
-                        <Text style={styles.playerName} numberOfLines={1}>{item.nome}</Text>
-                        <View style={styles.golsBadge}>
-                            <Text style={styles.golsText}>⚽ {item.gols}</Text>
-                        </View>
-                    </View>
-                    {/* Barra de progresso */}
-                    <View style={styles.barTrack}>
-                        <View style={[styles.barFill, { width: barWidth as any }]} />
-                    </View>
-                </View>
-            </View>
-        );
-    };
-
     return (
-        <View style={styles.root} ref={viewRef}>
+        <View style={styles.root}>
             <StatusBar barStyle="dark-content" backgroundColor="#F8F9FA" />
 
-            {/* Botão câmera */}
+            {/* Botão câmera fora do conteúdo capturado */}
             <TouchableOpacity style={styles.captureBtn} onPress={handleCaptureAndSave}>
                 <MaterialIcons name="camera-alt" size={22} color="#FFF" />
             </TouchableOpacity>
 
-            <FlatList
-                data={artilheiros}
-                keyExtractor={(_, i) => i.toString()}
-                renderItem={renderItem}
+            {/* ✅ ScrollView faz o scroll da tela */}
+            <ScrollView
                 showsVerticalScrollIndicator={false}
-                ListHeaderComponent={
+                contentContainerStyle={styles.scrollContent}
+            >
+                {/* ✅ View com ref e collapsable={false} envolve TODO o conteúdo */}
+                <View ref={contentRef} collapsable={false}>
+
+                    {/* ── HERO ── */}
                     <View style={styles.hero}>
                         <Image
                             source={getShieldSource(team.shield)}
@@ -150,14 +124,46 @@ const TeamArtilheiros: React.FC = () => {
                             <Text style={styles.subtitleText}>⚽ {artilheiros.length} maiores goleadores</Text>
                         </View>
                     </View>
-                }
-                ListEmptyComponent={
-                    <View style={styles.centered}>
-                        <Text style={styles.emptyText}>Em breve</Text>
+
+                    {/* ── LISTA renderizada diretamente (sem FlatList) ── */}
+                    <View style={styles.listContent}>
+                        {artilheiros.length === 0 ? (
+                            <View style={styles.centered}>
+                                <Text style={styles.emptyText}>Em breve</Text>
+                            </View>
+                        ) : (
+                            artilheiros.map((item, index) => {
+                                const isTop3 = index < 3;
+                                const barWidth = `${Math.round((item.gols / maxGols) * 100)}%`;
+                                return (
+                                    <View key={index} style={[styles.card, isTop3 && styles.cardTop3]}>
+                                        <View style={styles.rankBox}>
+                                            {isTop3
+                                                ? <Text style={styles.medal}>{MEDAL[index]}</Text>
+                                                : <Text style={styles.rankNum}>{index + 1}</Text>
+                                            }
+                                        </View>
+                                        <View style={styles.info}>
+                                            <View style={styles.infoRow}>
+                                                <Text style={styles.playerName} numberOfLines={1}>{item.nome}</Text>
+                                                <View style={styles.golsBadge}>
+                                                    <Text style={styles.golsText}>⚽ {item.gols}</Text>
+                                                </View>
+                                            </View>
+                                            <View style={styles.barTrack}>
+                                                <View style={[styles.barFill, { width: barWidth as any }]} />
+                                            </View>
+                                        </View>
+                                    </View>
+                                );
+                            })
+                        )}
                     </View>
-                }
-                contentContainerStyle={styles.listContent}
-            />
+
+                    <View style={{ height: 32 }} />
+
+                </View>{/* fim do contentRef */}
+            </ScrollView>
         </View>
     );
 };
@@ -166,6 +172,9 @@ const styles = StyleSheet.create({
     root: {
         flex: 1,
         backgroundColor: '#F8F9FA',
+    },
+    scrollContent: {
+        flexGrow: 1,
     },
     captureBtn: {
         position: 'absolute',
@@ -196,8 +205,6 @@ const styles = StyleSheet.create({
         color: '#9CA3AF',
         marginTop: 32,
     },
-
-    // ── HERO
     hero: {
         backgroundColor: '#FFFFFF',
         alignItems: 'center',
@@ -241,10 +248,8 @@ const styles = StyleSheet.create({
         fontWeight: '700',
         color: '#374151',
     },
-
-    // ── LISTA
     listContent: {
-        paddingBottom: 32,
+        paddingBottom: 0,
     },
     card: {
         flexDirection: 'row',
