@@ -1,7 +1,8 @@
 import { router } from 'expo-router';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
     Animated,
+    BackHandler,
     Easing,
     FlatList,
     Image,
@@ -44,6 +45,11 @@ const SelectTeamScreen: React.FC = () => {
 
     const tabWidthRef = useRef(0);
     const [tabBarWidth, setTabBarWidth] = useState(0);
+
+    useEffect(() => {
+        const sub = BackHandler.addEventListener('hardwareBackPress', () => true);
+        return () => sub.remove();
+    }, []);
 
     const slideAnim = useRef(new Animated.Value(0)).current;
 
